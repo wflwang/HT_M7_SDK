@@ -1,0 +1,148 @@
+#! armcc -E
+; command above MUST be in first line (no comment above!)
+
+/*
+ * Copyright 2024 Watech Electronics
+ * All rights reserved.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ *
+ */
+
+/*
+;-------- <<< Use Configuration Wizard in Context Menu >>> -------------------
+*/
+
+/*--------------------- Flash Configuration ----------------------------------
+; <h> Flash Configuration
+;   <o0> EFLASH1 Memory Base Address    <0x0-0xFFFFFFFF:8>
+;   <o1> EFLASH1 Memory Size (in Bytes) <0x0-0xFFFFFFFF:8>
+; </h>
+ *----------------------------------------------------------------------------*/
+#define __EFLASH1_BASE    0x10300000
+#define __EFLASH1_SIZE    0x00100000
+
+/*--------------------- Embedded RAM Configuration ---------------------------
+; <h> RAM Configuration
+;   <o0> CPU2 ITCM Base Address    <0x0-0xFFFFFFFF:8>
+;   <o1> CPU2 ITCM Size (in Bytes) <0x0-0xFFFFFFFF:8>
+;   <o2> SRAM0 Base Address        <0x0-0xFFFFFFFF:8>
+;   <o3> SRAM0 Size (in Bytes)     <0x0-0xFFFFFFFF:8>
+;   <o4> SRAM1 Base Address        <0x0-0xFFFFFFFF:8>
+;   <o5> SRAM1 Size (in Bytes)     <0x0-0xFFFFFFFF:8>
+;   <o6> CPU2 DTCM Base Address    <0x0-0xFFFFFFFF:8>
+;   <o7> CPU2 DTCM Size (in Bytes) <0x0-0xFFFFFFFF:8>
+; </h>
+ *----------------------------------------------------------------------------*/
+#define __ITCM_BASE     0x00000000
+#define __ITCM_SIZE     0x00020000
+
+#define __SRAM0_BASE    0x00200000
+#define __SRAM0_SIZE    0x00020000
+
+#define __SRAM1_BASE    0x10200000
+#define __SRAM1_SIZE    0x00020000
+
+#define __DTCM_BASE     0x20000000
+#define __DTCM_SIZE     0x00020000
+
+/*--------------------- Message RAM Configuration ----------------------------
+; <h> Message RAM Configuration
+;   <o0> CPU1 TO CPU2 Message RAM Base Address    <0x0-0xFFFFFFFF:8>
+;   <o1> CPU1 TO CPU2 Message RAM Size (in Bytes) <0x0-0xFFFFFFFF:8>
+;   <o2> CPU2 TO CPU1 Message RAM Base Address    <0x0-0xFFFFFFFF:8>
+;   <o3> CPU2 TO CPU1 Message RAM Size (in Bytes) <0x0-0xFFFFFFFF:8>
+; </h>
+ *----------------------------------------------------------------------------*/
+#define __CPU1TOCPU2_MSGRAM_BASE    0x40001000
+#define __CPU1TOCPU2_MSGRAM_SIZE    0x00001000
+
+#define __CPU2TOCPU1_MSGRAM_BASE    0x40002000
+#define __CPU2TOCPU1_MSGRAM_SIZE    0x00001000
+
+/*--------------------- Stack / Heap Configuration ---------------------------
+; <h> Stack / Heap Configuration
+;   <o0> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
+;   <o1> Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
+; </h>
+ *----------------------------------------------------------------------------*/
+#if (defined(__STACK_SIZE__))
+#define __STACK_SIZE    (__STACK_SIZE__)
+#else
+#define __STACK_SIZE    0x00000200
+#endif
+#if (defined(__HEAP_SIZE__))
+#define __HEAP_SIZE     (__HEAP_SIZE__)
+#else
+#define __HEAP_SIZE     0x00000C00
+#endif
+
+/*
+;------------- <<< end of configuration section >>> ---------------------------
+*/
+
+/*----------------------------------------------------------------------------
+  Clock Information definition
+ *----------------------------------------------------------------------------*/
+#define __CLOCK_INFO_SIZE    0x20
+
+/*----------------------------------------------------------------------------
+  User Stack & Heap boundary definition
+ *----------------------------------------------------------------------------*/
+#define __STACK_TOP    (__DTCM_BASE + __DTCM_SIZE)    /* starts at end of RAM */
+#define __HEAP_BASE    (AlignExpr(+0, 8))             /* starts after RW_RAM section, 8 byte aligned */
+
+/*----------------------------------------------------------------------------
+  Region base & size definition
+ *----------------------------------------------------------------------------*/
+#define __TEXT_BASE            (__ITCM_BASE)
+#define __TEXT_SIZE            (__ITCM_SIZE)
+
+#define __DATA_BASE            (__DTCM_BASE)
+#define __DATA_SIZE            (__DTCM_SIZE - __STACK_SIZE - __HEAP_SIZE)
+
+#define __NONCACHEABLE_BASE    (__SRAM1_BASE)
+#define __NONCACHEABLE_SIZE    (__SRAM1_SIZE)
+
+#define __CLOCK_INFO_BASE      (__CPU1TOCPU2_MSGRAM_BASE + __CPU1TOCPU2_MSGRAM_SIZE - __CLOCK_INFO_SIZE)
+
+/*----------------------------------------------------------------------------
+  Scatter Region definition
+ *----------------------------------------------------------------------------*/
+LR_ROM __TEXT_BASE __TEXT_SIZE  {    ; load region size_region
+  ER_ROM __TEXT_BASE __TEXT_SIZE  {    ; load address = execution address
+   *.o (RESET, +First)
+   *(InRoot$$Sections)
+   .ANY (+RO)
+   .ANY (+XO)
+#if (defined(__RAM_RELOCATION_SECTION__))
+    *(.RamRelocated.text)
+#endif
+  }
+
+  RW_RAM __DATA_BASE __DATA_SIZE  {     ; RW data
+    *(+RW +ZI)
+#if (defined(__RAM_RELOCATION_SECTION__))
+    *(.RamRelocated.data)
+    *(.RamRelocated.bss)
+#endif
+  }
+
+#if __HEAP_SIZE > 0
+  ARM_LIB_HEAP __HEAP_BASE EMPTY  __HEAP_SIZE  {    ; Reserve empty region for heap
+  }
+#endif
+
+  ARM_LIB_STACK __STACK_TOP EMPTY -__STACK_SIZE  {    ; Reserve empty region for stack
+  }
+
+  CLOCK_INFO __CLOCK_INFO_BASE EMPTY __CLOCK_INFO_SIZE  {    ; Reserve empty region for clock info
+  }
+
+#if (defined(__RAM_NONCACHEABLE_SECTION__))
+  RW_NONCACHEABLE __NONCACHEABLE_BASE __NONCACHEABLE_SIZE  {    ; RW non-cacheable data
+    *(.NonCacheable.data)
+    *(.NonCacheable.bss)
+  }
+#endif
+}

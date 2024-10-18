@@ -1,0 +1,261 @@
+#ifndef __CPU2_IPC_COM_INT_H__
+#define __CPU2_IPC_COM_INT_H__
+
+#include "hte_gpio.h"
+#include "hte_xbar.h"
+#include "hte_xbarmux.h"
+
+#include "HS32F7D377_gpio_ctrl.h"
+#include "HS32F7D377_xbar.h"
+
+#define IPC_COM_READ  0x000055AA
+#define IPC_COM_WRITE 0x000055BB
+#define IPC_COM_CLK_PARAM 0x000055CC
+
+#define IPC_COM_DONE  0x5A5A5B5B
+
+#define IPC_SYSCTL_PERIPH_REG_M (0x001FU)
+#define IPC_SYSCTL_PERIPH_REG_S (0x0002U)
+#define IPC_SYSCTL_PERIPH_BIT_M (0x1F00U)
+#define IPC_SYSCTL_PERIPH_BIT_S (0x0008U)
+
+typedef enum
+{
+    kIPC_SYSCTRL_PERIPH_RES_TFU    = 0x0000, /*!< Reset TFU clock */
+    kIPC_SYSCTRL_PERIPH_RES_CRC    = 0x0800, /*!< Reset CRC clock */
+    kIPC_SYSCTRL_PERIPH_RES_EMIF1  = 0x0001, /*!< Reset EMIF1 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EPWM1  = 0x0002, /*!< Reset EPWM1 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EPWM2  = 0x0102, /*!< Reset EPWM2 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EPWM3  = 0x0202, /*!< Reset EPWM3 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EPWM4  = 0x0302, /*!< Reset EPWM4 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EPWM5  = 0x0402, /*!< Reset EPWM5 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EPWM6  = 0x0502, /*!< Reset EPWM6 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EPWM7  = 0x0602, /*!< Reset EPWM7 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EPWM8  = 0x0702, /*!< Reset EPWM8 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EPWM9  = 0x0802, /*!< Reset EPWM9 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EPWM10 = 0x0902, /*!< Reset EPWM10 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EPWM11 = 0x0A02, /*!< Reset EPWM11 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EPWM12 = 0x0B02, /*!< Reset EPWM12 clock */
+    kIPC_SYSCTRL_PERIPH_RES_ECAP1  = 0x0003, /*!< Reset ECAP1 clock */
+    kIPC_SYSCTRL_PERIPH_RES_ECAP2  = 0x0103, /*!< Reset ECAP2 clock */
+    kIPC_SYSCTRL_PERIPH_RES_ECAP3  = 0x0203, /*!< Reset ECAP3 clock */
+    kIPC_SYSCTRL_PERIPH_RES_ECAP4  = 0x0303, /*!< Reset ECAP4 clock */
+    kIPC_SYSCTRL_PERIPH_RES_ECAP5  = 0x0403, /*!< Reset ECAP5 clock */
+    kIPC_SYSCTRL_PERIPH_RES_ECAP6  = 0x0503, /*!< Reset ECAP6 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EQEP1  = 0x0004, /*!< Reset EQEP1 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EQEP2  = 0x0104, /*!< Reset EQEP2 clock */
+    kIPC_SYSCTRL_PERIPH_RES_EQEP3  = 0x0204, /*!< Reset EQEP3 clock */
+    kIPC_SYSCTRL_PERIPH_RES_SDFM1  = 0x0006, /*!< Reset SDFM1 clock */
+    kIPC_SYSCTRL_PERIPH_RES_SDFM2  = 0x0106, /*!< Reset SDFM2 clock */
+    kIPC_SYSCTRL_PERIPH_RES_UARTA  = 0x0007, /*!< Reset UARTA clock */
+    kIPC_SYSCTRL_PERIPH_RES_UARTB  = 0x0107, /*!< Reset UARTB clock */
+    kIPC_SYSCTRL_PERIPH_RES_UARTC  = 0x0207, /*!< Reset UARTC clock */
+    kIPC_SYSCTRL_PERIPH_RES_UARTD  = 0x0307, /*!< Reset UARTD clock */
+    kIPC_SYSCTRL_PERIPH_RES_SPIA   = 0x0008, /*!< Reset SPIA clock */
+    kIPC_SYSCTRL_PERIPH_RES_SPIB   = 0x0108, /*!< Reset SPIB clock */
+    kIPC_SYSCTRL_PERIPH_RES_SPIC   = 0x0208, /*!< Reset SPIC clock */
+    kIPC_SYSCTRL_PERIPH_RES_I2CA   = 0x0009, /*!< Reset I2CA clock */
+    kIPC_SYSCTRL_PERIPH_RES_I2CB   = 0x0109, /*!< Reset I2CB clock */
+    kIPC_SYSCTRL_PERIPH_RES_PMBUSA = 0x1009, /*!< Reset PMBUSA clock */
+    kIPC_SYSCTRL_PERIPH_RES_MCANA  = 0x000A, /*!< Reset CANA clock */
+    kIPC_SYSCTRL_PERIPH_RES_MCANB  = 0x010A, /*!< Reset CANB clock */
+    kIPC_SYSCTRL_PERIPH_RES_MCANC  = 0x020A, /*!< Reset CANC clock */
+    kIPC_SYSCTRL_PERIPH_RES_USB    = 0x100B, /*!< Reset USB clock */
+    kIPC_SYSCTRL_PERIPH_RES_ADCA   = 0x000D, /*!< Reset ADCA clock */
+    kIPC_SYSCTRL_PERIPH_RES_ADCB   = 0x010D, /*!< Reset ADCB clock */
+    kIPC_SYSCTRL_PERIPH_RES_ADCC   = 0x020D, /*!< Reset ADCC clock */
+    kIPC_SYSCTRL_PERIPH_RES_ADCD   = 0x030D, /*!< Reset ADCD clock */
+    kIPC_SYSCTRL_PERIPH_RES_CMPSS1 = 0x000E, /*!< Reset CMPSS1 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CMPSS2 = 0x010E, /*!< Reset CMPSS2 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CMPSS3 = 0x020E, /*!< Reset CMPSS3 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CMPSS4 = 0x030E, /*!< Reset CMPSS4 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CMPSS5 = 0x040E, /*!< Reset CMPSS5 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CMPSS6 = 0x050E, /*!< Reset CMPSS6 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CMPSS7 = 0x060E, /*!< Reset CMPSS7 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CMPSS8 = 0x070E, /*!< Reset CMPSS8 clock */
+    kIPC_SYSCTRL_PERIPH_RES_DACA   = 0x1010, /*!< Reset DACA clock */
+    kIPC_SYSCTRL_PERIPH_RES_DACB   = 0x1110, /*!< Reset DACB clock */
+    kIPC_SYSCTRL_PERIPH_RES_DACC   = 0x1210, /*!< Reset DACC clock */
+    kIPC_SYSCTRL_PERIPH_RES_CLB1   = 0x0011, /*!< Reset CLB1 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CLB2   = 0x0111, /*!< Reset CLB2 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CLB3   = 0x0211, /*!< Reset CLB3 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CLB4   = 0x0311, /*!< Reset CLB4 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CLB5   = 0x0411, /*!< Reset CLB5 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CLB6   = 0x0511, /*!< Reset CLB6 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CLB7   = 0x0611, /*!< Reset CLB7 clock */
+    kIPC_SYSCTRL_PERIPH_RES_CLB8   = 0x0711  /*!< Reset CLB8 clock */
+} IPC_SYSCTRL_PeripheralSOFTPRES_t;
+
+/*! \brief peripheral cpusel definition */
+typedef enum
+{
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EPWM1  = 0x0000, //!< CPUSEL EPWM1
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EPWM2  = 0x0100, //!< CPUSEL EPWM2
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EPWM3  = 0x0200, //!< CPUSEL EPWM3
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EPWM4  = 0x0300, //!< CPUSEL EPWM4
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EPWM5  = 0x0400, //!< CPUSEL EPWM5
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EPWM6  = 0x0500, //!< CPUSEL EPWM6
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EPWM7  = 0x0600, //!< CPUSEL EPWM7
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EPWM8  = 0x0700, //!< CPUSEL EPWM8
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EPWM9  = 0x0800, //!< CPUSEL EPWM9
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EPWM10 = 0x0900, //!< CPUSEL EPWM10
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EPWM11 = 0x0A00, //!< CPUSEL EPWM11
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EPWM12 = 0x0B00, //!< CPUSEL EPWM12
+    kIPC_SYSCTRL_PERIPH_CPUSEL_ECAP1  = 0x0001, //!< CPUSEL ECAP1
+    kIPC_SYSCTRL_PERIPH_CPUSEL_ECAP2  = 0x0101, //!< CPUSEL ECAP2
+    kIPC_SYSCTRL_PERIPH_CPUSEL_ECAP3  = 0x0201, //!< CPUSEL ECAP3
+    kIPC_SYSCTRL_PERIPH_CPUSEL_ECAP4  = 0x0301, //!< CPUSEL ECAP4
+    kIPC_SYSCTRL_PERIPH_CPUSEL_ECAP5  = 0x0401, //!< CPUSEL ECAP5
+    kIPC_SYSCTRL_PERIPH_CPUSEL_ECAP6  = 0x0501, //!< CPUSEL ECAP6
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EQEP1  = 0x0002, //!< CPUSEL EQEP1
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EQEP2  = 0x0102, //!< CPUSEL EQEP2
+    kIPC_SYSCTRL_PERIPH_CPUSEL_EQEP3  = 0x0202, //!< CPUSEL EQEP3
+    kIPC_SYSCTRL_PERIPH_CPUSEL_SDFM1  = 0x0004, //!< CPUSEL SDFM1
+    kIPC_SYSCTRL_PERIPH_CPUSEL_SDFM2  = 0x0104, //!< CPUSEL SDFM2
+    kIPC_SYSCTRL_PERIPH_CPUSEL_UARTA  = 0x0005, //!< CPUSEL UARTA
+    kIPC_SYSCTRL_PERIPH_CPUSEL_UARTB  = 0x0105, //!< CPUSEL UARTB
+    kIPC_SYSCTRL_PERIPH_CPUSEL_UARTC  = 0x0205, //!< CPUSEL UARTC
+    kIPC_SYSCTRL_PERIPH_CPUSEL_UARTD  = 0x0305, //!< CPUSEL UARTD
+    kIPC_SYSCTRL_PERIPH_CPUSEL_SPIA   = 0x0006, //!< CPUSEL SPIA
+    kIPC_SYSCTRL_PERIPH_CPUSEL_SPIB   = 0x0106, //!< CPUSEL SPIB
+    kIPC_SYSCTRL_PERIPH_CPUSEL_SPIC   = 0x0206, //!< CPUSEL SPIC
+    kIPC_SYSCTRL_PERIPH_CPUSEL_I2CA   = 0x0007, //!< CPUSEL I2CA
+    kIPC_SYSCTRL_PERIPH_CPUSEL_I2CB   = 0x0107, //!< CPUSEL I2CB
+    kIPC_SYSCTRL_PERIPH_CPUSEL_PMBUSA = 0x1007, //!< CPUSEL PMBUSA
+    kIPC_SYSCTRL_PERIPH_CPUSEL_MCANA  = 0x0008, //!< CPUSEL CANA
+    kIPC_SYSCTRL_PERIPH_CPUSEL_MCANB  = 0x0108, //!< CPUSEL CANB
+    kIPC_SYSCTRL_PERIPH_CPUSEL_MCANC  = 0x0208, //!< CPUSEL CANC
+    kIPC_SYSCTRL_PERIPH_CPUSEL_USB    = 0x1008, //!< CPUSEL USB
+    kIPC_SYSCTRL_PERIPH_CPUSEL_ADCA   = 0x000B, //!< CPUSEL ADCA
+    kIPC_SYSCTRL_PERIPH_CPUSEL_ADCB   = 0x010B, //!< CPUSEL ADCB
+    kIPC_SYSCTRL_PERIPH_CPUSEL_ADCC   = 0x020B, //!< CPUSEL ADCC
+    kIPC_SYSCTRL_PERIPH_CPUSEL_ADCD   = 0x030B, //!< CPUSEL ADCD
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CMPSS1 = 0x000C, //!< CPUSEL CMPSS1
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CMPSS2 = 0x010C, //!< CPUSEL CMPSS2
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CMPSS3 = 0x020C, //!< CPUSEL CMPSS3
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CMPSS4 = 0x030C, //!< CPUSEL CMPSS4
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CMPSS5 = 0x040C, //!< CPUSEL CMPSS5
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CMPSS6 = 0x050C, //!< CPUSEL CMPSS6
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CMPSS7 = 0x060C, //!< CPUSEL CMPSS7
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CMPSS8 = 0x070C, //!< CPUSEL CMPSS8
+    kIPC_SYSCTRL_PERIPH_CPUSEL_DACA   = 0x100E, //!< CPUSEL DACA
+    kIPC_SYSCTRL_PERIPH_CPUSEL_DACB   = 0x110E, //!< CPUSEL DACB
+    kIPC_SYSCTRL_PERIPH_CPUSEL_DACC   = 0x120E, //!< CPUSEL DACC
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CLB1   = 0x000F, //!< CPUSEL CLB1
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CLB2   = 0x010F, //!< CPUSEL CLB2
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CLB3   = 0x020F, //!< CPUSEL CLB3
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CLB4   = 0x030F, //!< CPUSEL CLB4
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CLB5   = 0x040F, //!< CPUSEL CLB5
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CLB6   = 0x050F, //!< CPUSEL CLB6
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CLB7   = 0x060F, //!< CPUSEL CLB7
+    kIPC_SYSCTRL_PERIPH_CPUSEL_CLB8   = 0x070F  //!< CPUSEL CLB8
+} IPC_SYSCTRL_PeripheralCpusel_t;
+
+
+/*! \brief peripheral pclkcr definition */
+typedef enum
+{
+    kIPC_SYSCTL_PERIPH_CLK_DMA         = 0x0200, //!< DMA clock
+    kIPC_SYSCTL_PERIPH_CLK_CPUTIMER0   = 0x0300, //!< CPUTIMER0 clock
+    kIPC_SYSCTL_PERIPH_CLK_CPUTIMER1   = 0x0400, //!< CPUTIMER1 clock
+    kIPC_SYSCTL_PERIPH_CLK_CPUTIMER2   = 0x0500, //!< CPUTIMER2 clock
+    kIPC_SYSCTL_PERIPH_CLK_DWTIMER_CH0 = 0x0800, //!< DWTIMER Channel0 clock
+    kIPC_SYSCTL_PERIPH_CLK_DWTIMER_CH1 = 0x0900, //!< DWTIMER Channel1 clock
+    kIPC_SYSCTL_PERIPH_CLK_DWTIMER_CH2 = 0x0A00, //!< DWTIMER Channel2 clock
+    kIPC_SYSCTL_PERIPH_CLK_TBCLKSYNC   = 0x1200, //!< TBCLKSYNC clock
+    kIPC_SYSCTL_PERIPH_CLK_GTBCLKSYNC  = 0x1300, //!< GTBCLKSYNC clock
+    kIPC_SYSCTL_PERIPH_CLK_EMIF1       = 0x0001, //!< EMIF1 clock
+    kIPC_SYSCTL_PERIPH_CLK_EPWM1       = 0x0002, //!< EPWM1 clock
+    kIPC_SYSCTL_PERIPH_CLK_EPWM2       = 0x0102, //!< EPWM2 clock
+    kIPC_SYSCTL_PERIPH_CLK_EPWM3       = 0x0202, //!< EPWM3 clock
+    kIPC_SYSCTL_PERIPH_CLK_EPWM4       = 0x0302, //!< EPWM4 clock
+    kIPC_SYSCTL_PERIPH_CLK_EPWM5       = 0x0402, //!< EPWM5 clock
+    kIPC_SYSCTL_PERIPH_CLK_EPWM6       = 0x0502, //!< EPWM6 clock
+    kIPC_SYSCTL_PERIPH_CLK_EPWM7       = 0x0602, //!< EPWM7 clock
+    kIPC_SYSCTL_PERIPH_CLK_EPWM8       = 0x0702, //!< EPWM8 clock
+    kIPC_SYSCTL_PERIPH_CLK_EPWM9       = 0x0802, //!< EPWM9 clock
+    kIPC_SYSCTL_PERIPH_CLK_EPWM10      = 0x0902, //!< EPWM10 clock
+    kIPC_SYSCTL_PERIPH_CLK_EPWM11      = 0x0A02, //!< EPWM11 clock
+    kIPC_SYSCTL_PERIPH_CLK_EPWM12      = 0x0B02, //!< EPWM12 clock
+    kIPC_SYSCTL_PERIPH_CLK_ECAP1       = 0x0003, //!< ECAP1 clock
+    kIPC_SYSCTL_PERIPH_CLK_ECAP2       = 0x0103, //!< ECAP2 clock
+    kIPC_SYSCTL_PERIPH_CLK_ECAP3       = 0x0203, //!< ECAP3 clock
+    kIPC_SYSCTL_PERIPH_CLK_ECAP4       = 0x0303, //!< ECAP4 clock
+    kIPC_SYSCTL_PERIPH_CLK_ECAP5       = 0x0403, //!< ECAP5 clock
+    kIPC_SYSCTL_PERIPH_CLK_ECAP6       = 0x0503, //!< ECAP6 clock
+    kIPC_SYSCTL_PERIPH_CLK_EQEP1       = 0x0004, //!< EQEP1 clock
+    kIPC_SYSCTL_PERIPH_CLK_EQEP2       = 0x0104, //!< EQEP2 clock
+    kIPC_SYSCTL_PERIPH_CLK_EQEP3       = 0x0204, //!< EQEP3 clock
+    kIPC_SYSCTL_PERIPH_CLK_SDFM1       = 0x0006, //!< SDFM1 clock
+    kIPC_SYSCTL_PERIPH_CLK_SDFM2       = 0x0106, //!< SDFM2 clock
+    kIPC_SYSCTL_PERIPH_CLK_UARTA       = 0x0007, //!< UARTA clock
+    kIPC_SYSCTL_PERIPH_CLK_UARTB       = 0x0107, //!< UARTB clock
+    kIPC_SYSCTL_PERIPH_CLK_UARTC       = 0x0207, //!< UARTC clock
+    kIPC_SYSCTL_PERIPH_CLK_UARTD       = 0x0307, //!< UARTD clock
+    kIPC_SYSCTL_PERIPH_CLK_SPIA        = 0x0008, //!< SPIA clock
+    kIPC_SYSCTL_PERIPH_CLK_SPIB        = 0x0108, //!< SPIB clock
+    kIPC_SYSCTL_PERIPH_CLK_SPIC        = 0x0208, //!< SPIC clock
+    kIPC_SYSCTL_PERIPH_CLK_I2CA        = 0x0009, //!< I2CA clock
+    kIPC_SYSCTL_PERIPH_CLK_I2CB        = 0x0109, //!< I2CB clock
+    kIPC_SYSCTL_PERIPH_CLK_PMBUSA      = 0x1009, //!< PMBUSA clock
+    kIPC_SYSCTL_PERIPH_CLK_MCANA       = 0x000A, //!< MCANA clock
+    kIPC_SYSCTL_PERIPH_CLK_MCANB       = 0x010A, //!< MCANB clock
+    kIPC_SYSCTL_PERIPH_CLK_MCANC       = 0x020A, //!< MCANB clock
+    kIPC_SYSCTL_PERIPH_CLK_USBA        = 0x100B, //!< USBA clock
+    kIPC_SYSCTL_PERIPH_CLK_ADCA        = 0x000D, //!< ADCA clock
+    kIPC_SYSCTL_PERIPH_CLK_ADCB        = 0x010D, //!< ADCB clock
+    kIPC_SYSCTL_PERIPH_CLK_ADCC        = 0x020D, //!< ADCC clock
+    kIPC_SYSCTL_PERIPH_CLK_ADCD        = 0x030D, //!< ADCD clock
+    kIPC_SYSCTL_PERIPH_CLK_CMPSS1      = 0x000E, //!< CMPSS1 clock
+    kIPC_SYSCTL_PERIPH_CLK_CMPSS2      = 0x010E, //!< CMPSS2 clock
+    kIPC_SYSCTL_PERIPH_CLK_CMPSS3      = 0x020E, //!< CMPSS3 clock
+    kIPC_SYSCTL_PERIPH_CLK_CMPSS4      = 0x030E, //!< CMPSS4 clock
+    kIPC_SYSCTL_PERIPH_CLK_CMPSS5      = 0x040E, //!< CMPSS5 clock
+    kIPC_SYSCTL_PERIPH_CLK_CMPSS6      = 0x050E, //!< CMPSS6 clock
+    kIPC_SYSCTL_PERIPH_CLK_CMPSS7      = 0x060E, //!< CMPSS7 clock
+    kIPC_SYSCTL_PERIPH_CLK_CMPSS8      = 0x070E, //!< CMPSS8 clock
+    kIPC_SYSCTL_PERIPH_CLK_DACA        = 0x1010, //!< DACA clock
+    kIPC_SYSCTL_PERIPH_CLK_DACB        = 0x1110, //!< DACB clock
+    kIPC_SYSCTL_PERIPH_CLK_DACC        = 0x1210, //!< DACC clock
+    kIPC_SYSCTL_PERIPH_CLK_CLB1        = 0x0011, //!< CMPSS1 clock
+    kIPC_SYSCTL_PERIPH_CLK_CLB2        = 0x0111, //!< CMPSS2 clock
+    kIPC_SYSCTL_PERIPH_CLK_CLB3        = 0x0211, //!< CMPSS3 clock
+    kIPC_SYSCTL_PERIPH_CLK_CLB4        = 0x0311, //!< CMPSS4 clock
+    kIPC_SYSCTL_PERIPH_CLK_CLB5        = 0x0411, //!< CMPSS5 clock
+    kIPC_SYSCTL_PERIPH_CLK_CLB6        = 0x0511, //!< CMPSS6 clock
+    kIPC_SYSCTL_PERIPH_CLK_CLB7        = 0x0611, //!< CMPSS7 clock
+    kIPC_SYSCTL_PERIPH_CLK_CLB8        = 0x0711  //!< CMPSS8 clock
+} IPC_SYSCTRL_PeripheralPclockCr_t;
+
+
+/*! \brief The CPU selection */
+typedef enum
+{
+    kIPC_SYSCTRL_CPUSEL_CPU1 = 0x0U, /*!< CPU1 is selected */
+    kIPC_SYSCTRL_CPUSEL_CPU2 = 0x1U, /*!< CPU1 is selected */
+} IPC_SYSCTRL_CpuSel_t;
+
+extern bool IPC_com_getClkParam(void);
+extern void IPC_com_resetPeripheral(IPC_SYSCTRL_PeripheralSOFTPRES_t peripheral);
+extern void IPC_com_selectCPUForPeripheral(IPC_SYSCTRL_PeripheralCpusel_t peripheral, IPC_SYSCTRL_CpuSel_t cpuSel);
+extern void IPC_com_SYSCTRL_enablePeripheral(IPC_SYSCTRL_PeripheralPclockCr_t peripheral);
+extern void IPC_com_SYSCTRL_initCANSram(void);
+extern bool IPC_com_SYSCTRL_getCANSramInitDone(void);
+extern void IPC_com_SYSCTRL_enableCRC(void);
+
+extern void IPC_com_GPIO_setMasterCore(uint32_t pin, GPIO_Core_t core);
+extern void IPC_com_GPIO_setQualificationMode(uint32_t pin, GPIO_QualificationMode_t qualification);
+extern GPIO_QualificationMode_t IPC_com_GPIO_getQualificationMode(uint32_t pin);
+extern void IPC_com_GPIO_setQualificationPeriod(uint32_t pin, uint32_t divider);
+extern void IPC_com_GPIO_setDirectionMode(uint32_t pin, GPIO_Direction_t dir);
+extern GPIO_Direction_t IPC_com_GPIO_getDirectionMode(uint32_t pin);
+extern void IPC_com_GPIO_setPinConfig(uint32_t config);
+extern void IPC_com_GPIO_setPadConfig(uint32_t pin, uint32_t config);
+extern uint32_t IPC_com_GPIO_getPadConfig(uint32_t pin);
+extern void IPC_com_GPIO_setDriverStrength(uint32_t pin, GPIO_DriverStrength_t str);
+extern GPIO_DriverStrength_t IPC_com_GPIO_getDriverStrength(uint32_t pin);
+extern void IPC_com_XBAR_enableEPWMMux(EPWM_XBAR_Type *base, XBAR_TripNum_t trip, uint32_t muxes);
+extern void IPC_com_XBAR_setInputPin(INPUT_XBAR_Type *base, XBAR_InputNum_t input, uint32_t pin);
+extern void IPC_com_XBAR_setEPWMMuxConfig(EPWM_XBAR_Type *base, XBAR_TripNum_t trip, XBAR_EPWMMuxConfig_t muxConfig);
+
+#endif

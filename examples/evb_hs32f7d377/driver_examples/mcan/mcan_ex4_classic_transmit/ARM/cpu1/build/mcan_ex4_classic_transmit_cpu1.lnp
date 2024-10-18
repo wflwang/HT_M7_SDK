@@ -1,0 +1,21 @@
+--cpu Cortex-M7.fp.sp
+".\build\board.o"
+".\build\clock_config.o"
+".\build\hte_cpu1_ipc_com.o"
+".\build\pin_config.o"
+".\build\hte_assert.o"
+".\build\hte_debug_console.o"
+".\build\system_hs32f7d377_cpu1.o"
+".\build\hte_common.o"
+".\build\hte_cpu1_ipc.o"
+".\build\hte_gpio.o"
+".\build\hte_mcan.o"
+".\build\hte_sysctrl.o"
+".\build\hte_uart.o"
+".\build\hte_xbar.o"
+".\build\mcan_ex4_classic_transmit.o"
+".\build\startup_hs32f7d377_cpu1_ac6.o"
+--library_type=microlib --strict --scatter "..\..\..\..\..\..\..\devices\HS32F7D377\ARM\HS32F7D377_cpu1_ac6_eflash.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\mcan_ex4_classic_transmit_cpu1.map" -o .\build\mcan_ex4_classic_transmit_cpu1.axf

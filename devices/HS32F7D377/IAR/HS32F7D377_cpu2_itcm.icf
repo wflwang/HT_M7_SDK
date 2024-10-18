@@ -1,0 +1,133 @@
+/*
+ * Copyright 2024 Watech Electronics
+ * All rights reserved.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ *
+ */
+
+/*----------------------------------------------------------------------------
+  Flash Configuration
+ *----------------------------------------------------------------------------*/
+define symbol __EFLASH1_BASE    = 0x10300000;
+define symbol __EFLASH1_END     = 0x103FFFFF;
+
+/*----------------------------------------------------------------------------
+  Embedded RAM Configuration
+ *----------------------------------------------------------------------------*/
+define symbol __ITCM_BASE     = 0x00000000;
+define symbol __ITCM_END      = 0x0001FFFF;
+
+define symbol __SRAM0_BASE    = 0x00200000;
+define symbol __SRAM0_END     = 0x0021FFFF;
+
+define symbol __SRAM1_BASE    = 0x10200000;
+define symbol __SRAM1_END     = 0x1021FFFF;
+
+define symbol __DTCM_BASE     = 0x20000000;
+define symbol __DTCM_END      = 0x2001FFFF;
+
+/*----------------------------------------------------------------------------
+  Message RAM Configuration
+ *----------------------------------------------------------------------------*/
+define symbol __CPU1TOCPU2_MSGRAM_BASE    = 0x40001000;
+define symbol __CPU1TOCPU2_MSGRAM_END     = 0x40001FFF;
+
+define symbol __CPU2TOCPU1_MSGRAM_BASE    = 0x40002000;
+define symbol __CPU2TOCPU1_MSGRAM_END     = 0x40002FFF;
+
+/*----------------------------------------------------------------------------
+  Stack / Heap Configuration
+ *----------------------------------------------------------------------------*/
+if (isdefinedsymbol(__STACK_SIZE__))
+{
+define symbol __STACK_SIZE    = __STACK_SIZE__;
+}
+else
+{
+define symbol __STACK_SIZE    = 0x00000200;
+}
+if (isdefinedsymbol(__HEAP_SIZE__))
+{
+define symbol __HEAP_SIZE     = __HEAP_SIZE__;
+}
+else
+{
+define symbol __HEAP_SIZE     = 0x00000C00;
+}
+
+/*----------------------------------------------------------------------------
+  Clock Information definition
+ *----------------------------------------------------------------------------*/
+define symbol __CLOCK_INFO_SIZE    = 0x20;
+
+/*----------------------------------------------------------------------------
+  Region base & end definition
+ *----------------------------------------------------------------------------*/
+define symbol __VECTOR_BASE          = __ITCM_BASE;
+
+define symbol __TEXT_BASE            = __ITCM_BASE;
+define symbol __TEXT_END             = __ITCM_END;
+
+define symbol __DATA_BASE            = __DTCM_BASE;
+define symbol __DATA_END             = __DTCM_END - __STACK_SIZE - __HEAP_SIZE;
+
+define symbol __NONCACHEABLE_BASE    = __SRAM1_BASE;
+define symbol __NONCACHEABLE_END     = __SRAM1_END;
+
+/*----------------------------------------------------------------------------
+  User Stack & Heap boundary definition
+ *----------------------------------------------------------------------------*/
+define symbol __STACK_BASE    = __DTCM_END - __STACK_SIZE + 1;
+define symbol __STACK_END     = __DTCM_END;
+
+define symbol __HEAP_BASE     = __DATA_END + 1;
+define symbol __HEAP_END      = __DATA_END + __HEAP_SIZE;
+
+/*----------------------------------------------------------------------------
+  Clock Information boundary definition
+ *----------------------------------------------------------------------------*/
+define symbol __CLOCK_INFO_BASE          = __CPU1TOCPU2_MSGRAM_END - __CLOCK_INFO_SIZE + 1;
+define symbol __CLOCK_INFO_END           = __CPU1TOCPU2_MSGRAM_END;
+
+define exported symbol __CLOCK_INFO__    = __CLOCK_INFO_BASE;
+
+/*----------------------------------------------------------------------------
+  Region definition
+ *----------------------------------------------------------------------------*/
+define memory mem with size          = 4G;
+define region TEXT_region            = mem:[from __TEXT_BASE to __TEXT_END];
+define region DATA_region            = mem:[from __DATA_BASE to __DATA_END];
+define region CSTACK_region          = mem:[from __STACK_BASE to __STACK_END];
+define region HEAP_region            = mem:[from __HEAP_BASE to __HEAP_END];
+define region CLOCK_INFO_region      = mem:[from __CLOCK_INFO_BASE to __CLOCK_INFO_END];
+define region NONCACHEABLE_region    = mem:[from __NONCACHEABLE_BASE to __NONCACHEABLE_END];
+
+/*----------------------------------------------------------------------------
+  Block definition
+ *----------------------------------------------------------------------------*/
+define block RO                    with alignment = 4, end alignment = 4 { readonly };
+define block RW                    { readwrite };
+define block CSTACK                with alignment = 8, size = __STACK_SIZE { };
+define block HEAP                  with alignment = 8, size = __HEAP_SIZE { };
+define block CLOCK_INFO            with size = __CLOCK_INFO_SIZE {};
+define block NONCACHEABLE          { section .NonCacheable.data, section .NonCacheable.bss };
+define block RAM_RELOCATED_TEXT    with alignment = 4, end alignment = 4 { section .textrw, section .RamRelocated.text };
+define block RAM_RELOCATED_DATA    { section .RamRelocated.data, section .RamRelocated.bss };
+
+/*----------------------------------------------------------------------------
+  Block Placement
+ *----------------------------------------------------------------------------*/
+initialize by copy     { readwrite, section .RamRelocated.data, section .NonCacheable.data };
+do not initialize      { section .noinit };
+
+place at address mem: __VECTOR_BASE    { readonly section .intvec };
+
+place in TEXT_region            { block RO };
+place in DATA_region            { block RW };
+place in CSTACK_region          { block CSTACK };
+place in HEAP_region            { block HEAP };
+place in CLOCK_INFO_region      { block CLOCK_INFO};
+place in NONCACHEABLE_region    { block NONCACHEABLE };
+place in TEXT_region            { block RAM_RELOCATED_TEXT };
+place in DATA_region            { block RAM_RELOCATED_DATA };

@@ -1,0 +1,36 @@
+/*
+ * Copyright 2023 Watech Electronics
+ * All rights reserved.
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ *
+ */
+
+__constant U32 __INDEX_AHB_AP_CORTEX_M7_CPU1 = 0;
+__constant U32 __INDEX_AHB_AP_CORTEX_M7_CPU2 = 1;
+__constant U32 __INDEX_AHB_AP_SYS = 2;
+
+void ReleaseCPU2(void)
+{
+    /* Release CPU2 */
+    JLINK_CORESIGHT_WriteAP(JLINK_CORESIGHT_AP_REG_ADDR, 0x41001A44);
+    JLINK_CORESIGHT_WriteAP(JLINK_CORESIGHT_AP_REG_DATA, 0xA5A50000);
+    SYS_Sleep(10);
+}
+
+void InitTarget(void)
+{
+    JLINK_SYS_Report("J-Link script: InitTarget()");
+
+    JLINK_SYS_Report("Select Cortex M7");
+    JLINK_CPU = CORTEX_M7;
+
+    /* Configure the APs */
+    JLINK_CORESIGHT_AddAP(0, CORESIGHT_AHB_AP);
+    JLINK_CORESIGHT_AddAP(1, CORESIGHT_AHB_AP);
+    JLINK_CORESIGHT_AddAP(2, CORESIGHT_AHB_AP);
+
+    /* Select CPU1 */
+    CORESIGHT_IndexAHBAPToUse = __INDEX_AHB_AP_CORTEX_M7_CPU1;
+    JLINK_SYS_Report("Select AHB-AP0(CPU1)");
+}
