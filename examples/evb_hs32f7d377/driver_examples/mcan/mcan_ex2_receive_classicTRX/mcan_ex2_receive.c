@@ -223,6 +223,7 @@ void main()
 		//printf("id1:0x%x",txMsg.id);
         //txMsg.id = rxMsg[loopCnt].id;	//((rxMsg[loopCnt].id<<4)&0xf0)|((rxMsg[loopCnt].id>>4)&0xf);
         memcpy(txMsg.data,rxMsg[loopCnt].data,sizeof(txMsg.data));
+        (void)UART_init(BOARD_DEBUG_CONSOLE_BASE, &config, BOARD_DEBUG_CONSOLE_CLOCK);
         decodeInst(txMsg.data);
         MCAN_writeMsgRam((MCAN_Type *)MCAN_BASE, kMCAN_MEM_TYPE_BUF, 1U, &txMsg);
         /* Add request for transmission. */
