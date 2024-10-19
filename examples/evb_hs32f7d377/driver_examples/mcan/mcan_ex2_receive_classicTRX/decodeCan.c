@@ -12,6 +12,76 @@
 #include "decodeCan.h"
 #include "hte_uart.h"
 #include "crc.h"
+#include "datatypes.h"
+/****
+ * re Uart read data block
+ * 
+*/
+status_t mUART_readDataBlocking(UART_Type *base, uint8_t *data, size_t length)
+{
+    assert(base);
+    assert(data);
+
+    status_t status = kSTATUS_SUCCESS;
+
+    uint8_t *dataAddr = data;
+    uint32_t dataLeft = length;
+		//uint32_t retryTimes;
+		uint32_t rTimes;
+
+    while (dataLeft > 0U)
+    {
+        //uint32_t retryTimes = 0x3fffffff;
+        /* Wait the receive data is ready */
+        uint32_t lineStatus;
+				rTimes = 0xffffff;
+        do
+        {
+            lineStatus = UART_getLineStatus(base);
+            if (rTimes == 0)
+            {
+                return kSTATUS_TIMEOUT;
+            }
+						rTimes--;
+        } while ((lineStatus & (UART_LSR_DR_Msk | UART_LINE_ERRORS)) == 0U);
+
+        /* Check the line errors */
+        if (lineStatus & UART_LSR_OE_Msk)
+        {
+            status = kSTATUS_UART_OVERRUN_ERROR;
+        }
+        /* Check the Break before Parity Error and Frame Error, due to these errors will be triggered too when a break
+         * is received */
+        else if (lineStatus & UART_LSR_BI_Msk)
+        {
+            status = kSTATUS_UART_BREAK_DETECTED;
+        }
+        else if (lineStatus & UART_LSR_PE_Msk)
+        {
+            status = kSTATUS_UART_PARITY_ERROR;
+        }
+        else if (lineStatus & UART_LSR_FE_Msk)
+        {
+            status = kSTATUS_UART_FRAMING_ERROR;
+        }
+        else
+        {
+            /* Receive one byte successfully, read it from the receive buffer */
+            *dataAddr = (uint8_t)base->RBR;
+            dataAddr++;
+            dataLeft--;
+
+            status = kSTATUS_SUCCESS;
+        }
+
+        if (status != kSTATUS_SUCCESS)
+        {
+            break;
+        }
+    }
+
+    return status;
+}
 /************************************************************
 //reback  stand  ID
 // @return desID
@@ -35,8 +105,9 @@ void decodeInst(uint16_t *data){
     uint16_t dat = *data;
     switch(*data){
         case 0: //获取参数
-        break;;
+        //break;
         case 1: //设置参数
+            GetMotorValue(data);
         break;
         case 2: //参须运行状态
         switch (data[1]){
@@ -84,7 +155,11 @@ void decodeInst(uint16_t *data){
 void GetRpm(uint16_t *data){
     const uint8_t dataBuf[20]  = {0x02,0x05,0x32,0,0,0x00,0x80,0xd9,0xe5,0x03};  //获取电压
     (void)UART_writeDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 10);
-	(void)UART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14);
+	//(void)UART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14);
+	if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14)!=kSTATUS_SUCCESS){
+        if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14)!=kSTATUS_SUCCESS)
+        return;
+    }
     unsigned short crc = crc16(&dataBuf[2], dataBuf[1]);
     if(((crc>>8)==dataBuf[dataBuf[1]+2])&&((crc&0xff)==dataBuf[dataBuf[1]+3])){
         data[2] = dataBuf[7];
@@ -100,12 +175,10 @@ void GetRpm(uint16_t *data){
 void GetInputVol(uint16_t *data){
     const uint8_t dataBuf[20]  = {0x02,0x05,50,0,0,0x01,0x00,0x7b,0x5c,0x03};  //获取电压
     (void)UART_writeDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 10);
-	(void)UART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 12);
-    //while(1){
-        //(void)UART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, &dataBuf, 12);
-        //(void)UART_writeDataBlocking(BOARD_DEBUG_CONSOLE_BASE, &dataBuf, 1);
-    //}
-    //(void)UART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 1);
+	if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 12)!=kSTATUS_SUCCESS){
+        if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 12)!=kSTATUS_SUCCESS)
+        return;
+    }
     unsigned short crc = crc16(&dataBuf[2], dataBuf[1]);
     if(((crc>>8)==dataBuf[dataBuf[1]+2])&&((crc&0xff)==dataBuf[dataBuf[1]+3])){
         data[2] = dataBuf[7];
@@ -116,13 +189,17 @@ void GetInputVol(uint16_t *data){
  * 获取电调内部参数
  * 
 */
-void GetMotorValue(){
+void GetMotorValue(uint16_t *data){
     //查询命令表格
-    const uint8_t dataBuf[20]  = {0x02,0x05,14,0xe1,0xce,0x03};  //获取电压
+    const uint8_t dataBuf[444]  = {0x02,0x01,0x0e,0xe1,0xce,0x03};  //获取电压
     (void)UART_writeDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 6);
-	(void)UART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 12);
-    unsigned short crc = crc16(&dataBuf[2], dataBuf[1]);
-    if(((crc>>8)==dataBuf[dataBuf[1]+2])&&((crc&0xff)==dataBuf[dataBuf[1]+3])){
+	if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, sizeof(dataBuf))!=kSTATUS_SUCCESS){
+        if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, sizeof(dataBuf))!=kSTATUS_SUCCESS)
+        return;
+    }
+    uint32_t len = ((dataBuf[1]<<8)|(dataBuf[2]&0xff));
+    unsigned short crc = crc16(&dataBuf[3],len);
+    if(((crc>>8)==dataBuf[len+3])&&((crc&0xff)==dataBuf[len+4])){
         data[2] = dataBuf[7];
         data[3] = dataBuf[8];
     }

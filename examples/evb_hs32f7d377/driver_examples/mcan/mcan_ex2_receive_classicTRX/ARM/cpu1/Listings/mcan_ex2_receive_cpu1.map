@@ -196,7 +196,7 @@ Section Cross References
     pin_config.o(.text.BOARD_xclkoutPinConfig) refers to hte_gpio.o(.text.GPIO_setPinConfig) for GPIO_setPinConfig
     pin_config.o(.text.BOARD_xclkoutPinConfig) refers to hte_gpio.o(.text.GPIO_setPadConfig) for GPIO_setPadConfig
     pin_config.o(.ARM.exidx.text.BOARD_xclkoutPinConfig) refers to pin_config.o(.text.BOARD_xclkoutPinConfig) for [Anonymous Symbol]
-    hte_assert.o(.text.__aeabi_assert) refers to printf8.o(i.__0printf$8) for __2printf
+    hte_assert.o(.text.__aeabi_assert) refers to printf3.o(i.__0printf$3) for __2printf
     hte_assert.o(.ARM.exidx.text.__aeabi_assert) refers to hte_assert.o(.text.__aeabi_assert) for [Anonymous Symbol]
     hte_debug_console.o(.text.DEBUG_CONSOLE_init) refers to hte_debug_console.o(.text.DEBUG_CONSOLE_HAL_uartInit) for DEBUG_CONSOLE_HAL_uartInit
     hte_debug_console.o(.text.DEBUG_CONSOLE_init) refers to hte_debug_console.o(.bss.s_debugConsole.0) for s_debugConsole.0
@@ -947,6 +947,9 @@ Section Cross References
     mcan_ex2_receive.o(.text.main) refers to memseta.o(.text) for __aeabi_memclr4
     mcan_ex2_receive.o(.text.main) refers to board.o(.text.BOARD_init) for BOARD_init
     mcan_ex2_receive.o(.text.main) refers to hte_cpu1_ipc_com.o(.text.IPC_comInit) for IPC_comInit
+    mcan_ex2_receive.o(.text.main) refers to hte_uart.o(.text.UART_getDefaultConfig) for UART_getDefaultConfig
+    mcan_ex2_receive.o(.text.main) refers to mcan_ex2_receive.o(.text.BOARD_getPeripheralClk) for BOARD_getPeripheralClk
+    mcan_ex2_receive.o(.text.main) refers to hte_uart.o(.text.UART_init) for UART_init
     mcan_ex2_receive.o(.text.main) refers to mcan_ex2_receive.o(.text.MCAN_pinMux) for MCAN_pinMux
     mcan_ex2_receive.o(.text.main) refers to mcan_ex2_receive.o(.text.MCAN_setPclkEnable) for MCAN_setPclkEnable
     mcan_ex2_receive.o(.text.main) refers to mcan_ex2_receive.o(.bss.loopCnt) for loopCnt
@@ -965,6 +968,8 @@ Section Cross References
     mcan_ex2_receive.o(.text.main) refers to hte_mcan.o(.text.MCAN_txBufAddReq) for MCAN_txBufAddReq
     mcan_ex2_receive.o(.text.main) refers to hte_mcan.o(.text.MCAN_getTxBufReqPend) for MCAN_getTxBufReqPend
     mcan_ex2_receive.o(.ARM.exidx.text.main) refers to mcan_ex2_receive.o(.text.main) for [Anonymous Symbol]
+    mcan_ex2_receive.o(.text.BOARD_getPeripheralClk) refers to clock_config.o(.bss.g_clockConfig) for g_clockConfig
+    mcan_ex2_receive.o(.ARM.exidx.text.BOARD_getPeripheralClk) refers to mcan_ex2_receive.o(.text.BOARD_getPeripheralClk) for [Anonymous Symbol]
     mcan_ex2_receive.o(.text.MCAN_pinMux) refers to hte_gpio.o(.text.GPIO_setPinConfig) for GPIO_setPinConfig
     mcan_ex2_receive.o(.text.MCAN_pinMux) refers to hte_gpio.o(.text.GPIO_setMasterCore) for GPIO_setMasterCore
     mcan_ex2_receive.o(.ARM.exidx.text.MCAN_pinMux) refers to mcan_ex2_receive.o(.text.MCAN_pinMux) for [Anonymous Symbol]
@@ -982,21 +987,34 @@ Section Cross References
     mcan_ex2_receive.o(.text.MCANConfig) refers to hte_mcan.o(.text.MCAN_addStdMsgIDFilter) for MCAN_addStdMsgIDFilter
     mcan_ex2_receive.o(.ARM.exidx.text.MCANConfig) refers to mcan_ex2_receive.o(.text.MCANConfig) for [Anonymous Symbol]
     mcan_ex2_receive.o(.ARM.exidx.text.SYSCTRL_enablePeripheral) refers to mcan_ex2_receive.o(.text.SYSCTRL_enablePeripheral) for [Anonymous Symbol]
+    decodecan.o(.text.mUART_readDataBlocking) refers to decodecan.o(.text.UART_getLineStatus) for UART_getLineStatus
+    decodecan.o(.text.mUART_readDataBlocking) refers to decodecan.o(.rodata.str1.1) for .L.str
+    decodecan.o(.text.mUART_readDataBlocking) refers to hte_assert.o(.text.__aeabi_assert) for __aeabi_assert
+    decodecan.o(.ARM.exidx.text.mUART_readDataBlocking) refers to decodecan.o(.text.mUART_readDataBlocking) for [Anonymous Symbol]
+    decodecan.o(.text.UART_getLineStatus) refers to decodecan.o(.rodata.str1.1) for .L.str
+    decodecan.o(.text.UART_getLineStatus) refers to hte_assert.o(.text.__aeabi_assert) for __aeabi_assert
+    decodecan.o(.ARM.exidx.text.UART_getLineStatus) refers to decodecan.o(.text.UART_getLineStatus) for [Anonymous Symbol]
     decodecan.o(.ARM.exidx.text.backCanStandID) refers to decodecan.o(.text.backCanStandID) for [Anonymous Symbol]
+    decodecan.o(.text.decodeInst) refers to decodecan.o(.text.GetMotorValue) for GetMotorValue
     decodecan.o(.text.decodeInst) refers to decodecan.o(.text.GetRpm) for GetRpm
     decodecan.o(.text.decodeInst) refers to decodecan.o(.text.SetDutyClr) for SetDutyClr
     decodecan.o(.text.decodeInst) refers to decodecan.o(.text.GetInputVol) for GetInputVol
     decodecan.o(.text.decodeInst) refers to decodecan.o(.text.SetI) for SetI
     decodecan.o(.text.decodeInst) refers to decodecan.o(.text.SetDuty) for SetDuty
     decodecan.o(.ARM.exidx.text.decodeInst) refers to decodecan.o(.text.decodeInst) for [Anonymous Symbol]
+    decodecan.o(.text.GetMotorValue) refers to memseta.o(.text) for __aeabi_memclr4
+    decodecan.o(.text.GetMotorValue) refers to hte_uart.o(.text.UART_writeDataBlocking) for UART_writeDataBlocking
+    decodecan.o(.text.GetMotorValue) refers to decodecan.o(.text.mUART_readDataBlocking) for mUART_readDataBlocking
+    decodecan.o(.text.GetMotorValue) refers to crc.o(.text.crc16) for crc16
+    decodecan.o(.ARM.exidx.text.GetMotorValue) refers to decodecan.o(.text.GetMotorValue) for [Anonymous Symbol]
     decodecan.o(.text.GetRpm) refers to decodecan.o(.rodata..L__const.GetRpm.dataBuf) for .L__const.GetRpm.dataBuf
     decodecan.o(.text.GetRpm) refers to hte_uart.o(.text.UART_writeDataBlocking) for UART_writeDataBlocking
-    decodecan.o(.text.GetRpm) refers to hte_uart.o(.text.UART_readDataBlocking) for UART_readDataBlocking
+    decodecan.o(.text.GetRpm) refers to decodecan.o(.text.mUART_readDataBlocking) for mUART_readDataBlocking
     decodecan.o(.text.GetRpm) refers to crc.o(.text.crc16) for crc16
     decodecan.o(.ARM.exidx.text.GetRpm) refers to decodecan.o(.text.GetRpm) for [Anonymous Symbol]
     decodecan.o(.text.GetInputVol) refers to decodecan.o(.rodata..L__const.GetInputVol.dataBuf) for .L__const.GetInputVol.dataBuf
     decodecan.o(.text.GetInputVol) refers to hte_uart.o(.text.UART_writeDataBlocking) for UART_writeDataBlocking
-    decodecan.o(.text.GetInputVol) refers to hte_uart.o(.text.UART_readDataBlocking) for UART_readDataBlocking
+    decodecan.o(.text.GetInputVol) refers to decodecan.o(.text.mUART_readDataBlocking) for mUART_readDataBlocking
     decodecan.o(.text.GetInputVol) refers to crc.o(.text.crc16) for crc16
     decodecan.o(.ARM.exidx.text.GetInputVol) refers to decodecan.o(.text.GetInputVol) for [Anonymous Symbol]
     decodecan.o(.text.SetDutyClr) refers to hte_uart.o(.text.UART_writeDataBlocking) for UART_writeDataBlocking
@@ -1007,8 +1025,6 @@ Section Cross References
     decodecan.o(.text.SetI) refers to crc.o(.text.crc16) for crc16
     decodecan.o(.text.SetI) refers to hte_uart.o(.text.UART_writeDataBlocking) for UART_writeDataBlocking
     decodecan.o(.ARM.exidx.text.SetI) refers to decodecan.o(.text.SetI) for [Anonymous Symbol]
-    decodecan.o(.text.GetValue) refers to printf8.o(i.__0printf$8) for __2printf
-    decodecan.o(.ARM.exidx.text.GetValue) refers to decodecan.o(.text.GetValue) for [Anonymous Symbol]
     decodecan.o(.text.SetRPM) refers to crc.o(.text.crc16) for crc16
     decodecan.o(.text.SetRPM) refers to hte_uart.o(.text.UART_writeDataBlocking) for UART_writeDataBlocking
     decodecan.o(.ARM.exidx.text.SetRPM) refers to decodecan.o(.text.SetRPM) for [Anonymous Symbol]
@@ -1897,12 +1913,14 @@ Removing Unused input sections from the image.
     Removing hte_uart.o(.ARM.exidx.text.UART_deinit), (8 bytes).
     Removing hte_uart.o(.text.UART_getInterruptIdentification), (36 bytes).
     Removing hte_uart.o(.ARM.exidx.text.UART_getInterruptIdentification), (8 bytes).
+    Removing hte_uart.o(.text.UART_getLineStatus), (32 bytes).
     Removing hte_uart.o(.ARM.exidx.text.UART_getLineStatus), (8 bytes).
     Removing hte_uart.o(.text.UART_getUartStatus), (32 bytes).
     Removing hte_uart.o(.ARM.exidx.text.UART_getUartStatus), (8 bytes).
     Removing hte_uart.o(.ARM.exidx.text.UART_writeDataBlocking), (8 bytes).
     Removing hte_uart.o(.ARM.exidx.text.UART_isSpaceAvailable), (8 bytes).
     Removing hte_uart.o(.ARM.exidx.text.UART_isTransmitRegisterEmpty), (8 bytes).
+    Removing hte_uart.o(.text.UART_readDataBlocking), (184 bytes).
     Removing hte_uart.o(.ARM.exidx.text.UART_readDataBlocking), (8 bytes).
     Removing hte_uart.o(.text.UART_writeDataNonBlocking), (160 bytes).
     Removing hte_uart.o(.ARM.exidx.text.UART_writeDataNonBlocking), (8 bytes).
@@ -1985,6 +2003,7 @@ Removing Unused input sections from the image.
     Removing hte_xbar.o(.rodata.str1.1), (52 bytes).
     Removing mcan_ex2_receive.o(.text), (0 bytes).
     Removing mcan_ex2_receive.o(.ARM.exidx.text.main), (8 bytes).
+    Removing mcan_ex2_receive.o(.ARM.exidx.text.BOARD_getPeripheralClk), (8 bytes).
     Removing mcan_ex2_receive.o(.ARM.exidx.text.MCAN_pinMux), (8 bytes).
     Removing mcan_ex2_receive.o(.ARM.exidx.text.MCAN_setPclkEnable), (8 bytes).
     Removing mcan_ex2_receive.o(.ARM.exidx.text.MCANConfig), (8 bytes).
@@ -1992,15 +2011,16 @@ Removing Unused input sections from the image.
     Removing mcan_ex2_receive.o(.bss.error), (4 bytes).
     Removing mcan_ex2_receive.o(.ARM.use_no_argv), (4 bytes).
     Removing decodecan.o(.text), (0 bytes).
+    Removing decodecan.o(.ARM.exidx.text.mUART_readDataBlocking), (8 bytes).
+    Removing decodecan.o(.ARM.exidx.text.UART_getLineStatus), (8 bytes).
     Removing decodecan.o(.ARM.exidx.text.backCanStandID), (8 bytes).
     Removing decodecan.o(.ARM.exidx.text.decodeInst), (8 bytes).
+    Removing decodecan.o(.ARM.exidx.text.GetMotorValue), (8 bytes).
     Removing decodecan.o(.ARM.exidx.text.GetRpm), (8 bytes).
     Removing decodecan.o(.ARM.exidx.text.GetInputVol), (8 bytes).
     Removing decodecan.o(.ARM.exidx.text.SetDutyClr), (8 bytes).
     Removing decodecan.o(.ARM.exidx.text.SetDuty), (8 bytes).
     Removing decodecan.o(.ARM.exidx.text.SetI), (8 bytes).
-    Removing decodecan.o(.text.GetValue), (44 bytes).
-    Removing decodecan.o(.ARM.exidx.text.GetValue), (8 bytes).
     Removing decodecan.o(.text.SetRPM), (100 bytes).
     Removing decodecan.o(.ARM.exidx.text.SetRPM), (8 bytes).
     Removing decodecan.o(.text.getTDConfif), (2 bytes).
@@ -2125,7 +2145,7 @@ Removing Unused input sections from the image.
     Removing libunwind.cpp.o(.ARM.exidx.text._ZN9libunwind13Registers_arm15getRegisterNameEi), (8 bytes).
     Removing libunwind.cpp.o(.rodata._ZTVN9libunwind12UnwindCursorINS_17LocalAddressSpaceENS_13Registers_armEEE), (72 bytes).
 
-648 unused section(s) (total 21829 bytes) removed from the image.
+652 unused section(s) (total 22025 bytes) removed from the image.
 
 ==============================================================================
 
@@ -2218,295 +2238,298 @@ Image Symbol Table
     .text                                    0x00300940   Section        0  uldiv.o(.text)
     .text                                    0x003009a2   Section        0  memcpy.o(.text)
     .text                                    0x003009ca   Section        0  memseta.o(.text)
-    .text                                    0x003009ee   Section        0  llshl.o(.text)
-    .text                                    0x00300a0c   Section        0  llushr.o(.text)
-    .text                                    0x00300a2c   Section       36  init.o(.text)
-    ARM_MPU_Disable                          0x00300a51   Thumb Code    38  board.o(.text.ARM_MPU_Disable)
-    [Anonymous Symbol]                       0x00300a50   Section        0  board.o(.text.ARM_MPU_Disable)
-    ARM_MPU_Enable                           0x00300a79   Thumb Code    34  board.o(.text.ARM_MPU_Enable)
-    [Anonymous Symbol]                       0x00300a78   Section        0  board.o(.text.ARM_MPU_Enable)
-    ARM_MPU_Load                             0x00300aa1   Thumb Code    30  board.o(.text.ARM_MPU_Load)
-    [Anonymous Symbol]                       0x00300aa0   Section        0  board.o(.text.ARM_MPU_Load)
-    ARM_MPU_OrderedMemcpy                    0x00300ac1   Thumb Code    30  board.o(.text.ARM_MPU_OrderedMemcpy)
-    [Anonymous Symbol]                       0x00300ac0   Section        0  board.o(.text.ARM_MPU_OrderedMemcpy)
-    [Anonymous Symbol]                       0x00300ae0   Section        0  clock_config.o(.text.BOARD_clockConfig)
-    [Anonymous Symbol]                       0x00300b60   Section        0  clock_config.o(.text.BOARD_clockConfigForCPU2)
-    [Anonymous Symbol]                       0x00300b78   Section        0  clock_config.o(.text.BOARD_clockInfStore)
-    [Anonymous Symbol]                       0x00300b98   Section        0  board.o(.text.BOARD_debugConsoleInit)
-    [Anonymous Symbol]                       0x00300bd8   Section        0  board.o(.text.BOARD_debugConsoleInitForCPU2)
-    BOARD_getPeripheralClk                   0x00300bf9   Thumb Code    12  board.o(.text.BOARD_getPeripheralClk)
-    [Anonymous Symbol]                       0x00300bf8   Section        0  board.o(.text.BOARD_getPeripheralClk)
-    [Anonymous Symbol]                       0x00300c08   Section        0  board.o(.text.BOARD_init)
-    [Anonymous Symbol]                       0x00300c20   Section        0  board.o(.text.BOARD_initForCPU2)
-    [Anonymous Symbol]                       0x00300c30   Section        0  board.o(.text.BOARD_mpuConfig)
-    [Anonymous Symbol]                       0x00300c98   Section        0  pin_config.o(.text.BOARD_uartPinConfig)
-    DEBUG_CONSOLE_HAL_uartInit               0x00300d29   Thumb Code    58  hte_debug_console.o(.text.DEBUG_CONSOLE_HAL_uartInit)
-    [Anonymous Symbol]                       0x00300d28   Section        0  hte_debug_console.o(.text.DEBUG_CONSOLE_HAL_uartInit)
-    DEBUG_CONSOLE_HAL_uartTransmit           0x00300d69   Thumb Code     8  hte_debug_console.o(.text.DEBUG_CONSOLE_HAL_uartTransmit)
-    [Anonymous Symbol]                       0x00300d68   Section        0  hte_debug_console.o(.text.DEBUG_CONSOLE_HAL_uartTransmit)
-    [Anonymous Symbol]                       0x00300d70   Section        0  hte_debug_console.o(.text.DEBUG_CONSOLE_init)
-    GPIO_getPort                             0x00300df1   Thumb Code    36  hte_gpio.o(.text.GPIO_getPort)
-    [Anonymous Symbol]                       0x00300df0   Section        0  hte_gpio.o(.text.GPIO_getPort)
-    GPIO_isPinValid                          0x00300e49   Thumb Code    12  hte_gpio.o(.text.GPIO_isPinValid)
-    [Anonymous Symbol]                       0x00300e48   Section        0  hte_gpio.o(.text.GPIO_isPinValid)
-    [Anonymous Symbol]                       0x00300e58   Section        0  hte_gpio.o(.text.GPIO_setMasterCore)
-    [Anonymous Symbol]                       0x00300e98   Section        0  hte_gpio.o(.text.GPIO_setPadConfig)
-    [Anonymous Symbol]                       0x00300f40   Section        0  hte_gpio.o(.text.GPIO_setPinConfig)
-    [Anonymous Symbol]                       0x00300f90   Section        0  decodecan.o(.text.GetInputVol)
-    [Anonymous Symbol]                       0x00301000   Section        0  decodecan.o(.text.GetRpm)
-    [Anonymous Symbol]                       0x00301080   Section        0  hte_cpu1_ipc.o(.text.IPC_INT0_DriverHandler)
-    [Anonymous Symbol]                       0x00301090   Section        0  hte_cpu1_ipc.o(.text.IPC_INT1_DriverHandler)
-    [Anonymous Symbol]                       0x003010a0   Section        0  hte_cpu1_ipc.o(.text.IPC_INT2_DriverHandler)
-    [Anonymous Symbol]                       0x003010b0   Section        0  hte_cpu1_ipc.o(.text.IPC_INT3_DriverHandler)
-    IPC_ackFlagRtoL                          0x003010c1   Thumb Code    10  hte_cpu1_ipc_com.o(.text.IPC_ackFlagRtoL)
-    [Anonymous Symbol]                       0x003010c0   Section        0  hte_cpu1_ipc_com.o(.text.IPC_ackFlagRtoL)
-    [Anonymous Symbol]                       0x003010d0   Section        0  hte_cpu1_ipc_com.o(.text.IPC_comInit)
-    [Anonymous Symbol]                       0x003010f0   Section        0  hte_cpu1_ipc.o(.text.IPC_handlerIRQ)
-    [Anonymous Symbol]                       0x00301108   Section        0  hte_cpu1_ipc.o(.text.IPC_readCommand)
-    [Anonymous Symbol]                       0x00301140   Section        0  hte_cpu1_ipc.o(.text.IPC_registerCallback)
-    IPC_sendResponse                         0x003011b1   Thumb Code    10  hte_cpu1_ipc_com.o(.text.IPC_sendResponse)
-    [Anonymous Symbol]                       0x003011b0   Section        0  hte_cpu1_ipc_com.o(.text.IPC_sendResponse)
-    [Anonymous Symbol]                       0x003011c0   Section        0  hte_mcan.o(.text.MCANA_INT0_DriverHandler)
-    [Anonymous Symbol]                       0x003011d8   Section        0  hte_mcan.o(.text.MCANA_INT1_DriverHandler)
-    [Anonymous Symbol]                       0x003011f0   Section        0  hte_mcan.o(.text.MCANB_INT0_DriverHandler)
-    [Anonymous Symbol]                       0x00301208   Section        0  hte_mcan.o(.text.MCANB_INT1_DriverHandler)
-    [Anonymous Symbol]                       0x00301220   Section        0  hte_mcan.o(.text.MCANC_INT0_DriverHandler)
-    [Anonymous Symbol]                       0x00301238   Section        0  hte_mcan.o(.text.MCANC_INT1_DriverHandler)
-    MCANConfig                               0x00301251   Thumb Code   330  mcan_ex2_receive.o(.text.MCANConfig)
-    [Anonymous Symbol]                       0x00301250   Section        0  mcan_ex2_receive.o(.text.MCANConfig)
-    [Anonymous Symbol]                       0x003013a0   Section        0  hte_mcan.o(.text.MCAN_MsgRamInit)
-    [Anonymous Symbol]                       0x003013d0   Section        0  hte_mcan.o(.text.MCAN_addStdMsgIDFilter)
-    [Anonymous Symbol]                       0x00301428   Section        0  hte_mcan.o(.text.MCAN_clearNewDataStatus)
-    [Anonymous Symbol]                       0x00301460   Section        0  hte_mcan.o(.text.MCAN_config)
-    MCAN_getDataSize                         0x00301541   Thumb Code    32  hte_mcan.o(.text.MCAN_getDataSize)
-    [Anonymous Symbol]                       0x00301540   Section        0  hte_mcan.o(.text.MCAN_getDataSize)
-    MCAN_getMsgObjSize                       0x003015b1   Thumb Code     8  hte_mcan.o(.text.MCAN_getMsgObjSize)
-    [Anonymous Symbol]                       0x003015b0   Section        0  hte_mcan.o(.text.MCAN_getMsgObjSize)
-    [Anonymous Symbol]                       0x003015d8   Section        0  hte_mcan.o(.text.MCAN_getOpMode)
-    MCAN_getRamBase                          0x00301609   Thumb Code    36  hte_mcan.o(.text.MCAN_getRamBase)
-    [Anonymous Symbol]                       0x00301608   Section        0  hte_mcan.o(.text.MCAN_getRamBase)
-    [Anonymous Symbol]                       0x00301630   Section        0  hte_mcan.o(.text.MCAN_getRevisionId)
-    [Anonymous Symbol]                       0x00301680   Section        0  hte_mcan.o(.text.MCAN_getRxFIFOStatus)
-    [Anonymous Symbol]                       0x003016e0   Section        0  hte_mcan.o(.text.MCAN_getTxBufReqPend)
-    [Anonymous Symbol]                       0x00301710   Section        0  hte_mcan.o(.text.MCAN_handlerIRQ)
-    [Anonymous Symbol]                       0x00301730   Section        0  hte_mcan.o(.text.MCAN_init)
-    MCAN_isBaseValid                         0x003017f9   Thumb Code    36  hte_mcan.o(.text.MCAN_isBaseValid)
-    [Anonymous Symbol]                       0x003017f8   Section        0  hte_mcan.o(.text.MCAN_isBaseValid)
-    [Anonymous Symbol]                       0x00301820   Section        0  hte_mcan.o(.text.MCAN_msgRAMConfig)
-    [Anonymous Symbol]                       0x003019c0   Section        0  mcan_ex2_receive.o(.text.MCAN_pinMux)
-    MCAN_readMsg                             0x003019e9   Thumb Code   256  hte_mcan.o(.text.MCAN_readMsg)
-    [Anonymous Symbol]                       0x003019e8   Section        0  hte_mcan.o(.text.MCAN_readMsg)
-    [Anonymous Symbol]                       0x00301b10   Section        0  hte_mcan.o(.text.MCAN_readMsgRam)
-    [Anonymous Symbol]                       0x00301c10   Section        0  hte_mcan.o(.text.MCAN_setBitTime)
-    [Anonymous Symbol]                       0x00301d00   Section        0  hte_mcan.o(.text.MCAN_setOpMode)
-    [Anonymous Symbol]                       0x00301d30   Section        0  mcan_ex2_receive.o(.text.MCAN_setPclkEnable)
-    [Anonymous Symbol]                       0x00301d50   Section        0  hte_mcan.o(.text.MCAN_txBufAddReq)
-    MCAN_writeMsg                            0x00301d99   Thumb Code   272  hte_mcan.o(.text.MCAN_writeMsg)
-    [Anonymous Symbol]                       0x00301d98   Section        0  hte_mcan.o(.text.MCAN_writeMsg)
-    [Anonymous Symbol]                       0x00301ea8   Section        0  hte_mcan.o(.text.MCAN_writeMsgRam)
-    MCAN_writeProtectedRegAccessLock         0x00301f29   Thumb Code    46  hte_mcan.o(.text.MCAN_writeProtectedRegAccessLock)
-    [Anonymous Symbol]                       0x00301f28   Section        0  hte_mcan.o(.text.MCAN_writeProtectedRegAccessLock)
-    MCAN_writeProtectedRegAccessUnlock       0x00301f59   Thumb Code    46  hte_mcan.o(.text.MCAN_writeProtectedRegAccessUnlock)
-    [Anonymous Symbol]                       0x00301f58   Section        0  hte_mcan.o(.text.MCAN_writeProtectedRegAccessUnlock)
-    [Anonymous Symbol]                       0x00301f88   Section        0  hte_mcan.o(.text.MCAN_writeRxFIFOAck)
-    [Anonymous Symbol]                       0x00301ff8   Section        0  hte_common.o(.text.SDK_dwtDelay)
-    SYSCTRL_bypassAuxPLLPi                   0x003020a9   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_bypassAuxPLLPi)
-    [Anonymous Symbol]                       0x003020a8   Section        0  hte_sysctrl.o(.text.SYSCTRL_bypassAuxPLLPi)
-    SYSCTRL_bypassPLLPi                      0x003020c9   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_bypassPLLPi)
-    [Anonymous Symbol]                       0x003020c8   Section        0  hte_sysctrl.o(.text.SYSCTRL_bypassPLLPi)
-    SYSCTRL_enablePeripheral                 0x003020e9   Thumb Code    18  board.o(.text.SYSCTRL_enablePeripheral)
-    [Anonymous Symbol]                       0x003020e8   Section        0  board.o(.text.SYSCTRL_enablePeripheral)
-    SYSCTRL_enablePeripheral                 0x00302101   Thumb Code    32  mcan_ex2_receive.o(.text.SYSCTRL_enablePeripheral)
-    [Anonymous Symbol]                       0x00302100   Section        0  mcan_ex2_receive.o(.text.SYSCTRL_enablePeripheral)
-    SYSCTRL_gelAuxClkSrc                     0x00302121   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_gelAuxClkSrc)
-    [Anonymous Symbol]                       0x00302120   Section        0  hte_sysctrl.o(.text.SYSCTRL_gelAuxClkSrc)
-    SYSCTRL_getAuxClkDivSel                  0x00302131   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxClkDivSel)
-    [Anonymous Symbol]                       0x00302130   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxClkDivSel)
-    [Anonymous Symbol]                       0x00302140   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxClock)
-    SYSCTRL_getAuxPLLCkRefSel                0x003021e1   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLCkRefSel)
-    [Anonymous Symbol]                       0x003021e0   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLCkRefSel)
-    SYSCTRL_getAuxPLLClkEn                   0x003021f1   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLClkEn)
-    [Anonymous Symbol]                       0x003021f0   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLClkEn)
-    SYSCTRL_getAuxPLLClkRefDiv               0x00302201   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLClkRefDiv)
-    [Anonymous Symbol]                       0x00302200   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLClkRefDiv)
-    SYSCTRL_getAuxPLLEn                      0x00302211   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLEn)
-    [Anonymous Symbol]                       0x00302210   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLEn)
-    SYSCTRL_getAuxPLLFcwSsc                  0x00302221   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLFcwSsc)
-    [Anonymous Symbol]                       0x00302220   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLFcwSsc)
-    SYSCTRL_getAuxPLLFcwSscDecPoint          0x00302231   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLFcwSscDecPoint)
-    [Anonymous Symbol]                       0x00302230   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLFcwSscDecPoint)
-    SYSCTRL_getAuxPLLLockStatus              0x00302241   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLLockStatus)
-    [Anonymous Symbol]                       0x00302240   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLLockStatus)
-    SYSCTRL_getCANSramInitDone               0x00302251   Thumb Code    16  hte_mcan.o(.text.SYSCTRL_getCANSramInitDone)
-    [Anonymous Symbol]                       0x00302250   Section        0  hte_mcan.o(.text.SYSCTRL_getCANSramInitDone)
-    [Anonymous Symbol]                       0x00302260   Section        0  hte_sysctrl.o(.text.SYSCTRL_getClock)
-    SYSCTRL_getMsgramInitDone                0x00302331   Thumb Code    16  clock_config.o(.text.SYSCTRL_getMsgramInitDone)
-    [Anonymous Symbol]                       0x00302330   Section        0  clock_config.o(.text.SYSCTRL_getMsgramInitDone)
-    SYSCTRL_getMsgramInitDone                0x00302341   Thumb Code    16  hte_cpu1_ipc_com.o(.text.SYSCTRL_getMsgramInitDone)
-    [Anonymous Symbol]                       0x00302340   Section        0  hte_cpu1_ipc_com.o(.text.SYSCTRL_getMsgramInitDone)
-    SYSCTRL_getOscClkSrc                     0x00302351   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getOscClkSrc)
-    [Anonymous Symbol]                       0x00302350   Section        0  hte_sysctrl.o(.text.SYSCTRL_getOscClkSrc)
-    SYSCTRL_getPLLCkRefSel                   0x00302361   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLCkRefSel)
-    [Anonymous Symbol]                       0x00302360   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLCkRefSel)
-    SYSCTRL_getPLLClkEn                      0x00302371   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLClkEn)
-    [Anonymous Symbol]                       0x00302370   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLClkEn)
-    SYSCTRL_getPLLClkRefDiv                  0x00302381   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLClkRefDiv)
-    [Anonymous Symbol]                       0x00302380   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLClkRefDiv)
-    SYSCTRL_getPLLEn                         0x00302391   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLEn)
-    [Anonymous Symbol]                       0x00302390   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLEn)
-    SYSCTRL_getPLLFcwSsc                     0x003023a1   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLFcwSsc)
-    [Anonymous Symbol]                       0x003023a0   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLFcwSsc)
-    SYSCTRL_getPLLFcwSscDecPoint             0x003023b1   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLFcwSscDecPoint)
-    [Anonymous Symbol]                       0x003023b0   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLFcwSscDecPoint)
-    SYSCTRL_getPLLLockStatus                 0x003023c1   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLLockStatus)
-    [Anonymous Symbol]                       0x003023c0   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLLockStatus)
-    SYSCTRL_getPLLPi                         0x003023d1   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLPi)
-    [Anonymous Symbol]                       0x003023d0   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLPi)
-    SYSCTRL_getSysClkDivSel                  0x003023e1   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getSysClkDivSel)
-    [Anonymous Symbol]                       0x003023e0   Section        0  hte_sysctrl.o(.text.SYSCTRL_getSysClkDivSel)
-    SYSCTRL_initCANSram                      0x003023f1   Thumb Code    18  hte_mcan.o(.text.SYSCTRL_initCANSram)
-    [Anonymous Symbol]                       0x003023f0   Section        0  hte_mcan.o(.text.SYSCTRL_initCANSram)
-    SYSCTRL_initMsgram                       0x00302409   Thumb Code    18  clock_config.o(.text.SYSCTRL_initMsgram)
-    [Anonymous Symbol]                       0x00302408   Section        0  clock_config.o(.text.SYSCTRL_initMsgram)
-    SYSCTRL_isMCDClockFailureDetected        0x00302421   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_isMCDClockFailureDetected)
-    [Anonymous Symbol]                       0x00302420   Section        0  hte_sysctrl.o(.text.SYSCTRL_isMCDClockFailureDetected)
-    SYSCTRL_resetAuxPLL                      0x00302431   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_resetAuxPLL)
-    [Anonymous Symbol]                       0x00302430   Section        0  hte_sysctrl.o(.text.SYSCTRL_resetAuxPLL)
-    SYSCTRL_resetMCD                         0x00302451   Thumb Code    18  hte_sysctrl.o(.text.SYSCTRL_resetMCD)
-    [Anonymous Symbol]                       0x00302450   Section        0  hte_sysctrl.o(.text.SYSCTRL_resetMCD)
-    SYSCTRL_resetPLL                         0x00302469   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_resetPLL)
-    [Anonymous Symbol]                       0x00302468   Section        0  hte_sysctrl.o(.text.SYSCTRL_resetPLL)
-    SYSCTRL_selAuxClkSrc                     0x00302489   Thumb Code    18  hte_sysctrl.o(.text.SYSCTRL_selAuxClkSrc)
-    [Anonymous Symbol]                       0x00302488   Section        0  hte_sysctrl.o(.text.SYSCTRL_selAuxClkSrc)
-    SYSCTRL_selOscClkSrc                     0x003024a1   Thumb Code    18  hte_sysctrl.o(.text.SYSCTRL_selOscClkSrc)
-    [Anonymous Symbol]                       0x003024a0   Section        0  hte_sysctrl.o(.text.SYSCTRL_selOscClkSrc)
-    SYSCTRL_selectCPUForPeripheral           0x003024b9   Thumb Code    40  board.o(.text.SYSCTRL_selectCPUForPeripheral)
-    [Anonymous Symbol]                       0x003024b8   Section        0  board.o(.text.SYSCTRL_selectCPUForPeripheral)
-    [Anonymous Symbol]                       0x003024e0   Section        0  hte_sysctrl.o(.text.SYSCTRL_selectOscSource)
-    [Anonymous Symbol]                       0x00302538   Section        0  hte_sysctrl.o(.text.SYSCTRL_selectXTAL)
-    SYSCTRL_setAuxClkDivSel                  0x00302589   Thumb Code    12  hte_sysctrl.o(.text.SYSCTRL_setAuxClkDivSel)
-    [Anonymous Symbol]                       0x00302588   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxClkDivSel)
-    [Anonymous Symbol]                       0x00302598   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxClock)
-    SYSCTRL_setAuxPLLCkRefSel                0x003026f1   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLCkRefSel)
-    [Anonymous Symbol]                       0x003026f0   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLCkRefSel)
-    SYSCTRL_setAuxPLLClkEn                   0x00302711   Thumb Code    24  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLClkEn)
-    [Anonymous Symbol]                       0x00302710   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLClkEn)
-    SYSCTRL_setAuxPLLClkRefDiv               0x00302729   Thumb Code    30  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLClkRefDiv)
-    [Anonymous Symbol]                       0x00302728   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLClkRefDiv)
-    SYSCTRL_setAuxPLLEn                      0x00302749   Thumb Code    24  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLEn)
-    [Anonymous Symbol]                       0x00302748   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLEn)
-    SYSCTRL_setAuxPLLFcwSsc                  0x00302761   Thumb Code    18  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLFcwSsc)
-    [Anonymous Symbol]                       0x00302760   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLFcwSsc)
-    SYSCTRL_setAuxPLLFcwSscDecPoint          0x00302779   Thumb Code    20  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLFcwSscDecPoint)
-    [Anonymous Symbol]                       0x00302778   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLFcwSscDecPoint)
-    SYSCTRL_setAuxPLLHighFreqBand            0x00302791   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLHighFreqBand)
-    [Anonymous Symbol]                       0x00302790   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLHighFreqBand)
-    SYSCTRL_setAuxPLLLDOEn                   0x003027b1   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLLDOEn)
-    [Anonymous Symbol]                       0x003027b0   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLLDOEn)
-    [Anonymous Symbol]                       0x003027d0   Section        0  hte_sysctrl.o(.text.SYSCTRL_setClock)
-    SYSCTRL_setPLLCkRefSel                   0x00302931   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_setPLLCkRefSel)
-    [Anonymous Symbol]                       0x00302930   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLCkRefSel)
-    SYSCTRL_setPLLClkEn                      0x00302951   Thumb Code    18  clock_config.o(.text.SYSCTRL_setPLLClkEn)
-    [Anonymous Symbol]                       0x00302950   Section        0  clock_config.o(.text.SYSCTRL_setPLLClkEn)
-    SYSCTRL_setPLLClkEn                      0x00302969   Thumb Code    24  hte_sysctrl.o(.text.SYSCTRL_setPLLClkEn)
-    [Anonymous Symbol]                       0x00302968   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLClkEn)
-    SYSCTRL_setPLLClkRefDiv                  0x00302981   Thumb Code    30  hte_sysctrl.o(.text.SYSCTRL_setPLLClkRefDiv)
-    [Anonymous Symbol]                       0x00302980   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLClkRefDiv)
-    SYSCTRL_setPLLEn                         0x003029a1   Thumb Code    24  hte_sysctrl.o(.text.SYSCTRL_setPLLEn)
-    [Anonymous Symbol]                       0x003029a0   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLEn)
-    SYSCTRL_setPLLFcwSsc                     0x003029b9   Thumb Code    18  hte_sysctrl.o(.text.SYSCTRL_setPLLFcwSsc)
-    [Anonymous Symbol]                       0x003029b8   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLFcwSsc)
-    SYSCTRL_setPLLFcwSscDecPoint             0x003029d1   Thumb Code    20  hte_sysctrl.o(.text.SYSCTRL_setPLLFcwSscDecPoint)
-    [Anonymous Symbol]                       0x003029d0   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLFcwSscDecPoint)
-    SYSCTRL_setPLLHighFreqBand               0x003029e9   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_setPLLHighFreqBand)
-    [Anonymous Symbol]                       0x003029e8   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLHighFreqBand)
-    SYSCTRL_setPLLLDOEn                      0x00302a09   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_setPLLLDOEn)
-    [Anonymous Symbol]                       0x00302a08   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLLDOEn)
-    SYSCTRL_setSysClkDivSel                  0x00302a29   Thumb Code    12  hte_sysctrl.o(.text.SYSCTRL_setSysClkDivSel)
-    [Anonymous Symbol]                       0x00302a28   Section        0  hte_sysctrl.o(.text.SYSCTRL_setSysClkDivSel)
-    SYSCTRL_turnOffOsc                       0x00302a39   Thumb Code    18  hte_sysctrl.o(.text.SYSCTRL_turnOffOsc)
-    [Anonymous Symbol]                       0x00302a38   Section        0  hte_sysctrl.o(.text.SYSCTRL_turnOffOsc)
-    SYSCTRL_turnOnOsc                        0x00302a51   Thumb Code    34  hte_sysctrl.o(.text.SYSCTRL_turnOnOsc)
-    [Anonymous Symbol]                       0x00302a50   Section        0  hte_sysctrl.o(.text.SYSCTRL_turnOnOsc)
-    [Anonymous Symbol]                       0x00302a78   Section        0  decodecan.o(.text.SetDuty)
-    [Anonymous Symbol]                       0x00302ae0   Section        0  decodecan.o(.text.SetDutyClr)
-    [Anonymous Symbol]                       0x00302b10   Section        0  decodecan.o(.text.SetI)
-    [Anonymous Symbol]                       0x00302b78   Section        0  clock_config.o(.text.SysTick_DriverHandler)
-    [Anonymous Symbol]                       0x00302b98   Section        0  system_hs32f7d377_cpu1.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x00302bb0   Section        0  hte_uart.o(.text.UARTA_DriverHandler)
-    [Anonymous Symbol]                       0x00302bd8   Section        0  hte_uart.o(.text.UARTB_DriverHandler)
-    [Anonymous Symbol]                       0x00302c08   Section        0  hte_uart.o(.text.UARTC_DriverHandler)
-    [Anonymous Symbol]                       0x00302c38   Section        0  hte_uart.o(.text.UARTD_DriverHandler)
-    UART_disableFIFOAccess                   0x00302c69   Thumb Code    38  hte_uart.o(.text.UART_disableFIFOAccess)
-    [Anonymous Symbol]                       0x00302c68   Section        0  hte_uart.o(.text.UART_disableFIFOAccess)
-    UART_disableLoopback                     0x00302c91   Thumb Code    38  hte_uart.o(.text.UART_disableLoopback)
-    [Anonymous Symbol]                       0x00302c90   Section        0  hte_uart.o(.text.UART_disableLoopback)
-    [Anonymous Symbol]                       0x00302cb8   Section        0  hte_uart.o(.text.UART_getDefaultConfig)
-    UART_getLineStatus                       0x00302cf1   Thumb Code    32  hte_uart.o(.text.UART_getLineStatus)
-    [Anonymous Symbol]                       0x00302cf0   Section        0  hte_uart.o(.text.UART_getLineStatus)
-    UART_getTxFIFOLevel                      0x00302d11   Thumb Code    36  hte_uart.o(.text.UART_getTxFIFOLevel)
-    [Anonymous Symbol]                       0x00302d10   Section        0  hte_uart.o(.text.UART_getTxFIFOLevel)
-    UART_haltTransmit                        0x00302d39   Thumb Code    42  hte_uart.o(.text.UART_haltTransmit)
-    [Anonymous Symbol]                       0x00302d38   Section        0  hte_uart.o(.text.UART_haltTransmit)
-    [Anonymous Symbol]                       0x00302d68   Section        0  hte_uart.o(.text.UART_init)
-    UART_isBusy                              0x00302e21   Thumb Code    36  hte_uart.o(.text.UART_isBusy)
-    [Anonymous Symbol]                       0x00302e20   Section        0  hte_uart.o(.text.UART_isBusy)
-    UART_isFIFOEnabled                       0x00302e49   Thumb Code    38  hte_uart.o(.text.UART_isFIFOEnabled)
-    [Anonymous Symbol]                       0x00302e48   Section        0  hte_uart.o(.text.UART_isFIFOEnabled)
-    UART_isSpaceAvailable                    0x00302e71   Thumb Code    62  hte_uart.o(.text.UART_isSpaceAvailable)
-    [Anonymous Symbol]                       0x00302e70   Section        0  hte_uart.o(.text.UART_isSpaceAvailable)
-    UART_isTransmitHoldingEmpty              0x00302eb1   Thumb Code    36  hte_uart.o(.text.UART_isTransmitHoldingEmpty)
-    [Anonymous Symbol]                       0x00302eb0   Section        0  hte_uart.o(.text.UART_isTransmitHoldingEmpty)
-    UART_isTransmitRegisterEmpty             0x00302ed9   Thumb Code    36  hte_uart.o(.text.UART_isTransmitRegisterEmpty)
-    [Anonymous Symbol]                       0x00302ed8   Section        0  hte_uart.o(.text.UART_isTransmitRegisterEmpty)
-    [Anonymous Symbol]                       0x00302f00   Section        0  hte_uart.o(.text.UART_readDataBlocking)
-    [Anonymous Symbol]                       0x00302f90   Section        0  hte_uart.o(.text.UART_setBaudRate)
-    [Anonymous Symbol]                       0x00303080   Section        0  hte_uart.o(.text.UART_writeDataBlocking)
-    __NVIC_EnableIRQ                         0x003030e9   Thumb Code    32  hte_cpu1_ipc.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x003030e8   Section        0  hte_cpu1_ipc.o(.text.__NVIC_EnableIRQ)
-    __NVIC_SetPriority                       0x00303109   Thumb Code    34  hte_cpu1_ipc.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x00303108   Section        0  hte_cpu1_ipc.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x00303130   Section        0  hte_assert.o(.text.__aeabi_assert)
-    [Anonymous Symbol]                       0x00303198   Section        0  decodecan.o(.text.backCanStandID)
-    [Anonymous Symbol]                       0x003031b8   Section        0  hte_cpu1_ipc_com.o(.text.cpu1_ipc_com_irq_handler)
-    [Anonymous Symbol]                       0x00303230   Section        0  crc.o(.text.crc16)
-    [Anonymous Symbol]                       0x00303268   Section        0  decodecan.o(.text.decodeInst)
-    [Anonymous Symbol]                       0x003032c0   Section        0  hte_debug_console.o(.text.fputc)
-    [Anonymous Symbol]                       0x003032f0   Section        0  mcan_ex2_receive.o(.text.main)
-    i.__0printf$8                            0x00303420   Section        0  printf8.o(i.__0printf$8)
-    i.__scatterload_copy                     0x00303440   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x0030344e   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x00303450   Section       14  handlers.o(i.__scatterload_zeroinit)
-    _printf_core                             0x00303461   Thumb Code   996  printf8.o(i._printf_core)
-    i._printf_core                           0x00303460   Section        0  printf8.o(i._printf_core)
-    _printf_post_padding                     0x00303871   Thumb Code    36  printf8.o(i._printf_post_padding)
-    i._printf_post_padding                   0x00303870   Section        0  printf8.o(i._printf_post_padding)
-    _printf_pre_padding                      0x00303895   Thumb Code    46  printf8.o(i._printf_pre_padding)
-    i._printf_pre_padding                    0x00303894   Section        0  printf8.o(i._printf_pre_padding)
-    .L__const.GetInputVol.dataBuf            0x003038c4   Data          20  decodecan.o(.rodata..L__const.GetInputVol.dataBuf)
-    .L__const.GetRpm.dataBuf                 0x003038d8   Data          20  decodecan.o(.rodata..L__const.GetRpm.dataBuf)
-    s_ipcIRQ                                 0x00303aec   Data           8  hte_cpu1_ipc.o(.rodata.cst8)
-    [Anonymous Symbol]                       0x00303aec   Section        0  hte_cpu1_ipc.o(.rodata.cst8)
-    .L.str                                   0x00303af4   Data          20  hte_common.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x00303af4   Section        0  hte_common.o(.rodata.str1.1)
-    .L.str.1                                 0x00303b08   Data          49  hte_common.o(.rodata.str1.1)
-    .L.str                                   0x00303b39   Data          25  hte_cpu1_ipc.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x00303b39   Section        0  hte_cpu1_ipc.o(.rodata.str1.1)
-    .L.str.1                                 0x00303b52   Data          48  hte_cpu1_ipc.o(.rodata.str1.1)
-    .L.str                                   0x00303b82   Data          21  hte_gpio.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x00303b82   Section        0  hte_gpio.o(.rodata.str1.1)
-    .L.str                                   0x00303b97   Data          23  hte_mcan.o(.rodata.str1.1)
-    .L.str.1                                 0x00303b97   Data          45  hte_gpio.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x00303b97   Section        0  hte_mcan.o(.rodata.str1.1)
-    .L.str.4                                 0x00303bae   Data          39  hte_mcan.o(.rodata.str1.1)
-    .L.str.1                                 0x00303bd5   Data          45  hte_mcan.o(.rodata.str1.1)
-    .L.str.2                                 0x00303bdb   Data          23  hte_mcan.o(.rodata.str1.1)
-    .L.str.6                                 0x00303c02   Data           5  hte_uart.o(.rodata.str1.1)
-    [Anonymous Symbol]                       0x00303c02   Section        0  hte_uart.o(.rodata.str1.1)
-    .L.str.1                                 0x00303c07   Data          45  hte_uart.o(.rodata.str1.1)
-    .L.str.3                                 0x00303c34   Data           5  hte_uart.o(.rodata.str1.1)
-    .L.str.2                                 0x00303c39   Data           7  hte_uart.o(.rodata.str1.1)
-    .L.str.7                                 0x00303c40   Data          45  hte_uart.o(.rodata.str1.1)
+    .text                                    0x003009ee   Section        0  uidiv.o(.text)
+    .text                                    0x00300a1a   Section        0  llshl.o(.text)
+    .text                                    0x00300a38   Section        0  llushr.o(.text)
+    .text                                    0x00300a58   Section       36  init.o(.text)
+    ARM_MPU_Disable                          0x00300a81   Thumb Code    38  board.o(.text.ARM_MPU_Disable)
+    [Anonymous Symbol]                       0x00300a80   Section        0  board.o(.text.ARM_MPU_Disable)
+    ARM_MPU_Enable                           0x00300aa9   Thumb Code    34  board.o(.text.ARM_MPU_Enable)
+    [Anonymous Symbol]                       0x00300aa8   Section        0  board.o(.text.ARM_MPU_Enable)
+    ARM_MPU_Load                             0x00300ad1   Thumb Code    30  board.o(.text.ARM_MPU_Load)
+    [Anonymous Symbol]                       0x00300ad0   Section        0  board.o(.text.ARM_MPU_Load)
+    ARM_MPU_OrderedMemcpy                    0x00300af1   Thumb Code    30  board.o(.text.ARM_MPU_OrderedMemcpy)
+    [Anonymous Symbol]                       0x00300af0   Section        0  board.o(.text.ARM_MPU_OrderedMemcpy)
+    [Anonymous Symbol]                       0x00300b10   Section        0  clock_config.o(.text.BOARD_clockConfig)
+    [Anonymous Symbol]                       0x00300b90   Section        0  clock_config.o(.text.BOARD_clockConfigForCPU2)
+    [Anonymous Symbol]                       0x00300ba8   Section        0  clock_config.o(.text.BOARD_clockInfStore)
+    [Anonymous Symbol]                       0x00300bc8   Section        0  board.o(.text.BOARD_debugConsoleInit)
+    [Anonymous Symbol]                       0x00300c08   Section        0  board.o(.text.BOARD_debugConsoleInitForCPU2)
+    BOARD_getPeripheralClk                   0x00300c29   Thumb Code    12  board.o(.text.BOARD_getPeripheralClk)
+    [Anonymous Symbol]                       0x00300c28   Section        0  board.o(.text.BOARD_getPeripheralClk)
+    BOARD_getPeripheralClk                   0x00300c39   Thumb Code    12  mcan_ex2_receive.o(.text.BOARD_getPeripheralClk)
+    [Anonymous Symbol]                       0x00300c38   Section        0  mcan_ex2_receive.o(.text.BOARD_getPeripheralClk)
+    [Anonymous Symbol]                       0x00300c48   Section        0  board.o(.text.BOARD_init)
+    [Anonymous Symbol]                       0x00300c60   Section        0  board.o(.text.BOARD_initForCPU2)
+    [Anonymous Symbol]                       0x00300c70   Section        0  board.o(.text.BOARD_mpuConfig)
+    [Anonymous Symbol]                       0x00300cd8   Section        0  pin_config.o(.text.BOARD_uartPinConfig)
+    DEBUG_CONSOLE_HAL_uartInit               0x00300d69   Thumb Code    58  hte_debug_console.o(.text.DEBUG_CONSOLE_HAL_uartInit)
+    [Anonymous Symbol]                       0x00300d68   Section        0  hte_debug_console.o(.text.DEBUG_CONSOLE_HAL_uartInit)
+    DEBUG_CONSOLE_HAL_uartTransmit           0x00300da9   Thumb Code     8  hte_debug_console.o(.text.DEBUG_CONSOLE_HAL_uartTransmit)
+    [Anonymous Symbol]                       0x00300da8   Section        0  hte_debug_console.o(.text.DEBUG_CONSOLE_HAL_uartTransmit)
+    [Anonymous Symbol]                       0x00300db0   Section        0  hte_debug_console.o(.text.DEBUG_CONSOLE_init)
+    GPIO_getPort                             0x00300e31   Thumb Code    36  hte_gpio.o(.text.GPIO_getPort)
+    [Anonymous Symbol]                       0x00300e30   Section        0  hte_gpio.o(.text.GPIO_getPort)
+    GPIO_isPinValid                          0x00300e89   Thumb Code    12  hte_gpio.o(.text.GPIO_isPinValid)
+    [Anonymous Symbol]                       0x00300e88   Section        0  hte_gpio.o(.text.GPIO_isPinValid)
+    [Anonymous Symbol]                       0x00300e98   Section        0  hte_gpio.o(.text.GPIO_setMasterCore)
+    [Anonymous Symbol]                       0x00300ed8   Section        0  hte_gpio.o(.text.GPIO_setPadConfig)
+    [Anonymous Symbol]                       0x00300f80   Section        0  hte_gpio.o(.text.GPIO_setPinConfig)
+    [Anonymous Symbol]                       0x00300fd0   Section        0  decodecan.o(.text.GetInputVol)
+    [Anonymous Symbol]                       0x00301050   Section        0  decodecan.o(.text.GetMotorValue)
+    [Anonymous Symbol]                       0x003010d8   Section        0  decodecan.o(.text.GetRpm)
+    [Anonymous Symbol]                       0x00301168   Section        0  hte_cpu1_ipc.o(.text.IPC_INT0_DriverHandler)
+    [Anonymous Symbol]                       0x00301178   Section        0  hte_cpu1_ipc.o(.text.IPC_INT1_DriverHandler)
+    [Anonymous Symbol]                       0x00301188   Section        0  hte_cpu1_ipc.o(.text.IPC_INT2_DriverHandler)
+    [Anonymous Symbol]                       0x00301198   Section        0  hte_cpu1_ipc.o(.text.IPC_INT3_DriverHandler)
+    IPC_ackFlagRtoL                          0x003011a9   Thumb Code    10  hte_cpu1_ipc_com.o(.text.IPC_ackFlagRtoL)
+    [Anonymous Symbol]                       0x003011a8   Section        0  hte_cpu1_ipc_com.o(.text.IPC_ackFlagRtoL)
+    [Anonymous Symbol]                       0x003011b8   Section        0  hte_cpu1_ipc_com.o(.text.IPC_comInit)
+    [Anonymous Symbol]                       0x003011d8   Section        0  hte_cpu1_ipc.o(.text.IPC_handlerIRQ)
+    [Anonymous Symbol]                       0x003011f0   Section        0  hte_cpu1_ipc.o(.text.IPC_readCommand)
+    [Anonymous Symbol]                       0x00301228   Section        0  hte_cpu1_ipc.o(.text.IPC_registerCallback)
+    IPC_sendResponse                         0x00301299   Thumb Code    10  hte_cpu1_ipc_com.o(.text.IPC_sendResponse)
+    [Anonymous Symbol]                       0x00301298   Section        0  hte_cpu1_ipc_com.o(.text.IPC_sendResponse)
+    [Anonymous Symbol]                       0x003012a8   Section        0  hte_mcan.o(.text.MCANA_INT0_DriverHandler)
+    [Anonymous Symbol]                       0x003012c0   Section        0  hte_mcan.o(.text.MCANA_INT1_DriverHandler)
+    [Anonymous Symbol]                       0x003012d8   Section        0  hte_mcan.o(.text.MCANB_INT0_DriverHandler)
+    [Anonymous Symbol]                       0x003012f0   Section        0  hte_mcan.o(.text.MCANB_INT1_DriverHandler)
+    [Anonymous Symbol]                       0x00301308   Section        0  hte_mcan.o(.text.MCANC_INT0_DriverHandler)
+    [Anonymous Symbol]                       0x00301320   Section        0  hte_mcan.o(.text.MCANC_INT1_DriverHandler)
+    MCANConfig                               0x00301339   Thumb Code   330  mcan_ex2_receive.o(.text.MCANConfig)
+    [Anonymous Symbol]                       0x00301338   Section        0  mcan_ex2_receive.o(.text.MCANConfig)
+    [Anonymous Symbol]                       0x00301488   Section        0  hte_mcan.o(.text.MCAN_MsgRamInit)
+    [Anonymous Symbol]                       0x003014b8   Section        0  hte_mcan.o(.text.MCAN_addStdMsgIDFilter)
+    [Anonymous Symbol]                       0x00301510   Section        0  hte_mcan.o(.text.MCAN_clearNewDataStatus)
+    [Anonymous Symbol]                       0x00301548   Section        0  hte_mcan.o(.text.MCAN_config)
+    MCAN_getDataSize                         0x00301629   Thumb Code    32  hte_mcan.o(.text.MCAN_getDataSize)
+    [Anonymous Symbol]                       0x00301628   Section        0  hte_mcan.o(.text.MCAN_getDataSize)
+    MCAN_getMsgObjSize                       0x00301699   Thumb Code     8  hte_mcan.o(.text.MCAN_getMsgObjSize)
+    [Anonymous Symbol]                       0x00301698   Section        0  hte_mcan.o(.text.MCAN_getMsgObjSize)
+    [Anonymous Symbol]                       0x003016c0   Section        0  hte_mcan.o(.text.MCAN_getOpMode)
+    MCAN_getRamBase                          0x003016f1   Thumb Code    36  hte_mcan.o(.text.MCAN_getRamBase)
+    [Anonymous Symbol]                       0x003016f0   Section        0  hte_mcan.o(.text.MCAN_getRamBase)
+    [Anonymous Symbol]                       0x00301718   Section        0  hte_mcan.o(.text.MCAN_getRevisionId)
+    [Anonymous Symbol]                       0x00301768   Section        0  hte_mcan.o(.text.MCAN_getRxFIFOStatus)
+    [Anonymous Symbol]                       0x003017c8   Section        0  hte_mcan.o(.text.MCAN_getTxBufReqPend)
+    [Anonymous Symbol]                       0x003017f8   Section        0  hte_mcan.o(.text.MCAN_handlerIRQ)
+    [Anonymous Symbol]                       0x00301818   Section        0  hte_mcan.o(.text.MCAN_init)
+    MCAN_isBaseValid                         0x003018e1   Thumb Code    36  hte_mcan.o(.text.MCAN_isBaseValid)
+    [Anonymous Symbol]                       0x003018e0   Section        0  hte_mcan.o(.text.MCAN_isBaseValid)
+    [Anonymous Symbol]                       0x00301908   Section        0  hte_mcan.o(.text.MCAN_msgRAMConfig)
+    [Anonymous Symbol]                       0x00301aa8   Section        0  mcan_ex2_receive.o(.text.MCAN_pinMux)
+    MCAN_readMsg                             0x00301ad1   Thumb Code   256  hte_mcan.o(.text.MCAN_readMsg)
+    [Anonymous Symbol]                       0x00301ad0   Section        0  hte_mcan.o(.text.MCAN_readMsg)
+    [Anonymous Symbol]                       0x00301bf8   Section        0  hte_mcan.o(.text.MCAN_readMsgRam)
+    [Anonymous Symbol]                       0x00301cf8   Section        0  hte_mcan.o(.text.MCAN_setBitTime)
+    [Anonymous Symbol]                       0x00301de8   Section        0  hte_mcan.o(.text.MCAN_setOpMode)
+    [Anonymous Symbol]                       0x00301e18   Section        0  mcan_ex2_receive.o(.text.MCAN_setPclkEnable)
+    [Anonymous Symbol]                       0x00301e38   Section        0  hte_mcan.o(.text.MCAN_txBufAddReq)
+    MCAN_writeMsg                            0x00301e81   Thumb Code   272  hte_mcan.o(.text.MCAN_writeMsg)
+    [Anonymous Symbol]                       0x00301e80   Section        0  hte_mcan.o(.text.MCAN_writeMsg)
+    [Anonymous Symbol]                       0x00301f90   Section        0  hte_mcan.o(.text.MCAN_writeMsgRam)
+    MCAN_writeProtectedRegAccessLock         0x00302011   Thumb Code    46  hte_mcan.o(.text.MCAN_writeProtectedRegAccessLock)
+    [Anonymous Symbol]                       0x00302010   Section        0  hte_mcan.o(.text.MCAN_writeProtectedRegAccessLock)
+    MCAN_writeProtectedRegAccessUnlock       0x00302041   Thumb Code    46  hte_mcan.o(.text.MCAN_writeProtectedRegAccessUnlock)
+    [Anonymous Symbol]                       0x00302040   Section        0  hte_mcan.o(.text.MCAN_writeProtectedRegAccessUnlock)
+    [Anonymous Symbol]                       0x00302070   Section        0  hte_mcan.o(.text.MCAN_writeRxFIFOAck)
+    [Anonymous Symbol]                       0x003020e0   Section        0  hte_common.o(.text.SDK_dwtDelay)
+    SYSCTRL_bypassAuxPLLPi                   0x00302191   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_bypassAuxPLLPi)
+    [Anonymous Symbol]                       0x00302190   Section        0  hte_sysctrl.o(.text.SYSCTRL_bypassAuxPLLPi)
+    SYSCTRL_bypassPLLPi                      0x003021b1   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_bypassPLLPi)
+    [Anonymous Symbol]                       0x003021b0   Section        0  hte_sysctrl.o(.text.SYSCTRL_bypassPLLPi)
+    SYSCTRL_enablePeripheral                 0x003021d1   Thumb Code    18  board.o(.text.SYSCTRL_enablePeripheral)
+    [Anonymous Symbol]                       0x003021d0   Section        0  board.o(.text.SYSCTRL_enablePeripheral)
+    SYSCTRL_enablePeripheral                 0x003021e9   Thumb Code    32  mcan_ex2_receive.o(.text.SYSCTRL_enablePeripheral)
+    [Anonymous Symbol]                       0x003021e8   Section        0  mcan_ex2_receive.o(.text.SYSCTRL_enablePeripheral)
+    SYSCTRL_gelAuxClkSrc                     0x00302209   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_gelAuxClkSrc)
+    [Anonymous Symbol]                       0x00302208   Section        0  hte_sysctrl.o(.text.SYSCTRL_gelAuxClkSrc)
+    SYSCTRL_getAuxClkDivSel                  0x00302219   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxClkDivSel)
+    [Anonymous Symbol]                       0x00302218   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxClkDivSel)
+    [Anonymous Symbol]                       0x00302228   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxClock)
+    SYSCTRL_getAuxPLLCkRefSel                0x003022c9   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLCkRefSel)
+    [Anonymous Symbol]                       0x003022c8   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLCkRefSel)
+    SYSCTRL_getAuxPLLClkEn                   0x003022d9   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLClkEn)
+    [Anonymous Symbol]                       0x003022d8   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLClkEn)
+    SYSCTRL_getAuxPLLClkRefDiv               0x003022e9   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLClkRefDiv)
+    [Anonymous Symbol]                       0x003022e8   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLClkRefDiv)
+    SYSCTRL_getAuxPLLEn                      0x003022f9   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLEn)
+    [Anonymous Symbol]                       0x003022f8   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLEn)
+    SYSCTRL_getAuxPLLFcwSsc                  0x00302309   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLFcwSsc)
+    [Anonymous Symbol]                       0x00302308   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLFcwSsc)
+    SYSCTRL_getAuxPLLFcwSscDecPoint          0x00302319   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLFcwSscDecPoint)
+    [Anonymous Symbol]                       0x00302318   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLFcwSscDecPoint)
+    SYSCTRL_getAuxPLLLockStatus              0x00302329   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLLockStatus)
+    [Anonymous Symbol]                       0x00302328   Section        0  hte_sysctrl.o(.text.SYSCTRL_getAuxPLLLockStatus)
+    SYSCTRL_getCANSramInitDone               0x00302339   Thumb Code    16  hte_mcan.o(.text.SYSCTRL_getCANSramInitDone)
+    [Anonymous Symbol]                       0x00302338   Section        0  hte_mcan.o(.text.SYSCTRL_getCANSramInitDone)
+    [Anonymous Symbol]                       0x00302348   Section        0  hte_sysctrl.o(.text.SYSCTRL_getClock)
+    SYSCTRL_getMsgramInitDone                0x00302419   Thumb Code    16  clock_config.o(.text.SYSCTRL_getMsgramInitDone)
+    [Anonymous Symbol]                       0x00302418   Section        0  clock_config.o(.text.SYSCTRL_getMsgramInitDone)
+    SYSCTRL_getMsgramInitDone                0x00302429   Thumb Code    16  hte_cpu1_ipc_com.o(.text.SYSCTRL_getMsgramInitDone)
+    [Anonymous Symbol]                       0x00302428   Section        0  hte_cpu1_ipc_com.o(.text.SYSCTRL_getMsgramInitDone)
+    SYSCTRL_getOscClkSrc                     0x00302439   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getOscClkSrc)
+    [Anonymous Symbol]                       0x00302438   Section        0  hte_sysctrl.o(.text.SYSCTRL_getOscClkSrc)
+    SYSCTRL_getPLLCkRefSel                   0x00302449   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLCkRefSel)
+    [Anonymous Symbol]                       0x00302448   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLCkRefSel)
+    SYSCTRL_getPLLClkEn                      0x00302459   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLClkEn)
+    [Anonymous Symbol]                       0x00302458   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLClkEn)
+    SYSCTRL_getPLLClkRefDiv                  0x00302469   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLClkRefDiv)
+    [Anonymous Symbol]                       0x00302468   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLClkRefDiv)
+    SYSCTRL_getPLLEn                         0x00302479   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLEn)
+    [Anonymous Symbol]                       0x00302478   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLEn)
+    SYSCTRL_getPLLFcwSsc                     0x00302489   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLFcwSsc)
+    [Anonymous Symbol]                       0x00302488   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLFcwSsc)
+    SYSCTRL_getPLLFcwSscDecPoint             0x00302499   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLFcwSscDecPoint)
+    [Anonymous Symbol]                       0x00302498   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLFcwSscDecPoint)
+    SYSCTRL_getPLLLockStatus                 0x003024a9   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLLockStatus)
+    [Anonymous Symbol]                       0x003024a8   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLLockStatus)
+    SYSCTRL_getPLLPi                         0x003024b9   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getPLLPi)
+    [Anonymous Symbol]                       0x003024b8   Section        0  hte_sysctrl.o(.text.SYSCTRL_getPLLPi)
+    SYSCTRL_getSysClkDivSel                  0x003024c9   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_getSysClkDivSel)
+    [Anonymous Symbol]                       0x003024c8   Section        0  hte_sysctrl.o(.text.SYSCTRL_getSysClkDivSel)
+    SYSCTRL_initCANSram                      0x003024d9   Thumb Code    18  hte_mcan.o(.text.SYSCTRL_initCANSram)
+    [Anonymous Symbol]                       0x003024d8   Section        0  hte_mcan.o(.text.SYSCTRL_initCANSram)
+    SYSCTRL_initMsgram                       0x003024f1   Thumb Code    18  clock_config.o(.text.SYSCTRL_initMsgram)
+    [Anonymous Symbol]                       0x003024f0   Section        0  clock_config.o(.text.SYSCTRL_initMsgram)
+    SYSCTRL_isMCDClockFailureDetected        0x00302509   Thumb Code    16  hte_sysctrl.o(.text.SYSCTRL_isMCDClockFailureDetected)
+    [Anonymous Symbol]                       0x00302508   Section        0  hte_sysctrl.o(.text.SYSCTRL_isMCDClockFailureDetected)
+    SYSCTRL_resetAuxPLL                      0x00302519   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_resetAuxPLL)
+    [Anonymous Symbol]                       0x00302518   Section        0  hte_sysctrl.o(.text.SYSCTRL_resetAuxPLL)
+    SYSCTRL_resetMCD                         0x00302539   Thumb Code    18  hte_sysctrl.o(.text.SYSCTRL_resetMCD)
+    [Anonymous Symbol]                       0x00302538   Section        0  hte_sysctrl.o(.text.SYSCTRL_resetMCD)
+    SYSCTRL_resetPLL                         0x00302551   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_resetPLL)
+    [Anonymous Symbol]                       0x00302550   Section        0  hte_sysctrl.o(.text.SYSCTRL_resetPLL)
+    SYSCTRL_selAuxClkSrc                     0x00302571   Thumb Code    18  hte_sysctrl.o(.text.SYSCTRL_selAuxClkSrc)
+    [Anonymous Symbol]                       0x00302570   Section        0  hte_sysctrl.o(.text.SYSCTRL_selAuxClkSrc)
+    SYSCTRL_selOscClkSrc                     0x00302589   Thumb Code    18  hte_sysctrl.o(.text.SYSCTRL_selOscClkSrc)
+    [Anonymous Symbol]                       0x00302588   Section        0  hte_sysctrl.o(.text.SYSCTRL_selOscClkSrc)
+    SYSCTRL_selectCPUForPeripheral           0x003025a1   Thumb Code    40  board.o(.text.SYSCTRL_selectCPUForPeripheral)
+    [Anonymous Symbol]                       0x003025a0   Section        0  board.o(.text.SYSCTRL_selectCPUForPeripheral)
+    [Anonymous Symbol]                       0x003025c8   Section        0  hte_sysctrl.o(.text.SYSCTRL_selectOscSource)
+    [Anonymous Symbol]                       0x00302620   Section        0  hte_sysctrl.o(.text.SYSCTRL_selectXTAL)
+    SYSCTRL_setAuxClkDivSel                  0x00302671   Thumb Code    12  hte_sysctrl.o(.text.SYSCTRL_setAuxClkDivSel)
+    [Anonymous Symbol]                       0x00302670   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxClkDivSel)
+    [Anonymous Symbol]                       0x00302680   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxClock)
+    SYSCTRL_setAuxPLLCkRefSel                0x003027d9   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLCkRefSel)
+    [Anonymous Symbol]                       0x003027d8   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLCkRefSel)
+    SYSCTRL_setAuxPLLClkEn                   0x003027f9   Thumb Code    24  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLClkEn)
+    [Anonymous Symbol]                       0x003027f8   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLClkEn)
+    SYSCTRL_setAuxPLLClkRefDiv               0x00302811   Thumb Code    30  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLClkRefDiv)
+    [Anonymous Symbol]                       0x00302810   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLClkRefDiv)
+    SYSCTRL_setAuxPLLEn                      0x00302831   Thumb Code    24  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLEn)
+    [Anonymous Symbol]                       0x00302830   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLEn)
+    SYSCTRL_setAuxPLLFcwSsc                  0x00302849   Thumb Code    18  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLFcwSsc)
+    [Anonymous Symbol]                       0x00302848   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLFcwSsc)
+    SYSCTRL_setAuxPLLFcwSscDecPoint          0x00302861   Thumb Code    20  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLFcwSscDecPoint)
+    [Anonymous Symbol]                       0x00302860   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLFcwSscDecPoint)
+    SYSCTRL_setAuxPLLHighFreqBand            0x00302879   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLHighFreqBand)
+    [Anonymous Symbol]                       0x00302878   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLHighFreqBand)
+    SYSCTRL_setAuxPLLLDOEn                   0x00302899   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLLDOEn)
+    [Anonymous Symbol]                       0x00302898   Section        0  hte_sysctrl.o(.text.SYSCTRL_setAuxPLLLDOEn)
+    [Anonymous Symbol]                       0x003028b8   Section        0  hte_sysctrl.o(.text.SYSCTRL_setClock)
+    SYSCTRL_setPLLCkRefSel                   0x00302a19   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_setPLLCkRefSel)
+    [Anonymous Symbol]                       0x00302a18   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLCkRefSel)
+    SYSCTRL_setPLLClkEn                      0x00302a39   Thumb Code    18  clock_config.o(.text.SYSCTRL_setPLLClkEn)
+    [Anonymous Symbol]                       0x00302a38   Section        0  clock_config.o(.text.SYSCTRL_setPLLClkEn)
+    SYSCTRL_setPLLClkEn                      0x00302a51   Thumb Code    24  hte_sysctrl.o(.text.SYSCTRL_setPLLClkEn)
+    [Anonymous Symbol]                       0x00302a50   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLClkEn)
+    SYSCTRL_setPLLClkRefDiv                  0x00302a69   Thumb Code    30  hte_sysctrl.o(.text.SYSCTRL_setPLLClkRefDiv)
+    [Anonymous Symbol]                       0x00302a68   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLClkRefDiv)
+    SYSCTRL_setPLLEn                         0x00302a89   Thumb Code    24  hte_sysctrl.o(.text.SYSCTRL_setPLLEn)
+    [Anonymous Symbol]                       0x00302a88   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLEn)
+    SYSCTRL_setPLLFcwSsc                     0x00302aa1   Thumb Code    18  hte_sysctrl.o(.text.SYSCTRL_setPLLFcwSsc)
+    [Anonymous Symbol]                       0x00302aa0   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLFcwSsc)
+    SYSCTRL_setPLLFcwSscDecPoint             0x00302ab9   Thumb Code    20  hte_sysctrl.o(.text.SYSCTRL_setPLLFcwSscDecPoint)
+    [Anonymous Symbol]                       0x00302ab8   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLFcwSscDecPoint)
+    SYSCTRL_setPLLHighFreqBand               0x00302ad1   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_setPLLHighFreqBand)
+    [Anonymous Symbol]                       0x00302ad0   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLHighFreqBand)
+    SYSCTRL_setPLLLDOEn                      0x00302af1   Thumb Code    26  hte_sysctrl.o(.text.SYSCTRL_setPLLLDOEn)
+    [Anonymous Symbol]                       0x00302af0   Section        0  hte_sysctrl.o(.text.SYSCTRL_setPLLLDOEn)
+    SYSCTRL_setSysClkDivSel                  0x00302b11   Thumb Code    12  hte_sysctrl.o(.text.SYSCTRL_setSysClkDivSel)
+    [Anonymous Symbol]                       0x00302b10   Section        0  hte_sysctrl.o(.text.SYSCTRL_setSysClkDivSel)
+    SYSCTRL_turnOffOsc                       0x00302b21   Thumb Code    18  hte_sysctrl.o(.text.SYSCTRL_turnOffOsc)
+    [Anonymous Symbol]                       0x00302b20   Section        0  hte_sysctrl.o(.text.SYSCTRL_turnOffOsc)
+    SYSCTRL_turnOnOsc                        0x00302b39   Thumb Code    34  hte_sysctrl.o(.text.SYSCTRL_turnOnOsc)
+    [Anonymous Symbol]                       0x00302b38   Section        0  hte_sysctrl.o(.text.SYSCTRL_turnOnOsc)
+    [Anonymous Symbol]                       0x00302b60   Section        0  decodecan.o(.text.SetDuty)
+    [Anonymous Symbol]                       0x00302bc8   Section        0  decodecan.o(.text.SetDutyClr)
+    [Anonymous Symbol]                       0x00302bf8   Section        0  decodecan.o(.text.SetI)
+    [Anonymous Symbol]                       0x00302c60   Section        0  clock_config.o(.text.SysTick_DriverHandler)
+    [Anonymous Symbol]                       0x00302c80   Section        0  system_hs32f7d377_cpu1.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x00302c98   Section        0  hte_uart.o(.text.UARTA_DriverHandler)
+    [Anonymous Symbol]                       0x00302cc0   Section        0  hte_uart.o(.text.UARTB_DriverHandler)
+    [Anonymous Symbol]                       0x00302cf0   Section        0  hte_uart.o(.text.UARTC_DriverHandler)
+    [Anonymous Symbol]                       0x00302d20   Section        0  hte_uart.o(.text.UARTD_DriverHandler)
+    UART_disableFIFOAccess                   0x00302d51   Thumb Code    38  hte_uart.o(.text.UART_disableFIFOAccess)
+    [Anonymous Symbol]                       0x00302d50   Section        0  hte_uart.o(.text.UART_disableFIFOAccess)
+    UART_disableLoopback                     0x00302d79   Thumb Code    38  hte_uart.o(.text.UART_disableLoopback)
+    [Anonymous Symbol]                       0x00302d78   Section        0  hte_uart.o(.text.UART_disableLoopback)
+    [Anonymous Symbol]                       0x00302da0   Section        0  hte_uart.o(.text.UART_getDefaultConfig)
+    UART_getLineStatus                       0x00302dd9   Thumb Code    28  decodecan.o(.text.UART_getLineStatus)
+    [Anonymous Symbol]                       0x00302dd8   Section        0  decodecan.o(.text.UART_getLineStatus)
+    UART_getTxFIFOLevel                      0x00302e29   Thumb Code    36  hte_uart.o(.text.UART_getTxFIFOLevel)
+    [Anonymous Symbol]                       0x00302e28   Section        0  hte_uart.o(.text.UART_getTxFIFOLevel)
+    UART_haltTransmit                        0x00302e51   Thumb Code    42  hte_uart.o(.text.UART_haltTransmit)
+    [Anonymous Symbol]                       0x00302e50   Section        0  hte_uart.o(.text.UART_haltTransmit)
+    [Anonymous Symbol]                       0x00302e80   Section        0  hte_uart.o(.text.UART_init)
+    UART_isBusy                              0x00302f39   Thumb Code    36  hte_uart.o(.text.UART_isBusy)
+    [Anonymous Symbol]                       0x00302f38   Section        0  hte_uart.o(.text.UART_isBusy)
+    UART_isFIFOEnabled                       0x00302f61   Thumb Code    38  hte_uart.o(.text.UART_isFIFOEnabled)
+    [Anonymous Symbol]                       0x00302f60   Section        0  hte_uart.o(.text.UART_isFIFOEnabled)
+    UART_isSpaceAvailable                    0x00302f89   Thumb Code    62  hte_uart.o(.text.UART_isSpaceAvailable)
+    [Anonymous Symbol]                       0x00302f88   Section        0  hte_uart.o(.text.UART_isSpaceAvailable)
+    UART_isTransmitHoldingEmpty              0x00302fc9   Thumb Code    36  hte_uart.o(.text.UART_isTransmitHoldingEmpty)
+    [Anonymous Symbol]                       0x00302fc8   Section        0  hte_uart.o(.text.UART_isTransmitHoldingEmpty)
+    UART_isTransmitRegisterEmpty             0x00302ff1   Thumb Code    36  hte_uart.o(.text.UART_isTransmitRegisterEmpty)
+    [Anonymous Symbol]                       0x00302ff0   Section        0  hte_uart.o(.text.UART_isTransmitRegisterEmpty)
+    [Anonymous Symbol]                       0x00303018   Section        0  hte_uart.o(.text.UART_setBaudRate)
+    [Anonymous Symbol]                       0x00303108   Section        0  hte_uart.o(.text.UART_writeDataBlocking)
+    __NVIC_EnableIRQ                         0x00303189   Thumb Code    32  hte_cpu1_ipc.o(.text.__NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x00303188   Section        0  hte_cpu1_ipc.o(.text.__NVIC_EnableIRQ)
+    __NVIC_SetPriority                       0x003031a9   Thumb Code    34  hte_cpu1_ipc.o(.text.__NVIC_SetPriority)
+    [Anonymous Symbol]                       0x003031a8   Section        0  hte_cpu1_ipc.o(.text.__NVIC_SetPriority)
+    [Anonymous Symbol]                       0x003031d0   Section        0  hte_assert.o(.text.__aeabi_assert)
+    [Anonymous Symbol]                       0x00303238   Section        0  decodecan.o(.text.backCanStandID)
+    [Anonymous Symbol]                       0x00303258   Section        0  hte_cpu1_ipc_com.o(.text.cpu1_ipc_com_irq_handler)
+    [Anonymous Symbol]                       0x003032d0   Section        0  crc.o(.text.crc16)
+    [Anonymous Symbol]                       0x00303308   Section        0  decodecan.o(.text.decodeInst)
+    [Anonymous Symbol]                       0x00303360   Section        0  hte_debug_console.o(.text.fputc)
+    [Anonymous Symbol]                       0x00303390   Section        0  decodecan.o(.text.mUART_readDataBlocking)
+    [Anonymous Symbol]                       0x00303448   Section        0  mcan_ex2_receive.o(.text.main)
+    i.__0printf$3                            0x00303598   Section        0  printf3.o(i.__0printf$3)
+    i.__scatterload_copy                     0x003035b8   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x003035c6   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x003035c8   Section       14  handlers.o(i.__scatterload_zeroinit)
+    _printf_core                             0x003035d9   Thumb Code   436  printf3.o(i._printf_core)
+    i._printf_core                           0x003035d8   Section        0  printf3.o(i._printf_core)
+    .L__const.GetInputVol.dataBuf            0x00303790   Data          20  decodecan.o(.rodata..L__const.GetInputVol.dataBuf)
+    .L__const.GetRpm.dataBuf                 0x003037a4   Data          20  decodecan.o(.rodata..L__const.GetRpm.dataBuf)
+    s_ipcIRQ                                 0x003039b8   Data           8  hte_cpu1_ipc.o(.rodata.cst8)
+    [Anonymous Symbol]                       0x003039b8   Section        0  hte_cpu1_ipc.o(.rodata.cst8)
+    .L.str                                   0x003039c0   Data          20  hte_common.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x003039c0   Section        0  hte_common.o(.rodata.str1.1)
+    .L.str.1                                 0x003039d4   Data          49  hte_common.o(.rodata.str1.1)
+    .L.str                                   0x00303a05   Data          25  hte_cpu1_ipc.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x00303a05   Section        0  hte_cpu1_ipc.o(.rodata.str1.1)
+    .L.str.1                                 0x00303a1e   Data          48  hte_cpu1_ipc.o(.rodata.str1.1)
+    .L.str                                   0x00303a4e   Data          21  hte_gpio.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x00303a4e   Section        0  hte_gpio.o(.rodata.str1.1)
+    .L.str                                   0x00303a63   Data          23  hte_mcan.o(.rodata.str1.1)
+    .L.str.1                                 0x00303a63   Data          45  hte_gpio.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x00303a63   Section        0  hte_mcan.o(.rodata.str1.1)
+    .L.str.4                                 0x00303a7a   Data          39  hte_mcan.o(.rodata.str1.1)
+    .L.str.1                                 0x00303aa1   Data          45  hte_mcan.o(.rodata.str1.1)
+    .L.str.2                                 0x00303aa7   Data          23  hte_mcan.o(.rodata.str1.1)
+    .L.str.6                                 0x00303ace   Data           5  hte_uart.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x00303ace   Section        0  hte_uart.o(.rodata.str1.1)
+    .L.str.1                                 0x00303ad3   Data          45  hte_uart.o(.rodata.str1.1)
+    .L.str                                   0x00303b00   Data           5  hte_uart.o(.rodata.str1.1)
+    .L.str.3                                 0x00303b00   Data           5  hte_uart.o(.rodata.str1.1)
+    .L.str.2                                 0x00303b05   Data           7  hte_uart.o(.rodata.str1.1)
+    .L.str.7                                 0x00303b0c   Data          45  hte_uart.o(.rodata.str1.1)
+    .L.str.1                                 0x00303b39   Data          18  decodecan.o(.rodata.str1.1)
+    [Anonymous Symbol]                       0x00303b39   Section        0  decodecan.o(.rodata.str1.1)
     .data                                    0x20000000   Section        4  stderr.o(.data)
     s_debugConsole.0                         0x2000027c   Data           4  hte_debug_console.o(.bss.s_debugConsole.0)
     [Anonymous Symbol]                       0x2000027c   Section        0  hte_debug_console.o(.bss.s_debugConsole.0)
@@ -2901,97 +2924,100 @@ Image Symbol Table
     __aeabi_memclr4                          0x003009d9   Thumb Code     0  memseta.o(.text)
     __aeabi_memclr8                          0x003009d9   Thumb Code     0  memseta.o(.text)
     memset                                   0x003009dd   Thumb Code    18  memseta.o(.text)
-    __aeabi_llsl                             0x003009ef   Thumb Code    30  llshl.o(.text)
-    _ll_shift_l                              0x003009ef   Thumb Code     0  llshl.o(.text)
-    __aeabi_llsr                             0x00300a0d   Thumb Code    32  llushr.o(.text)
-    _ll_ushift_r                             0x00300a0d   Thumb Code     0  llushr.o(.text)
-    __scatterload                            0x00300a2d   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x00300a2d   Thumb Code     0  init.o(.text)
-    BOARD_clockConfig                        0x00300ae1   Thumb Code   128  clock_config.o(.text.BOARD_clockConfig)
-    BOARD_clockConfigForCPU2                 0x00300b61   Thumb Code    22  clock_config.o(.text.BOARD_clockConfigForCPU2)
-    BOARD_clockInfStore                      0x00300b79   Thumb Code    26  clock_config.o(.text.BOARD_clockInfStore)
-    BOARD_debugConsoleInit                   0x00300b99   Thumb Code    62  board.o(.text.BOARD_debugConsoleInit)
-    BOARD_debugConsoleInitForCPU2            0x00300bd9   Thumb Code    26  board.o(.text.BOARD_debugConsoleInitForCPU2)
-    BOARD_init                               0x00300c09   Thumb Code    20  board.o(.text.BOARD_init)
-    BOARD_initForCPU2                        0x00300c21   Thumb Code    12  board.o(.text.BOARD_initForCPU2)
-    BOARD_mpuConfig                          0x00300c31   Thumb Code    98  board.o(.text.BOARD_mpuConfig)
-    BOARD_uartPinConfig                      0x00300c99   Thumb Code    76  pin_config.o(.text.BOARD_uartPinConfig)
-    DEBUG_CONSOLE_init                       0x00300d71   Thumb Code   122  hte_debug_console.o(.text.DEBUG_CONSOLE_init)
-    GPIO_setMasterCore                       0x00300e59   Thumb Code    60  hte_gpio.o(.text.GPIO_setMasterCore)
-    GPIO_setPadConfig                        0x00300e99   Thumb Code   162  hte_gpio.o(.text.GPIO_setPadConfig)
-    GPIO_setPinConfig                        0x00300f41   Thumb Code    76  hte_gpio.o(.text.GPIO_setPinConfig)
-    GetInputVol                              0x00300f91   Thumb Code   110  decodecan.o(.text.GetInputVol)
-    GetRpm                                   0x00301001   Thumb Code   122  decodecan.o(.text.GetRpm)
-    IPC_INT0_DriverHandler                   0x00301081   Thumb Code    14  hte_cpu1_ipc.o(.text.IPC_INT0_DriverHandler)
-    IPC_INT1_DriverHandler                   0x00301091   Thumb Code    14  hte_cpu1_ipc.o(.text.IPC_INT1_DriverHandler)
-    IPC_INT2_DriverHandler                   0x003010a1   Thumb Code    14  hte_cpu1_ipc.o(.text.IPC_INT2_DriverHandler)
-    IPC_INT3_DriverHandler                   0x003010b1   Thumb Code    14  hte_cpu1_ipc.o(.text.IPC_INT3_DriverHandler)
-    IPC_comInit                              0x003010d1   Thumb Code    30  hte_cpu1_ipc_com.o(.text.IPC_comInit)
-    IPC_handlerIRQ                           0x003010f1   Thumb Code    24  hte_cpu1_ipc.o(.text.IPC_handlerIRQ)
-    IPC_readCommand                          0x00301109   Thumb Code    56  hte_cpu1_ipc.o(.text.IPC_readCommand)
-    IPC_registerCallback                     0x00301141   Thumb Code   100  hte_cpu1_ipc.o(.text.IPC_registerCallback)
-    MCANA_INT0_DriverHandler                 0x003011c1   Thumb Code    22  hte_mcan.o(.text.MCANA_INT0_DriverHandler)
-    MCANA_INT1_DriverHandler                 0x003011d9   Thumb Code    22  hte_mcan.o(.text.MCANA_INT1_DriverHandler)
-    MCANB_INT0_DriverHandler                 0x003011f1   Thumb Code    24  hte_mcan.o(.text.MCANB_INT0_DriverHandler)
-    MCANB_INT1_DriverHandler                 0x00301209   Thumb Code    24  hte_mcan.o(.text.MCANB_INT1_DriverHandler)
-    MCANC_INT0_DriverHandler                 0x00301221   Thumb Code    24  hte_mcan.o(.text.MCANC_INT0_DriverHandler)
-    MCANC_INT1_DriverHandler                 0x00301239   Thumb Code    24  hte_mcan.o(.text.MCANC_INT1_DriverHandler)
-    MCAN_MsgRamInit                          0x003013a1   Thumb Code    42  hte_mcan.o(.text.MCAN_MsgRamInit)
-    MCAN_addStdMsgIDFilter                   0x003013d1   Thumb Code    82  hte_mcan.o(.text.MCAN_addStdMsgIDFilter)
-    MCAN_clearNewDataStatus                  0x00301429   Thumb Code    54  hte_mcan.o(.text.MCAN_clearNewDataStatus)
-    MCAN_config                              0x00301461   Thumb Code   222  hte_mcan.o(.text.MCAN_config)
-    MCAN_getOpMode                           0x003015d9   Thumb Code    44  hte_mcan.o(.text.MCAN_getOpMode)
-    MCAN_getRevisionId                       0x00301631   Thumb Code    80  hte_mcan.o(.text.MCAN_getRevisionId)
-    MCAN_getRxFIFOStatus                     0x00301681   Thumb Code    92  hte_mcan.o(.text.MCAN_getRxFIFOStatus)
-    MCAN_getTxBufReqPend                     0x003016e1   Thumb Code    42  hte_mcan.o(.text.MCAN_getTxBufReqPend)
-    MCAN_handlerIRQ                          0x00301711   Thumb Code    30  hte_mcan.o(.text.MCAN_handlerIRQ)
-    MCAN_init                                0x00301731   Thumb Code   194  hte_mcan.o(.text.MCAN_init)
-    MCAN_msgRAMConfig                        0x00301821   Thumb Code   410  hte_mcan.o(.text.MCAN_msgRAMConfig)
-    MCAN_pinMux                              0x003019c1   Thumb Code    40  mcan_ex2_receive.o(.text.MCAN_pinMux)
-    MCAN_readMsgRam                          0x00301b11   Thumb Code   250  hte_mcan.o(.text.MCAN_readMsgRam)
-    MCAN_setBitTime                          0x00301c11   Thumb Code   236  hte_mcan.o(.text.MCAN_setBitTime)
-    MCAN_setOpMode                           0x00301d01   Thumb Code    48  hte_mcan.o(.text.MCAN_setOpMode)
-    MCAN_setPclkEnable                       0x00301d31   Thumb Code    30  mcan_ex2_receive.o(.text.MCAN_setPclkEnable)
-    MCAN_txBufAddReq                         0x00301d51   Thumb Code    72  hte_mcan.o(.text.MCAN_txBufAddReq)
-    MCAN_writeMsgRam                         0x00301ea9   Thumb Code   128  hte_mcan.o(.text.MCAN_writeMsgRam)
-    MCAN_writeRxFIFOAck                      0x00301f89   Thumb Code   106  hte_mcan.o(.text.MCAN_writeRxFIFOAck)
-    SDK_dwtDelay                             0x00301ff9   Thumb Code   132  hte_common.o(.text.SDK_dwtDelay)
-    SYSCTRL_getAuxClock                      0x00302141   Thumb Code   156  hte_sysctrl.o(.text.SYSCTRL_getAuxClock)
-    SYSCTRL_getClock                         0x00302261   Thumb Code   204  hte_sysctrl.o(.text.SYSCTRL_getClock)
-    SYSCTRL_selectOscSource                  0x003024e1   Thumb Code    86  hte_sysctrl.o(.text.SYSCTRL_selectOscSource)
-    SYSCTRL_selectXTAL                       0x00302539   Thumb Code    74  hte_sysctrl.o(.text.SYSCTRL_selectXTAL)
-    SYSCTRL_setAuxClock                      0x00302599   Thumb Code   340  hte_sysctrl.o(.text.SYSCTRL_setAuxClock)
-    SYSCTRL_setClock                         0x003027d1   Thumb Code   352  hte_sysctrl.o(.text.SYSCTRL_setClock)
-    SetDuty                                  0x00302a79   Thumb Code   100  decodecan.o(.text.SetDuty)
-    SetDutyClr                               0x00302ae1   Thumb Code    46  decodecan.o(.text.SetDutyClr)
-    SetI                                     0x00302b11   Thumb Code   100  decodecan.o(.text.SetI)
-    SysTick_DriverHandler                    0x00302b79   Thumb Code    30  clock_config.o(.text.SysTick_DriverHandler)
-    SystemInit                               0x00302b99   Thumb Code    18  system_hs32f7d377_cpu1.o(.text.SystemInit)
-    UARTA_DriverHandler                      0x00302bb1   Thumb Code    36  hte_uart.o(.text.UARTA_DriverHandler)
-    UARTB_DriverHandler                      0x00302bd9   Thumb Code    42  hte_uart.o(.text.UARTB_DriverHandler)
-    UARTC_DriverHandler                      0x00302c09   Thumb Code    42  hte_uart.o(.text.UARTC_DriverHandler)
-    UARTD_DriverHandler                      0x00302c39   Thumb Code    42  hte_uart.o(.text.UARTD_DriverHandler)
-    UART_getDefaultConfig                    0x00302cb9   Thumb Code    54  hte_uart.o(.text.UART_getDefaultConfig)
-    UART_init                                0x00302d69   Thumb Code   180  hte_uart.o(.text.UART_init)
-    UART_readDataBlocking                    0x00302f01   Thumb Code   142  hte_uart.o(.text.UART_readDataBlocking)
-    UART_setBaudRate                         0x00302f91   Thumb Code   208  hte_uart.o(.text.UART_setBaudRate)
-    UART_writeDataBlocking                   0x00303081   Thumb Code    98  hte_uart.o(.text.UART_writeDataBlocking)
-    __aeabi_assert                           0x00303131   Thumb Code    40  hte_assert.o(.text.__aeabi_assert)
-    backCanStandID                           0x00303199   Thumb Code    32  decodecan.o(.text.backCanStandID)
-    cpu1_ipc_com_irq_handler                 0x003031b9   Thumb Code   120  hte_cpu1_ipc_com.o(.text.cpu1_ipc_com_irq_handler)
-    crc16                                    0x00303231   Thumb Code    50  crc.o(.text.crc16)
-    decodeInst                               0x00303269   Thumb Code    82  decodecan.o(.text.decodeInst)
-    fputc                                    0x003032c1   Thumb Code    46  hte_debug_console.o(.text.fputc)
-    main                                     0x003032f1   Thumb Code   304  mcan_ex2_receive.o(.text.main)
-    __0printf$8                              0x00303421   Thumb Code    22  printf8.o(i.__0printf$8)
-    __1printf$8                              0x00303421   Thumb Code     0  printf8.o(i.__0printf$8)
-    __2printf                                0x00303421   Thumb Code     0  printf8.o(i.__0printf$8)
-    __scatterload_copy                       0x00303441   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x0030344f   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x00303451   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    crc16_tab                                0x003038ec   Data         512  crc.o(.rodata.crc16_tab)
-    Region$$Table$$Base                      0x00303c70   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00303c90   Number         0  anon$$obj.o(Region$$Table)
+    __aeabi_uidiv                            0x003009ef   Thumb Code     0  uidiv.o(.text)
+    __aeabi_uidivmod                         0x003009ef   Thumb Code    44  uidiv.o(.text)
+    __aeabi_llsl                             0x00300a1b   Thumb Code    30  llshl.o(.text)
+    _ll_shift_l                              0x00300a1b   Thumb Code     0  llshl.o(.text)
+    __aeabi_llsr                             0x00300a39   Thumb Code    32  llushr.o(.text)
+    _ll_ushift_r                             0x00300a39   Thumb Code     0  llushr.o(.text)
+    __scatterload                            0x00300a59   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x00300a59   Thumb Code     0  init.o(.text)
+    BOARD_clockConfig                        0x00300b11   Thumb Code   128  clock_config.o(.text.BOARD_clockConfig)
+    BOARD_clockConfigForCPU2                 0x00300b91   Thumb Code    22  clock_config.o(.text.BOARD_clockConfigForCPU2)
+    BOARD_clockInfStore                      0x00300ba9   Thumb Code    26  clock_config.o(.text.BOARD_clockInfStore)
+    BOARD_debugConsoleInit                   0x00300bc9   Thumb Code    62  board.o(.text.BOARD_debugConsoleInit)
+    BOARD_debugConsoleInitForCPU2            0x00300c09   Thumb Code    26  board.o(.text.BOARD_debugConsoleInitForCPU2)
+    BOARD_init                               0x00300c49   Thumb Code    20  board.o(.text.BOARD_init)
+    BOARD_initForCPU2                        0x00300c61   Thumb Code    12  board.o(.text.BOARD_initForCPU2)
+    BOARD_mpuConfig                          0x00300c71   Thumb Code    98  board.o(.text.BOARD_mpuConfig)
+    BOARD_uartPinConfig                      0x00300cd9   Thumb Code    76  pin_config.o(.text.BOARD_uartPinConfig)
+    DEBUG_CONSOLE_init                       0x00300db1   Thumb Code   122  hte_debug_console.o(.text.DEBUG_CONSOLE_init)
+    GPIO_setMasterCore                       0x00300e99   Thumb Code    60  hte_gpio.o(.text.GPIO_setMasterCore)
+    GPIO_setPadConfig                        0x00300ed9   Thumb Code   162  hte_gpio.o(.text.GPIO_setPadConfig)
+    GPIO_setPinConfig                        0x00300f81   Thumb Code    76  hte_gpio.o(.text.GPIO_setPinConfig)
+    GetInputVol                              0x00300fd1   Thumb Code   128  decodecan.o(.text.GetInputVol)
+    GetMotorValue                            0x00301051   Thumb Code   134  decodecan.o(.text.GetMotorValue)
+    GetRpm                                   0x003010d9   Thumb Code   140  decodecan.o(.text.GetRpm)
+    IPC_INT0_DriverHandler                   0x00301169   Thumb Code    14  hte_cpu1_ipc.o(.text.IPC_INT0_DriverHandler)
+    IPC_INT1_DriverHandler                   0x00301179   Thumb Code    14  hte_cpu1_ipc.o(.text.IPC_INT1_DriverHandler)
+    IPC_INT2_DriverHandler                   0x00301189   Thumb Code    14  hte_cpu1_ipc.o(.text.IPC_INT2_DriverHandler)
+    IPC_INT3_DriverHandler                   0x00301199   Thumb Code    14  hte_cpu1_ipc.o(.text.IPC_INT3_DriverHandler)
+    IPC_comInit                              0x003011b9   Thumb Code    30  hte_cpu1_ipc_com.o(.text.IPC_comInit)
+    IPC_handlerIRQ                           0x003011d9   Thumb Code    24  hte_cpu1_ipc.o(.text.IPC_handlerIRQ)
+    IPC_readCommand                          0x003011f1   Thumb Code    56  hte_cpu1_ipc.o(.text.IPC_readCommand)
+    IPC_registerCallback                     0x00301229   Thumb Code   100  hte_cpu1_ipc.o(.text.IPC_registerCallback)
+    MCANA_INT0_DriverHandler                 0x003012a9   Thumb Code    22  hte_mcan.o(.text.MCANA_INT0_DriverHandler)
+    MCANA_INT1_DriverHandler                 0x003012c1   Thumb Code    22  hte_mcan.o(.text.MCANA_INT1_DriverHandler)
+    MCANB_INT0_DriverHandler                 0x003012d9   Thumb Code    24  hte_mcan.o(.text.MCANB_INT0_DriverHandler)
+    MCANB_INT1_DriverHandler                 0x003012f1   Thumb Code    24  hte_mcan.o(.text.MCANB_INT1_DriverHandler)
+    MCANC_INT0_DriverHandler                 0x00301309   Thumb Code    24  hte_mcan.o(.text.MCANC_INT0_DriverHandler)
+    MCANC_INT1_DriverHandler                 0x00301321   Thumb Code    24  hte_mcan.o(.text.MCANC_INT1_DriverHandler)
+    MCAN_MsgRamInit                          0x00301489   Thumb Code    42  hte_mcan.o(.text.MCAN_MsgRamInit)
+    MCAN_addStdMsgIDFilter                   0x003014b9   Thumb Code    82  hte_mcan.o(.text.MCAN_addStdMsgIDFilter)
+    MCAN_clearNewDataStatus                  0x00301511   Thumb Code    54  hte_mcan.o(.text.MCAN_clearNewDataStatus)
+    MCAN_config                              0x00301549   Thumb Code   222  hte_mcan.o(.text.MCAN_config)
+    MCAN_getOpMode                           0x003016c1   Thumb Code    44  hte_mcan.o(.text.MCAN_getOpMode)
+    MCAN_getRevisionId                       0x00301719   Thumb Code    80  hte_mcan.o(.text.MCAN_getRevisionId)
+    MCAN_getRxFIFOStatus                     0x00301769   Thumb Code    92  hte_mcan.o(.text.MCAN_getRxFIFOStatus)
+    MCAN_getTxBufReqPend                     0x003017c9   Thumb Code    42  hte_mcan.o(.text.MCAN_getTxBufReqPend)
+    MCAN_handlerIRQ                          0x003017f9   Thumb Code    30  hte_mcan.o(.text.MCAN_handlerIRQ)
+    MCAN_init                                0x00301819   Thumb Code   194  hte_mcan.o(.text.MCAN_init)
+    MCAN_msgRAMConfig                        0x00301909   Thumb Code   410  hte_mcan.o(.text.MCAN_msgRAMConfig)
+    MCAN_pinMux                              0x00301aa9   Thumb Code    40  mcan_ex2_receive.o(.text.MCAN_pinMux)
+    MCAN_readMsgRam                          0x00301bf9   Thumb Code   250  hte_mcan.o(.text.MCAN_readMsgRam)
+    MCAN_setBitTime                          0x00301cf9   Thumb Code   236  hte_mcan.o(.text.MCAN_setBitTime)
+    MCAN_setOpMode                           0x00301de9   Thumb Code    48  hte_mcan.o(.text.MCAN_setOpMode)
+    MCAN_setPclkEnable                       0x00301e19   Thumb Code    30  mcan_ex2_receive.o(.text.MCAN_setPclkEnable)
+    MCAN_txBufAddReq                         0x00301e39   Thumb Code    72  hte_mcan.o(.text.MCAN_txBufAddReq)
+    MCAN_writeMsgRam                         0x00301f91   Thumb Code   128  hte_mcan.o(.text.MCAN_writeMsgRam)
+    MCAN_writeRxFIFOAck                      0x00302071   Thumb Code   106  hte_mcan.o(.text.MCAN_writeRxFIFOAck)
+    SDK_dwtDelay                             0x003020e1   Thumb Code   132  hte_common.o(.text.SDK_dwtDelay)
+    SYSCTRL_getAuxClock                      0x00302229   Thumb Code   156  hte_sysctrl.o(.text.SYSCTRL_getAuxClock)
+    SYSCTRL_getClock                         0x00302349   Thumb Code   204  hte_sysctrl.o(.text.SYSCTRL_getClock)
+    SYSCTRL_selectOscSource                  0x003025c9   Thumb Code    86  hte_sysctrl.o(.text.SYSCTRL_selectOscSource)
+    SYSCTRL_selectXTAL                       0x00302621   Thumb Code    74  hte_sysctrl.o(.text.SYSCTRL_selectXTAL)
+    SYSCTRL_setAuxClock                      0x00302681   Thumb Code   340  hte_sysctrl.o(.text.SYSCTRL_setAuxClock)
+    SYSCTRL_setClock                         0x003028b9   Thumb Code   352  hte_sysctrl.o(.text.SYSCTRL_setClock)
+    SetDuty                                  0x00302b61   Thumb Code   100  decodecan.o(.text.SetDuty)
+    SetDutyClr                               0x00302bc9   Thumb Code    46  decodecan.o(.text.SetDutyClr)
+    SetI                                     0x00302bf9   Thumb Code   100  decodecan.o(.text.SetI)
+    SysTick_DriverHandler                    0x00302c61   Thumb Code    30  clock_config.o(.text.SysTick_DriverHandler)
+    SystemInit                               0x00302c81   Thumb Code    18  system_hs32f7d377_cpu1.o(.text.SystemInit)
+    UARTA_DriverHandler                      0x00302c99   Thumb Code    36  hte_uart.o(.text.UARTA_DriverHandler)
+    UARTB_DriverHandler                      0x00302cc1   Thumb Code    42  hte_uart.o(.text.UARTB_DriverHandler)
+    UARTC_DriverHandler                      0x00302cf1   Thumb Code    42  hte_uart.o(.text.UARTC_DriverHandler)
+    UARTD_DriverHandler                      0x00302d21   Thumb Code    42  hte_uart.o(.text.UARTD_DriverHandler)
+    UART_getDefaultConfig                    0x00302da1   Thumb Code    54  hte_uart.o(.text.UART_getDefaultConfig)
+    UART_init                                0x00302e81   Thumb Code   180  hte_uart.o(.text.UART_init)
+    UART_setBaudRate                         0x00303019   Thumb Code   208  hte_uart.o(.text.UART_setBaudRate)
+    UART_writeDataBlocking                   0x00303109   Thumb Code   124  hte_uart.o(.text.UART_writeDataBlocking)
+    __aeabi_assert                           0x003031d1   Thumb Code    40  hte_assert.o(.text.__aeabi_assert)
+    backCanStandID                           0x00303239   Thumb Code    32  decodecan.o(.text.backCanStandID)
+    cpu1_ipc_com_irq_handler                 0x00303259   Thumb Code   120  hte_cpu1_ipc_com.o(.text.cpu1_ipc_com_irq_handler)
+    crc16                                    0x003032d1   Thumb Code    50  crc.o(.text.crc16)
+    decodeInst                               0x00303309   Thumb Code    88  decodecan.o(.text.decodeInst)
+    fputc                                    0x00303361   Thumb Code    46  hte_debug_console.o(.text.fputc)
+    mUART_readDataBlocking                   0x00303391   Thumb Code   176  decodecan.o(.text.mUART_readDataBlocking)
+    main                                     0x00303449   Thumb Code   336  mcan_ex2_receive.o(.text.main)
+    __0printf$3                              0x00303599   Thumb Code    22  printf3.o(i.__0printf$3)
+    __1printf$3                              0x00303599   Thumb Code     0  printf3.o(i.__0printf$3)
+    __2printf                                0x00303599   Thumb Code     0  printf3.o(i.__0printf$3)
+    __scatterload_copy                       0x003035b9   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x003035c7   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x003035c9   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    crc16_tab                                0x003037b8   Data         512  crc.o(.rodata.crc16_tab)
+    Region$$Table$$Base                      0x00303b4c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00303b6c   Number         0  anon$$obj.o(Region$$Table)
     __stderr                                 0x20000000   Data           4  stderr.o(.data)
     SystemCoreClock                          0x20000004   Data           4  system_hs32f7d377_cpu1.o(.data.SystemCoreClock)
     gSystickFreq                             0x20000008   Data           1  clock_config.o(.data.gSystickFreq)
@@ -3017,343 +3043,345 @@ Memory Map of the image
 
   Image Entry point : 0x00300401
 
-  Load Region LR_ROM (Base: 0x00300000, Size: 0x00003cd4, Max: 0x00100000, ABSOLUTE)
+  Load Region LR_ROM (Base: 0x00300000, Size: 0x00003bb0, Max: 0x00100000, ABSOLUTE)
 
-    Execution Region ER_ROM (Exec base: 0x00300000, Load base: 0x00300000, Size: 0x00003c90, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_ROM (Exec base: 0x00300000, Load base: 0x00300000, Size: 0x00003b6c, Max: 0x00100000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00300000   0x00300000   0x00000400   Data   RO          842    RESET               startup_hs32f7d377_cpu1_ac6.o
-    0x00300400   0x00300400   0x00000000   Code   RO          885  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x00300400   0x00300400   0x00000004   Code   RO         1240    .ARM.Collect$$$$00000003  mc_w.l(entry4.o)
-    0x00300404   0x00300404   0x00000004   Code   RO         1243    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x00300408   0x00300408   0x00000000   Code   RO         1245    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x00300408   0x00300408   0x00000000   Code   RO         1247    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x00300408   0x00300408   0x00000008   Code   RO         1248    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x00300410   0x00300410   0x00000000   Code   RO         1250    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x00300410   0x00300410   0x00000000   Code   RO         1252    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x00300410   0x00300410   0x00000004   Code   RO         1241    .ARM.Collect$$$$00002714  mc_w.l(entry4.o)
-    0x00300414   0x00300414   0x0000052c   Code   RO          841    .text               startup_hs32f7d377_cpu1_ac6.o
-    0x00300940   0x00300940   0x00000062   Code   RO          891    .text               mc_w.l(uldiv.o)
-    0x003009a2   0x003009a2   0x00000028   Code   RO          893    .text               mc_w.l(memcpy.o)
-    0x003009ca   0x003009ca   0x00000024   Code   RO          899    .text               mc_w.l(memseta.o)
-    0x003009ee   0x003009ee   0x0000001e   Code   RO         1265    .text               mc_w.l(llshl.o)
-    0x00300a0c   0x00300a0c   0x00000020   Code   RO         1267    .text               mc_w.l(llushr.o)
-    0x00300a2c   0x00300a2c   0x00000024   Code   RO         1283    .text               mc_w.l(init.o)
-    0x00300a50   0x00300a50   0x00000026   Code   RO           13    .text.ARM_MPU_Disable  board.o
-    0x00300a76   0x00300a76   0x00000002   PAD
-    0x00300a78   0x00300a78   0x00000022   Code   RO           17    .text.ARM_MPU_Enable  board.o
-    0x00300a9a   0x00300a9a   0x00000006   PAD
-    0x00300aa0   0x00300aa0   0x0000001e   Code   RO           15    .text.ARM_MPU_Load  board.o
-    0x00300abe   0x00300abe   0x00000002   PAD
-    0x00300ac0   0x00300ac0   0x0000001e   Code   RO           41    .text.ARM_MPU_OrderedMemcpy  board.o
-    0x00300ade   0x00300ade   0x00000002   PAD
-    0x00300ae0   0x00300ae0   0x00000080   Code   RO           70    .text.BOARD_clockConfig  clock_config.o
-    0x00300b60   0x00300b60   0x00000016   Code   RO           74    .text.BOARD_clockConfigForCPU2  clock_config.o
-    0x00300b76   0x00300b76   0x00000002   PAD
-    0x00300b78   0x00300b78   0x0000001a   Code   RO           66    .text.BOARD_clockInfStore  clock_config.o
-    0x00300b92   0x00300b92   0x00000006   PAD
-    0x00300b98   0x00300b98   0x0000003e   Code   RO            9    .text.BOARD_debugConsoleInit  board.o
-    0x00300bd6   0x00300bd6   0x00000002   PAD
-    0x00300bd8   0x00300bd8   0x0000001a   Code   RO           27    .text.BOARD_debugConsoleInitForCPU2  board.o
-    0x00300bf2   0x00300bf2   0x00000006   PAD
-    0x00300bf8   0x00300bf8   0x0000000c   Code   RO           23    .text.BOARD_getPeripheralClk  board.o
-    0x00300c04   0x00300c04   0x00000004   PAD
-    0x00300c08   0x00300c08   0x00000014   Code   RO            5    .text.BOARD_init    board.o
-    0x00300c1c   0x00300c1c   0x00000004   PAD
-    0x00300c20   0x00300c20   0x0000000c   Code   RO           11    .text.BOARD_initForCPU2  board.o
-    0x00300c2c   0x00300c2c   0x00000004   PAD
-    0x00300c30   0x00300c30   0x00000062   Code   RO            7    .text.BOARD_mpuConfig  board.o
-    0x00300c92   0x00300c92   0x00000006   PAD
-    0x00300c98   0x00300c98   0x0000008c   Code   RO          151    .text.BOARD_uartPinConfig  pin_config.o
-    0x00300d24   0x00300d24   0x00000004   PAD
-    0x00300d28   0x00300d28   0x0000003a   Code   RO          204    .text.DEBUG_CONSOLE_HAL_uartInit  hte_debug_console.o
-    0x00300d62   0x00300d62   0x00000006   PAD
-    0x00300d68   0x00300d68   0x00000008   Code   RO          208    .text.DEBUG_CONSOLE_HAL_uartTransmit  hte_debug_console.o
-    0x00300d70   0x00300d70   0x0000007a   Code   RO          202    .text.DEBUG_CONSOLE_init  hte_debug_console.o
-    0x00300dea   0x00300dea   0x00000006   PAD
-    0x00300df0   0x00300df0   0x00000054   Code   RO          313    .text.GPIO_getPort  hte_gpio.o
-    0x00300e44   0x00300e44   0x00000004   PAD
-    0x00300e48   0x00300e48   0x0000000c   Code   RO          337    .text.GPIO_isPinValid  hte_gpio.o
-    0x00300e54   0x00300e54   0x00000004   PAD
-    0x00300e58   0x00300e58   0x0000003c   Code   RO          311    .text.GPIO_setMasterCore  hte_gpio.o
+    0x00300000   0x00300000   0x00000400   Data   RO          849    RESET               startup_hs32f7d377_cpu1_ac6.o
+    0x00300400   0x00300400   0x00000000   Code   RO          892  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x00300400   0x00300400   0x00000004   Code   RO         1247    .ARM.Collect$$$$00000003  mc_w.l(entry4.o)
+    0x00300404   0x00300404   0x00000004   Code   RO         1250    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x00300408   0x00300408   0x00000000   Code   RO         1252    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x00300408   0x00300408   0x00000000   Code   RO         1254    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x00300408   0x00300408   0x00000008   Code   RO         1255    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x00300410   0x00300410   0x00000000   Code   RO         1257    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x00300410   0x00300410   0x00000000   Code   RO         1259    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x00300410   0x00300410   0x00000004   Code   RO         1248    .ARM.Collect$$$$00002714  mc_w.l(entry4.o)
+    0x00300414   0x00300414   0x0000052c   Code   RO          848    .text               startup_hs32f7d377_cpu1_ac6.o
+    0x00300940   0x00300940   0x00000062   Code   RO          898    .text               mc_w.l(uldiv.o)
+    0x003009a2   0x003009a2   0x00000028   Code   RO          900    .text               mc_w.l(memcpy.o)
+    0x003009ca   0x003009ca   0x00000024   Code   RO          906    .text               mc_w.l(memseta.o)
+    0x003009ee   0x003009ee   0x0000002c   Code   RO         1270    .text               mc_w.l(uidiv.o)
+    0x00300a1a   0x00300a1a   0x0000001e   Code   RO         1272    .text               mc_w.l(llshl.o)
+    0x00300a38   0x00300a38   0x00000020   Code   RO         1274    .text               mc_w.l(llushr.o)
+    0x00300a58   0x00300a58   0x00000024   Code   RO         1290    .text               mc_w.l(init.o)
+    0x00300a7c   0x00300a7c   0x00000004   PAD
+    0x00300a80   0x00300a80   0x00000026   Code   RO           13    .text.ARM_MPU_Disable  board.o
+    0x00300aa6   0x00300aa6   0x00000002   PAD
+    0x00300aa8   0x00300aa8   0x00000022   Code   RO           17    .text.ARM_MPU_Enable  board.o
+    0x00300aca   0x00300aca   0x00000006   PAD
+    0x00300ad0   0x00300ad0   0x0000001e   Code   RO           15    .text.ARM_MPU_Load  board.o
+    0x00300aee   0x00300aee   0x00000002   PAD
+    0x00300af0   0x00300af0   0x0000001e   Code   RO           41    .text.ARM_MPU_OrderedMemcpy  board.o
+    0x00300b0e   0x00300b0e   0x00000002   PAD
+    0x00300b10   0x00300b10   0x00000080   Code   RO           70    .text.BOARD_clockConfig  clock_config.o
+    0x00300b90   0x00300b90   0x00000016   Code   RO           74    .text.BOARD_clockConfigForCPU2  clock_config.o
+    0x00300ba6   0x00300ba6   0x00000002   PAD
+    0x00300ba8   0x00300ba8   0x0000001a   Code   RO           66    .text.BOARD_clockInfStore  clock_config.o
+    0x00300bc2   0x00300bc2   0x00000006   PAD
+    0x00300bc8   0x00300bc8   0x0000003e   Code   RO            9    .text.BOARD_debugConsoleInit  board.o
+    0x00300c06   0x00300c06   0x00000002   PAD
+    0x00300c08   0x00300c08   0x0000001a   Code   RO           27    .text.BOARD_debugConsoleInitForCPU2  board.o
+    0x00300c22   0x00300c22   0x00000006   PAD
+    0x00300c28   0x00300c28   0x0000000c   Code   RO           23    .text.BOARD_getPeripheralClk  board.o
+    0x00300c34   0x00300c34   0x00000004   PAD
+    0x00300c38   0x00300c38   0x0000000c   Code   RO          779    .text.BOARD_getPeripheralClk  mcan_ex2_receive.o
+    0x00300c44   0x00300c44   0x00000004   PAD
+    0x00300c48   0x00300c48   0x00000014   Code   RO            5    .text.BOARD_init    board.o
+    0x00300c5c   0x00300c5c   0x00000004   PAD
+    0x00300c60   0x00300c60   0x0000000c   Code   RO           11    .text.BOARD_initForCPU2  board.o
+    0x00300c6c   0x00300c6c   0x00000004   PAD
+    0x00300c70   0x00300c70   0x00000062   Code   RO            7    .text.BOARD_mpuConfig  board.o
+    0x00300cd2   0x00300cd2   0x00000006   PAD
+    0x00300cd8   0x00300cd8   0x0000008c   Code   RO          151    .text.BOARD_uartPinConfig  pin_config.o
+    0x00300d64   0x00300d64   0x00000004   PAD
+    0x00300d68   0x00300d68   0x0000003a   Code   RO          204    .text.DEBUG_CONSOLE_HAL_uartInit  hte_debug_console.o
+    0x00300da2   0x00300da2   0x00000006   PAD
+    0x00300da8   0x00300da8   0x00000008   Code   RO          208    .text.DEBUG_CONSOLE_HAL_uartTransmit  hte_debug_console.o
+    0x00300db0   0x00300db0   0x0000007a   Code   RO          202    .text.DEBUG_CONSOLE_init  hte_debug_console.o
+    0x00300e2a   0x00300e2a   0x00000006   PAD
+    0x00300e30   0x00300e30   0x00000054   Code   RO          313    .text.GPIO_getPort  hte_gpio.o
+    0x00300e84   0x00300e84   0x00000004   PAD
+    0x00300e88   0x00300e88   0x0000000c   Code   RO          337    .text.GPIO_isPinValid  hte_gpio.o
     0x00300e94   0x00300e94   0x00000004   PAD
-    0x00300e98   0x00300e98   0x000000a2   Code   RO          327    .text.GPIO_setPadConfig  hte_gpio.o
-    0x00300f3a   0x00300f3a   0x00000006   PAD
-    0x00300f40   0x00300f40   0x0000004c   Code   RO          325    .text.GPIO_setPinConfig  hte_gpio.o
-    0x00300f8c   0x00300f8c   0x00000004   PAD
-    0x00300f90   0x00300f90   0x0000006e   Code   RO          807    .text.GetInputVol   decodecan.o
-    0x00300ffe   0x00300ffe   0x00000002   PAD
-    0x00301000   0x00301000   0x0000007a   Code   RO          805    .text.GetRpm        decodecan.o
-    0x0030107a   0x0030107a   0x00000006   PAD
-    0x00301080   0x00301080   0x0000000e   Code   RO          292    .text.IPC_INT0_DriverHandler  hte_cpu1_ipc.o
-    0x0030108e   0x0030108e   0x00000002   PAD
-    0x00301090   0x00301090   0x0000000e   Code   RO          294    .text.IPC_INT1_DriverHandler  hte_cpu1_ipc.o
-    0x0030109e   0x0030109e   0x00000002   PAD
-    0x003010a0   0x003010a0   0x0000000e   Code   RO          296    .text.IPC_INT2_DriverHandler  hte_cpu1_ipc.o
-    0x003010ae   0x003010ae   0x00000002   PAD
-    0x003010b0   0x003010b0   0x0000000e   Code   RO          298    .text.IPC_INT3_DriverHandler  hte_cpu1_ipc.o
-    0x003010be   0x003010be   0x00000002   PAD
-    0x003010c0   0x003010c0   0x0000000a   Code   RO          133    .text.IPC_ackFlagRtoL  hte_cpu1_ipc_com.o
-    0x003010ca   0x003010ca   0x00000006   PAD
-    0x003010d0   0x003010d0   0x0000001e   Code   RO          135    .text.IPC_comInit   hte_cpu1_ipc_com.o
-    0x003010ee   0x003010ee   0x00000002   PAD
-    0x003010f0   0x003010f0   0x00000018   Code   RO          290    .text.IPC_handlerIRQ  hte_cpu1_ipc.o
-    0x00301108   0x00301108   0x00000038   Code   RO          278    .text.IPC_readCommand  hte_cpu1_ipc.o
-    0x00301140   0x00301140   0x0000006c   Code   RO          280    .text.IPC_registerCallback  hte_cpu1_ipc.o
-    0x003011ac   0x003011ac   0x00000004   PAD
-    0x003011b0   0x003011b0   0x0000000a   Code   RO          131    .text.IPC_sendResponse  hte_cpu1_ipc_com.o
-    0x003011ba   0x003011ba   0x00000006   PAD
-    0x003011c0   0x003011c0   0x00000016   Code   RO          486    .text.MCANA_INT0_DriverHandler  hte_mcan.o
+    0x00300e98   0x00300e98   0x0000003c   Code   RO          311    .text.GPIO_setMasterCore  hte_gpio.o
+    0x00300ed4   0x00300ed4   0x00000004   PAD
+    0x00300ed8   0x00300ed8   0x000000a2   Code   RO          327    .text.GPIO_setPadConfig  hte_gpio.o
+    0x00300f7a   0x00300f7a   0x00000006   PAD
+    0x00300f80   0x00300f80   0x0000004c   Code   RO          325    .text.GPIO_setPinConfig  hte_gpio.o
+    0x00300fcc   0x00300fcc   0x00000004   PAD
+    0x00300fd0   0x00300fd0   0x00000080   Code   RO          815    .text.GetInputVol   decodecan.o
+    0x00301050   0x00301050   0x00000086   Code   RO          811    .text.GetMotorValue  decodecan.o
+    0x003010d6   0x003010d6   0x00000002   PAD
+    0x003010d8   0x003010d8   0x0000008c   Code   RO          813    .text.GetRpm        decodecan.o
+    0x00301164   0x00301164   0x00000004   PAD
+    0x00301168   0x00301168   0x0000000e   Code   RO          292    .text.IPC_INT0_DriverHandler  hte_cpu1_ipc.o
+    0x00301176   0x00301176   0x00000002   PAD
+    0x00301178   0x00301178   0x0000000e   Code   RO          294    .text.IPC_INT1_DriverHandler  hte_cpu1_ipc.o
+    0x00301186   0x00301186   0x00000002   PAD
+    0x00301188   0x00301188   0x0000000e   Code   RO          296    .text.IPC_INT2_DriverHandler  hte_cpu1_ipc.o
+    0x00301196   0x00301196   0x00000002   PAD
+    0x00301198   0x00301198   0x0000000e   Code   RO          298    .text.IPC_INT3_DriverHandler  hte_cpu1_ipc.o
+    0x003011a6   0x003011a6   0x00000002   PAD
+    0x003011a8   0x003011a8   0x0000000a   Code   RO          133    .text.IPC_ackFlagRtoL  hte_cpu1_ipc_com.o
+    0x003011b2   0x003011b2   0x00000006   PAD
+    0x003011b8   0x003011b8   0x0000001e   Code   RO          135    .text.IPC_comInit   hte_cpu1_ipc_com.o
     0x003011d6   0x003011d6   0x00000002   PAD
-    0x003011d8   0x003011d8   0x00000016   Code   RO          488    .text.MCANA_INT1_DriverHandler  hte_mcan.o
-    0x003011ee   0x003011ee   0x00000002   PAD
-    0x003011f0   0x003011f0   0x00000018   Code   RO          490    .text.MCANB_INT0_DriverHandler  hte_mcan.o
-    0x00301208   0x00301208   0x00000018   Code   RO          492    .text.MCANB_INT1_DriverHandler  hte_mcan.o
-    0x00301220   0x00301220   0x00000018   Code   RO          494    .text.MCANC_INT0_DriverHandler  hte_mcan.o
-    0x00301238   0x00301238   0x00000018   Code   RO          496    .text.MCANC_INT1_DriverHandler  hte_mcan.o
-    0x00301250   0x00301250   0x0000014a   Code   RO          783    .text.MCANConfig    mcan_ex2_receive.o
-    0x0030139a   0x0030139a   0x00000006   PAD
-    0x003013a0   0x003013a0   0x0000002a   Code   RO          368    .text.MCAN_MsgRamInit  hte_mcan.o
-    0x003013ca   0x003013ca   0x00000006   PAD
-    0x003013d0   0x003013d0   0x00000052   Code   RO          412    .text.MCAN_addStdMsgIDFilter  hte_mcan.o
-    0x00301422   0x00301422   0x00000006   PAD
-    0x00301428   0x00301428   0x00000036   Code   RO          400    .text.MCAN_clearNewDataStatus  hte_mcan.o
-    0x0030145e   0x0030145e   0x00000002   PAD
-    0x00301460   0x00301460   0x000000de   Code   RO          380    .text.MCAN_config   hte_mcan.o
-    0x0030153e   0x0030153e   0x00000002   PAD
-    0x00301540   0x00301540   0x0000006c   Code   RO          498    .text.MCAN_getDataSize  hte_mcan.o
-    0x003015ac   0x003015ac   0x00000004   PAD
-    0x003015b0   0x003015b0   0x00000028   Code   RO          392    .text.MCAN_getMsgObjSize  hte_mcan.o
-    0x003015d8   0x003015d8   0x0000002c   Code   RO          366    .text.MCAN_getOpMode  hte_mcan.o
-    0x00301604   0x00301604   0x00000004   PAD
-    0x00301608   0x00301608   0x00000024   Code   RO          390    .text.MCAN_getRamBase  hte_mcan.o
-    0x0030162c   0x0030162c   0x00000004   PAD
-    0x00301630   0x00301630   0x00000050   Code   RO          454    .text.MCAN_getRevisionId  hte_mcan.o
-    0x00301680   0x00301680   0x0000005c   Code   RO          436    .text.MCAN_getRxFIFOStatus  hte_mcan.o
-    0x003016dc   0x003016dc   0x00000004   PAD
-    0x003016e0   0x003016e0   0x0000002a   Code   RO          440    .text.MCAN_getTxBufReqPend  hte_mcan.o
-    0x0030170a   0x0030170a   0x00000006   PAD
-    0x00301710   0x00301710   0x0000001e   Code   RO          484    .text.MCAN_handlerIRQ  hte_mcan.o
-    0x0030172e   0x0030172e   0x00000002   PAD
-    0x00301730   0x00301730   0x000000c2   Code   RO          374    .text.MCAN_init     hte_mcan.o
+    0x003011d8   0x003011d8   0x00000018   Code   RO          290    .text.IPC_handlerIRQ  hte_cpu1_ipc.o
+    0x003011f0   0x003011f0   0x00000038   Code   RO          278    .text.IPC_readCommand  hte_cpu1_ipc.o
+    0x00301228   0x00301228   0x0000006c   Code   RO          280    .text.IPC_registerCallback  hte_cpu1_ipc.o
+    0x00301294   0x00301294   0x00000004   PAD
+    0x00301298   0x00301298   0x0000000a   Code   RO          131    .text.IPC_sendResponse  hte_cpu1_ipc_com.o
+    0x003012a2   0x003012a2   0x00000006   PAD
+    0x003012a8   0x003012a8   0x00000016   Code   RO          486    .text.MCANA_INT0_DriverHandler  hte_mcan.o
+    0x003012be   0x003012be   0x00000002   PAD
+    0x003012c0   0x003012c0   0x00000016   Code   RO          488    .text.MCANA_INT1_DriverHandler  hte_mcan.o
+    0x003012d6   0x003012d6   0x00000002   PAD
+    0x003012d8   0x003012d8   0x00000018   Code   RO          490    .text.MCANB_INT0_DriverHandler  hte_mcan.o
+    0x003012f0   0x003012f0   0x00000018   Code   RO          492    .text.MCANB_INT1_DriverHandler  hte_mcan.o
+    0x00301308   0x00301308   0x00000018   Code   RO          494    .text.MCANC_INT0_DriverHandler  hte_mcan.o
+    0x00301320   0x00301320   0x00000018   Code   RO          496    .text.MCANC_INT1_DriverHandler  hte_mcan.o
+    0x00301338   0x00301338   0x0000014a   Code   RO          785    .text.MCANConfig    mcan_ex2_receive.o
+    0x00301482   0x00301482   0x00000006   PAD
+    0x00301488   0x00301488   0x0000002a   Code   RO          368    .text.MCAN_MsgRamInit  hte_mcan.o
+    0x003014b2   0x003014b2   0x00000006   PAD
+    0x003014b8   0x003014b8   0x00000052   Code   RO          412    .text.MCAN_addStdMsgIDFilter  hte_mcan.o
+    0x0030150a   0x0030150a   0x00000006   PAD
+    0x00301510   0x00301510   0x00000036   Code   RO          400    .text.MCAN_clearNewDataStatus  hte_mcan.o
+    0x00301546   0x00301546   0x00000002   PAD
+    0x00301548   0x00301548   0x000000de   Code   RO          380    .text.MCAN_config   hte_mcan.o
+    0x00301626   0x00301626   0x00000002   PAD
+    0x00301628   0x00301628   0x0000006c   Code   RO          498    .text.MCAN_getDataSize  hte_mcan.o
+    0x00301694   0x00301694   0x00000004   PAD
+    0x00301698   0x00301698   0x00000028   Code   RO          392    .text.MCAN_getMsgObjSize  hte_mcan.o
+    0x003016c0   0x003016c0   0x0000002c   Code   RO          366    .text.MCAN_getOpMode  hte_mcan.o
+    0x003016ec   0x003016ec   0x00000004   PAD
+    0x003016f0   0x003016f0   0x00000024   Code   RO          390    .text.MCAN_getRamBase  hte_mcan.o
+    0x00301714   0x00301714   0x00000004   PAD
+    0x00301718   0x00301718   0x00000050   Code   RO          454    .text.MCAN_getRevisionId  hte_mcan.o
+    0x00301768   0x00301768   0x0000005c   Code   RO          436    .text.MCAN_getRxFIFOStatus  hte_mcan.o
+    0x003017c4   0x003017c4   0x00000004   PAD
+    0x003017c8   0x003017c8   0x0000002a   Code   RO          440    .text.MCAN_getTxBufReqPend  hte_mcan.o
     0x003017f2   0x003017f2   0x00000006   PAD
-    0x003017f8   0x003017f8   0x00000024   Code   RO          364    .text.MCAN_isBaseValid  hte_mcan.o
-    0x0030181c   0x0030181c   0x00000004   PAD
-    0x00301820   0x00301820   0x0000019a   Code   RO          384    .text.MCAN_msgRAMConfig  hte_mcan.o
-    0x003019ba   0x003019ba   0x00000006   PAD
-    0x003019c0   0x003019c0   0x00000028   Code   RO          779    .text.MCAN_pinMux   mcan_ex2_receive.o
-    0x003019e8   0x003019e8   0x00000128   Code   RO          404    .text.MCAN_readMsg  hte_mcan.o
-    0x00301b10   0x00301b10   0x000000fa   Code   RO          402    .text.MCAN_readMsgRam  hte_mcan.o
-    0x00301c0a   0x00301c0a   0x00000006   PAD
-    0x00301c10   0x00301c10   0x000000ec   Code   RO          382    .text.MCAN_setBitTime  hte_mcan.o
-    0x00301cfc   0x00301cfc   0x00000004   PAD
-    0x00301d00   0x00301d00   0x00000030   Code   RO          362    .text.MCAN_setOpMode  hte_mcan.o
-    0x00301d30   0x00301d30   0x0000001e   Code   RO          781    .text.MCAN_setPclkEnable  mcan_ex2_receive.o
-    0x00301d4e   0x00301d4e   0x00000002   PAD
-    0x00301d50   0x00301d50   0x00000048   Code   RO          396    .text.MCAN_txBufAddReq  hte_mcan.o
-    0x00301d98   0x00301d98   0x00000110   Code   RO          394    .text.MCAN_writeMsg  hte_mcan.o
-    0x00301ea8   0x00301ea8   0x00000080   Code   RO          388    .text.MCAN_writeMsgRam  hte_mcan.o
-    0x00301f28   0x00301f28   0x0000002e   Code   RO          378    .text.MCAN_writeProtectedRegAccessLock  hte_mcan.o
-    0x00301f56   0x00301f56   0x00000002   PAD
-    0x00301f58   0x00301f58   0x0000002e   Code   RO          376    .text.MCAN_writeProtectedRegAccessUnlock  hte_mcan.o
-    0x00301f86   0x00301f86   0x00000002   PAD
-    0x00301f88   0x00301f88   0x0000006a   Code   RO          406    .text.MCAN_writeRxFIFOAck  hte_mcan.o
-    0x00301ff2   0x00301ff2   0x00000006   PAD
-    0x00301ff8   0x00301ff8   0x000000ac   Code   RO          265    .text.SDK_dwtDelay  hte_common.o
-    0x003020a4   0x003020a4   0x00000004   PAD
-    0x003020a8   0x003020a8   0x0000001a   Code   RO          615    .text.SYSCTRL_bypassAuxPLLPi  hte_sysctrl.o
-    0x003020c2   0x003020c2   0x00000006   PAD
-    0x003020c8   0x003020c8   0x0000001a   Code   RO          589    .text.SYSCTRL_bypassPLLPi  hte_sysctrl.o
-    0x003020e2   0x003020e2   0x00000006   PAD
-    0x003020e8   0x003020e8   0x00000012   Code   RO           21    .text.SYSCTRL_enablePeripheral  board.o
-    0x003020fa   0x003020fa   0x00000006   PAD
-    0x00302100   0x00302100   0x00000020   Code   RO          785    .text.SYSCTRL_enablePeripheral  mcan_ex2_receive.o
-    0x00302120   0x00302120   0x00000010   Code   RO          535    .text.SYSCTRL_gelAuxClkSrc  hte_sysctrl.o
-    0x00302130   0x00302130   0x00000010   Code   RO          549    .text.SYSCTRL_getAuxClkDivSel  hte_sysctrl.o
-    0x00302140   0x00302140   0x0000009c   Code   RO          533    .text.SYSCTRL_getAuxClock  hte_sysctrl.o
-    0x003021dc   0x003021dc   0x00000004   PAD
-    0x003021e0   0x003021e0   0x00000010   Code   RO          541    .text.SYSCTRL_getAuxPLLCkRefSel  hte_sysctrl.o
-    0x003021f0   0x003021f0   0x00000010   Code   RO          539    .text.SYSCTRL_getAuxPLLClkEn  hte_sysctrl.o
-    0x00302200   0x00302200   0x00000010   Code   RO          543    .text.SYSCTRL_getAuxPLLClkRefDiv  hte_sysctrl.o
-    0x00302210   0x00302210   0x00000010   Code   RO          537    .text.SYSCTRL_getAuxPLLEn  hte_sysctrl.o
-    0x00302220   0x00302220   0x00000010   Code   RO          547    .text.SYSCTRL_getAuxPLLFcwSsc  hte_sysctrl.o
-    0x00302230   0x00302230   0x00000010   Code   RO          545    .text.SYSCTRL_getAuxPLLFcwSscDecPoint  hte_sysctrl.o
-    0x00302240   0x00302240   0x00000010   Code   RO          617    .text.SYSCTRL_getAuxPLLLockStatus  hte_sysctrl.o
-    0x00302250   0x00302250   0x00000010   Code   RO          372    .text.SYSCTRL_getCANSramInitDone  hte_mcan.o
-    0x00302260   0x00302260   0x000000cc   Code   RO          511    .text.SYSCTRL_getClock  hte_sysctrl.o
-    0x0030232c   0x0030232c   0x00000004   PAD
-    0x00302330   0x00302330   0x00000010   Code   RO           78    .text.SYSCTRL_getMsgramInitDone  clock_config.o
-    0x00302340   0x00302340   0x00000010   Code   RO          137    .text.SYSCTRL_getMsgramInitDone  hte_cpu1_ipc_com.o
-    0x00302350   0x00302350   0x00000010   Code   RO          515    .text.SYSCTRL_getOscClkSrc  hte_sysctrl.o
-    0x00302360   0x00302360   0x00000010   Code   RO          521    .text.SYSCTRL_getPLLCkRefSel  hte_sysctrl.o
-    0x00302370   0x00302370   0x00000010   Code   RO          519    .text.SYSCTRL_getPLLClkEn  hte_sysctrl.o
-    0x00302380   0x00302380   0x00000010   Code   RO          523    .text.SYSCTRL_getPLLClkRefDiv  hte_sysctrl.o
-    0x00302390   0x00302390   0x00000010   Code   RO          517    .text.SYSCTRL_getPLLEn  hte_sysctrl.o
-    0x003023a0   0x003023a0   0x00000010   Code   RO          527    .text.SYSCTRL_getPLLFcwSsc  hte_sysctrl.o
-    0x003023b0   0x003023b0   0x00000010   Code   RO          525    .text.SYSCTRL_getPLLFcwSscDecPoint  hte_sysctrl.o
-    0x003023c0   0x003023c0   0x00000010   Code   RO          591    .text.SYSCTRL_getPLLLockStatus  hte_sysctrl.o
-    0x003023d0   0x003023d0   0x00000010   Code   RO          529    .text.SYSCTRL_getPLLPi  hte_sysctrl.o
-    0x003023e0   0x003023e0   0x00000010   Code   RO          531    .text.SYSCTRL_getSysClkDivSel  hte_sysctrl.o
-    0x003023f0   0x003023f0   0x00000012   Code   RO          370    .text.SYSCTRL_initCANSram  hte_mcan.o
-    0x00302402   0x00302402   0x00000006   PAD
-    0x00302408   0x00302408   0x00000012   Code   RO           76    .text.SYSCTRL_initMsgram  clock_config.o
-    0x0030241a   0x0030241a   0x00000006   PAD
-    0x00302420   0x00302420   0x00000010   Code   RO          513    .text.SYSCTRL_isMCDClockFailureDetected  hte_sysctrl.o
-    0x00302430   0x00302430   0x0000001a   Code   RO          601    .text.SYSCTRL_resetAuxPLL  hte_sysctrl.o
-    0x0030244a   0x0030244a   0x00000006   PAD
-    0x00302450   0x00302450   0x00000012   Code   RO          557    .text.SYSCTRL_resetMCD  hte_sysctrl.o
-    0x00302462   0x00302462   0x00000006   PAD
-    0x00302468   0x00302468   0x0000001a   Code   RO          575    .text.SYSCTRL_resetPLL  hte_sysctrl.o
-    0x00302482   0x00302482   0x00000006   PAD
-    0x00302488   0x00302488   0x00000012   Code   RO          565    .text.SYSCTRL_selAuxClkSrc  hte_sysctrl.o
-    0x0030249a   0x0030249a   0x00000006   PAD
-    0x003024a0   0x003024a0   0x00000012   Code   RO          555    .text.SYSCTRL_selOscClkSrc  hte_sysctrl.o
-    0x003024b2   0x003024b2   0x00000006   PAD
-    0x003024b8   0x003024b8   0x00000028   Code   RO           19    .text.SYSCTRL_selectCPUForPeripheral  board.o
-    0x003024e0   0x003024e0   0x00000056   Code   RO          559    .text.SYSCTRL_selectOscSource  hte_sysctrl.o
-    0x00302536   0x00302536   0x00000002   PAD
-    0x00302538   0x00302538   0x0000004a   Code   RO          551    .text.SYSCTRL_selectXTAL  hte_sysctrl.o
+    0x003017f8   0x003017f8   0x0000001e   Code   RO          484    .text.MCAN_handlerIRQ  hte_mcan.o
+    0x00301816   0x00301816   0x00000002   PAD
+    0x00301818   0x00301818   0x000000c2   Code   RO          374    .text.MCAN_init     hte_mcan.o
+    0x003018da   0x003018da   0x00000006   PAD
+    0x003018e0   0x003018e0   0x00000024   Code   RO          364    .text.MCAN_isBaseValid  hte_mcan.o
+    0x00301904   0x00301904   0x00000004   PAD
+    0x00301908   0x00301908   0x0000019a   Code   RO          384    .text.MCAN_msgRAMConfig  hte_mcan.o
+    0x00301aa2   0x00301aa2   0x00000006   PAD
+    0x00301aa8   0x00301aa8   0x00000028   Code   RO          781    .text.MCAN_pinMux   mcan_ex2_receive.o
+    0x00301ad0   0x00301ad0   0x00000128   Code   RO          404    .text.MCAN_readMsg  hte_mcan.o
+    0x00301bf8   0x00301bf8   0x000000fa   Code   RO          402    .text.MCAN_readMsgRam  hte_mcan.o
+    0x00301cf2   0x00301cf2   0x00000006   PAD
+    0x00301cf8   0x00301cf8   0x000000ec   Code   RO          382    .text.MCAN_setBitTime  hte_mcan.o
+    0x00301de4   0x00301de4   0x00000004   PAD
+    0x00301de8   0x00301de8   0x00000030   Code   RO          362    .text.MCAN_setOpMode  hte_mcan.o
+    0x00301e18   0x00301e18   0x0000001e   Code   RO          783    .text.MCAN_setPclkEnable  mcan_ex2_receive.o
+    0x00301e36   0x00301e36   0x00000002   PAD
+    0x00301e38   0x00301e38   0x00000048   Code   RO          396    .text.MCAN_txBufAddReq  hte_mcan.o
+    0x00301e80   0x00301e80   0x00000110   Code   RO          394    .text.MCAN_writeMsg  hte_mcan.o
+    0x00301f90   0x00301f90   0x00000080   Code   RO          388    .text.MCAN_writeMsgRam  hte_mcan.o
+    0x00302010   0x00302010   0x0000002e   Code   RO          378    .text.MCAN_writeProtectedRegAccessLock  hte_mcan.o
+    0x0030203e   0x0030203e   0x00000002   PAD
+    0x00302040   0x00302040   0x0000002e   Code   RO          376    .text.MCAN_writeProtectedRegAccessUnlock  hte_mcan.o
+    0x0030206e   0x0030206e   0x00000002   PAD
+    0x00302070   0x00302070   0x0000006a   Code   RO          406    .text.MCAN_writeRxFIFOAck  hte_mcan.o
+    0x003020da   0x003020da   0x00000006   PAD
+    0x003020e0   0x003020e0   0x000000ac   Code   RO          265    .text.SDK_dwtDelay  hte_common.o
+    0x0030218c   0x0030218c   0x00000004   PAD
+    0x00302190   0x00302190   0x0000001a   Code   RO          615    .text.SYSCTRL_bypassAuxPLLPi  hte_sysctrl.o
+    0x003021aa   0x003021aa   0x00000006   PAD
+    0x003021b0   0x003021b0   0x0000001a   Code   RO          589    .text.SYSCTRL_bypassPLLPi  hte_sysctrl.o
+    0x003021ca   0x003021ca   0x00000006   PAD
+    0x003021d0   0x003021d0   0x00000012   Code   RO           21    .text.SYSCTRL_enablePeripheral  board.o
+    0x003021e2   0x003021e2   0x00000006   PAD
+    0x003021e8   0x003021e8   0x00000020   Code   RO          787    .text.SYSCTRL_enablePeripheral  mcan_ex2_receive.o
+    0x00302208   0x00302208   0x00000010   Code   RO          535    .text.SYSCTRL_gelAuxClkSrc  hte_sysctrl.o
+    0x00302218   0x00302218   0x00000010   Code   RO          549    .text.SYSCTRL_getAuxClkDivSel  hte_sysctrl.o
+    0x00302228   0x00302228   0x0000009c   Code   RO          533    .text.SYSCTRL_getAuxClock  hte_sysctrl.o
+    0x003022c4   0x003022c4   0x00000004   PAD
+    0x003022c8   0x003022c8   0x00000010   Code   RO          541    .text.SYSCTRL_getAuxPLLCkRefSel  hte_sysctrl.o
+    0x003022d8   0x003022d8   0x00000010   Code   RO          539    .text.SYSCTRL_getAuxPLLClkEn  hte_sysctrl.o
+    0x003022e8   0x003022e8   0x00000010   Code   RO          543    .text.SYSCTRL_getAuxPLLClkRefDiv  hte_sysctrl.o
+    0x003022f8   0x003022f8   0x00000010   Code   RO          537    .text.SYSCTRL_getAuxPLLEn  hte_sysctrl.o
+    0x00302308   0x00302308   0x00000010   Code   RO          547    .text.SYSCTRL_getAuxPLLFcwSsc  hte_sysctrl.o
+    0x00302318   0x00302318   0x00000010   Code   RO          545    .text.SYSCTRL_getAuxPLLFcwSscDecPoint  hte_sysctrl.o
+    0x00302328   0x00302328   0x00000010   Code   RO          617    .text.SYSCTRL_getAuxPLLLockStatus  hte_sysctrl.o
+    0x00302338   0x00302338   0x00000010   Code   RO          372    .text.SYSCTRL_getCANSramInitDone  hte_mcan.o
+    0x00302348   0x00302348   0x000000cc   Code   RO          511    .text.SYSCTRL_getClock  hte_sysctrl.o
+    0x00302414   0x00302414   0x00000004   PAD
+    0x00302418   0x00302418   0x00000010   Code   RO           78    .text.SYSCTRL_getMsgramInitDone  clock_config.o
+    0x00302428   0x00302428   0x00000010   Code   RO          137    .text.SYSCTRL_getMsgramInitDone  hte_cpu1_ipc_com.o
+    0x00302438   0x00302438   0x00000010   Code   RO          515    .text.SYSCTRL_getOscClkSrc  hte_sysctrl.o
+    0x00302448   0x00302448   0x00000010   Code   RO          521    .text.SYSCTRL_getPLLCkRefSel  hte_sysctrl.o
+    0x00302458   0x00302458   0x00000010   Code   RO          519    .text.SYSCTRL_getPLLClkEn  hte_sysctrl.o
+    0x00302468   0x00302468   0x00000010   Code   RO          523    .text.SYSCTRL_getPLLClkRefDiv  hte_sysctrl.o
+    0x00302478   0x00302478   0x00000010   Code   RO          517    .text.SYSCTRL_getPLLEn  hte_sysctrl.o
+    0x00302488   0x00302488   0x00000010   Code   RO          527    .text.SYSCTRL_getPLLFcwSsc  hte_sysctrl.o
+    0x00302498   0x00302498   0x00000010   Code   RO          525    .text.SYSCTRL_getPLLFcwSscDecPoint  hte_sysctrl.o
+    0x003024a8   0x003024a8   0x00000010   Code   RO          591    .text.SYSCTRL_getPLLLockStatus  hte_sysctrl.o
+    0x003024b8   0x003024b8   0x00000010   Code   RO          529    .text.SYSCTRL_getPLLPi  hte_sysctrl.o
+    0x003024c8   0x003024c8   0x00000010   Code   RO          531    .text.SYSCTRL_getSysClkDivSel  hte_sysctrl.o
+    0x003024d8   0x003024d8   0x00000012   Code   RO          370    .text.SYSCTRL_initCANSram  hte_mcan.o
+    0x003024ea   0x003024ea   0x00000006   PAD
+    0x003024f0   0x003024f0   0x00000012   Code   RO           76    .text.SYSCTRL_initMsgram  clock_config.o
+    0x00302502   0x00302502   0x00000006   PAD
+    0x00302508   0x00302508   0x00000010   Code   RO          513    .text.SYSCTRL_isMCDClockFailureDetected  hte_sysctrl.o
+    0x00302518   0x00302518   0x0000001a   Code   RO          601    .text.SYSCTRL_resetAuxPLL  hte_sysctrl.o
+    0x00302532   0x00302532   0x00000006   PAD
+    0x00302538   0x00302538   0x00000012   Code   RO          557    .text.SYSCTRL_resetMCD  hte_sysctrl.o
+    0x0030254a   0x0030254a   0x00000006   PAD
+    0x00302550   0x00302550   0x0000001a   Code   RO          575    .text.SYSCTRL_resetPLL  hte_sysctrl.o
+    0x0030256a   0x0030256a   0x00000006   PAD
+    0x00302570   0x00302570   0x00000012   Code   RO          565    .text.SYSCTRL_selAuxClkSrc  hte_sysctrl.o
     0x00302582   0x00302582   0x00000006   PAD
-    0x00302588   0x00302588   0x0000000c   Code   RO          595    .text.SYSCTRL_setAuxClkDivSel  hte_sysctrl.o
-    0x00302594   0x00302594   0x00000004   PAD
-    0x00302598   0x00302598   0x00000154   Code   RO          593    .text.SYSCTRL_setAuxClock  hte_sysctrl.o
-    0x003026ec   0x003026ec   0x00000004   PAD
-    0x003026f0   0x003026f0   0x0000001a   Code   RO          607    .text.SYSCTRL_setAuxPLLCkRefSel  hte_sysctrl.o
-    0x0030270a   0x0030270a   0x00000006   PAD
-    0x00302710   0x00302710   0x00000018   Code   RO          597    .text.SYSCTRL_setAuxPLLClkEn  hte_sysctrl.o
-    0x00302728   0x00302728   0x0000001e   Code   RO          609    .text.SYSCTRL_setAuxPLLClkRefDiv  hte_sysctrl.o
-    0x00302746   0x00302746   0x00000002   PAD
-    0x00302748   0x00302748   0x00000018   Code   RO          603    .text.SYSCTRL_setAuxPLLEn  hte_sysctrl.o
-    0x00302760   0x00302760   0x00000012   Code   RO          613    .text.SYSCTRL_setAuxPLLFcwSsc  hte_sysctrl.o
-    0x00302772   0x00302772   0x00000006   PAD
-    0x00302778   0x00302778   0x00000014   Code   RO          611    .text.SYSCTRL_setAuxPLLFcwSscDecPoint  hte_sysctrl.o
-    0x0030278c   0x0030278c   0x00000004   PAD
-    0x00302790   0x00302790   0x0000001a   Code   RO          599    .text.SYSCTRL_setAuxPLLHighFreqBand  hte_sysctrl.o
-    0x003027aa   0x003027aa   0x00000006   PAD
-    0x003027b0   0x003027b0   0x0000001a   Code   RO          605    .text.SYSCTRL_setAuxPLLLDOEn  hte_sysctrl.o
-    0x003027ca   0x003027ca   0x00000006   PAD
-    0x003027d0   0x003027d0   0x00000160   Code   RO          567    .text.SYSCTRL_setClock  hte_sysctrl.o
-    0x00302930   0x00302930   0x0000001a   Code   RO          581    .text.SYSCTRL_setPLLCkRefSel  hte_sysctrl.o
-    0x0030294a   0x0030294a   0x00000006   PAD
-    0x00302950   0x00302950   0x00000012   Code   RO           72    .text.SYSCTRL_setPLLClkEn  clock_config.o
-    0x00302962   0x00302962   0x00000006   PAD
-    0x00302968   0x00302968   0x00000018   Code   RO          571    .text.SYSCTRL_setPLLClkEn  hte_sysctrl.o
-    0x00302980   0x00302980   0x0000001e   Code   RO          583    .text.SYSCTRL_setPLLClkRefDiv  hte_sysctrl.o
-    0x0030299e   0x0030299e   0x00000002   PAD
-    0x003029a0   0x003029a0   0x00000018   Code   RO          577    .text.SYSCTRL_setPLLEn  hte_sysctrl.o
-    0x003029b8   0x003029b8   0x00000012   Code   RO          587    .text.SYSCTRL_setPLLFcwSsc  hte_sysctrl.o
-    0x003029ca   0x003029ca   0x00000006   PAD
-    0x003029d0   0x003029d0   0x00000014   Code   RO          585    .text.SYSCTRL_setPLLFcwSscDecPoint  hte_sysctrl.o
-    0x003029e4   0x003029e4   0x00000004   PAD
-    0x003029e8   0x003029e8   0x0000001a   Code   RO          573    .text.SYSCTRL_setPLLHighFreqBand  hte_sysctrl.o
-    0x00302a02   0x00302a02   0x00000006   PAD
-    0x00302a08   0x00302a08   0x0000001a   Code   RO          579    .text.SYSCTRL_setPLLLDOEn  hte_sysctrl.o
-    0x00302a22   0x00302a22   0x00000006   PAD
-    0x00302a28   0x00302a28   0x0000000c   Code   RO          569    .text.SYSCTRL_setSysClkDivSel  hte_sysctrl.o
-    0x00302a34   0x00302a34   0x00000004   PAD
-    0x00302a38   0x00302a38   0x00000012   Code   RO          561    .text.SYSCTRL_turnOffOsc  hte_sysctrl.o
+    0x00302588   0x00302588   0x00000012   Code   RO          555    .text.SYSCTRL_selOscClkSrc  hte_sysctrl.o
+    0x0030259a   0x0030259a   0x00000006   PAD
+    0x003025a0   0x003025a0   0x00000028   Code   RO           19    .text.SYSCTRL_selectCPUForPeripheral  board.o
+    0x003025c8   0x003025c8   0x00000056   Code   RO          559    .text.SYSCTRL_selectOscSource  hte_sysctrl.o
+    0x0030261e   0x0030261e   0x00000002   PAD
+    0x00302620   0x00302620   0x0000004a   Code   RO          551    .text.SYSCTRL_selectXTAL  hte_sysctrl.o
+    0x0030266a   0x0030266a   0x00000006   PAD
+    0x00302670   0x00302670   0x0000000c   Code   RO          595    .text.SYSCTRL_setAuxClkDivSel  hte_sysctrl.o
+    0x0030267c   0x0030267c   0x00000004   PAD
+    0x00302680   0x00302680   0x00000154   Code   RO          593    .text.SYSCTRL_setAuxClock  hte_sysctrl.o
+    0x003027d4   0x003027d4   0x00000004   PAD
+    0x003027d8   0x003027d8   0x0000001a   Code   RO          607    .text.SYSCTRL_setAuxPLLCkRefSel  hte_sysctrl.o
+    0x003027f2   0x003027f2   0x00000006   PAD
+    0x003027f8   0x003027f8   0x00000018   Code   RO          597    .text.SYSCTRL_setAuxPLLClkEn  hte_sysctrl.o
+    0x00302810   0x00302810   0x0000001e   Code   RO          609    .text.SYSCTRL_setAuxPLLClkRefDiv  hte_sysctrl.o
+    0x0030282e   0x0030282e   0x00000002   PAD
+    0x00302830   0x00302830   0x00000018   Code   RO          603    .text.SYSCTRL_setAuxPLLEn  hte_sysctrl.o
+    0x00302848   0x00302848   0x00000012   Code   RO          613    .text.SYSCTRL_setAuxPLLFcwSsc  hte_sysctrl.o
+    0x0030285a   0x0030285a   0x00000006   PAD
+    0x00302860   0x00302860   0x00000014   Code   RO          611    .text.SYSCTRL_setAuxPLLFcwSscDecPoint  hte_sysctrl.o
+    0x00302874   0x00302874   0x00000004   PAD
+    0x00302878   0x00302878   0x0000001a   Code   RO          599    .text.SYSCTRL_setAuxPLLHighFreqBand  hte_sysctrl.o
+    0x00302892   0x00302892   0x00000006   PAD
+    0x00302898   0x00302898   0x0000001a   Code   RO          605    .text.SYSCTRL_setAuxPLLLDOEn  hte_sysctrl.o
+    0x003028b2   0x003028b2   0x00000006   PAD
+    0x003028b8   0x003028b8   0x00000160   Code   RO          567    .text.SYSCTRL_setClock  hte_sysctrl.o
+    0x00302a18   0x00302a18   0x0000001a   Code   RO          581    .text.SYSCTRL_setPLLCkRefSel  hte_sysctrl.o
+    0x00302a32   0x00302a32   0x00000006   PAD
+    0x00302a38   0x00302a38   0x00000012   Code   RO           72    .text.SYSCTRL_setPLLClkEn  clock_config.o
     0x00302a4a   0x00302a4a   0x00000006   PAD
-    0x00302a50   0x00302a50   0x00000022   Code   RO          553    .text.SYSCTRL_turnOnOsc  hte_sysctrl.o
-    0x00302a72   0x00302a72   0x00000006   PAD
-    0x00302a78   0x00302a78   0x00000064   Code   RO          811    .text.SetDuty       decodecan.o
-    0x00302adc   0x00302adc   0x00000004   PAD
-    0x00302ae0   0x00302ae0   0x0000002e   Code   RO          809    .text.SetDutyClr    decodecan.o
-    0x00302b0e   0x00302b0e   0x00000002   PAD
-    0x00302b10   0x00302b10   0x00000064   Code   RO          813    .text.SetI          decodecan.o
-    0x00302b74   0x00302b74   0x00000004   PAD
-    0x00302b78   0x00302b78   0x0000001e   Code   RO           52    .text.SysTick_DriverHandler  clock_config.o
-    0x00302b96   0x00302b96   0x00000002   PAD
-    0x00302b98   0x00302b98   0x00000012   Code   RO          245    .text.SystemInit    system_hs32f7d377_cpu1.o
-    0x00302baa   0x00302baa   0x00000006   PAD
-    0x00302bb0   0x00302bb0   0x00000024   Code   RO          715    .text.UARTA_DriverHandler  hte_uart.o
-    0x00302bd4   0x00302bd4   0x00000004   PAD
-    0x00302bd8   0x00302bd8   0x0000002a   Code   RO          717    .text.UARTB_DriverHandler  hte_uart.o
-    0x00302c02   0x00302c02   0x00000006   PAD
-    0x00302c08   0x00302c08   0x0000002a   Code   RO          719    .text.UARTC_DriverHandler  hte_uart.o
-    0x00302c32   0x00302c32   0x00000006   PAD
-    0x00302c38   0x00302c38   0x0000002a   Code   RO          721    .text.UARTD_DriverHandler  hte_uart.o
-    0x00302c62   0x00302c62   0x00000006   PAD
-    0x00302c68   0x00302c68   0x00000026   Code   RO          651    .text.UART_disableFIFOAccess  hte_uart.o
-    0x00302c8e   0x00302c8e   0x00000002   PAD
-    0x00302c90   0x00302c90   0x00000026   Code   RO          653    .text.UART_disableLoopback  hte_uart.o
-    0x00302cb6   0x00302cb6   0x00000002   PAD
-    0x00302cb8   0x00302cb8   0x00000036   Code   RO          643    .text.UART_getDefaultConfig  hte_uart.o
-    0x00302cee   0x00302cee   0x00000002   PAD
-    0x00302cf0   0x00302cf0   0x00000020   Code   RO          661    .text.UART_getLineStatus  hte_uart.o
-    0x00302d10   0x00302d10   0x00000024   Code   RO          723    .text.UART_getTxFIFOLevel  hte_uart.o
-    0x00302d34   0x00302d34   0x00000004   PAD
-    0x00302d38   0x00302d38   0x0000002a   Code   RO          655    .text.UART_haltTransmit  hte_uart.o
-    0x00302d62   0x00302d62   0x00000006   PAD
-    0x00302d68   0x00302d68   0x000000b4   Code   RO          645    .text.UART_init     hte_uart.o
-    0x00302e1c   0x00302e1c   0x00000004   PAD
-    0x00302e20   0x00302e20   0x00000024   Code   RO          647    .text.UART_isBusy   hte_uart.o
-    0x00302e44   0x00302e44   0x00000004   PAD
-    0x00302e48   0x00302e48   0x00000026   Code   RO          675    .text.UART_isFIFOEnabled  hte_uart.o
-    0x00302e6e   0x00302e6e   0x00000002   PAD
-    0x00302e70   0x00302e70   0x0000003e   Code   RO          667    .text.UART_isSpaceAvailable  hte_uart.o
-    0x00302eae   0x00302eae   0x00000002   PAD
-    0x00302eb0   0x00302eb0   0x00000024   Code   RO          725    .text.UART_isTransmitHoldingEmpty  hte_uart.o
-    0x00302ed4   0x00302ed4   0x00000004   PAD
-    0x00302ed8   0x00302ed8   0x00000024   Code   RO          669    .text.UART_isTransmitRegisterEmpty  hte_uart.o
-    0x00302efc   0x00302efc   0x00000004   PAD
-    0x00302f00   0x00302f00   0x0000008e   Code   RO          671    .text.UART_readDataBlocking  hte_uart.o
-    0x00302f8e   0x00302f8e   0x00000002   PAD
-    0x00302f90   0x00302f90   0x000000f0   Code   RO          649    .text.UART_setBaudRate  hte_uart.o
-    0x00303080   0x00303080   0x00000062   Code   RO          665    .text.UART_writeDataBlocking  hte_uart.o
-    0x003030e2   0x003030e2   0x00000006   PAD
-    0x003030e8   0x003030e8   0x00000020   Code   RO          284    .text.__NVIC_EnableIRQ  hte_cpu1_ipc.o
-    0x00303108   0x00303108   0x00000022   Code   RO          282    .text.__NVIC_SetPriority  hte_cpu1_ipc.o
-    0x0030312a   0x0030312a   0x00000006   PAD
-    0x00303130   0x00303130   0x00000068   Code   RO          193    .text.__aeabi_assert  hte_assert.o
-    0x00303198   0x00303198   0x00000020   Code   RO          801    .text.backCanStandID  decodecan.o
-    0x003031b8   0x003031b8   0x00000078   Code   RO          129    .text.cpu1_ipc_com_irq_handler  hte_cpu1_ipc_com.o
-    0x00303230   0x00303230   0x00000032   Code   RO          832    .text.crc16         crc.o
-    0x00303262   0x00303262   0x00000006   PAD
-    0x00303268   0x00303268   0x00000052   Code   RO          803    .text.decodeInst    decodecan.o
-    0x003032ba   0x003032ba   0x00000006   PAD
-    0x003032c0   0x003032c0   0x0000002e   Code   RO          228    .text.fputc         hte_debug_console.o
-    0x003032ee   0x003032ee   0x00000002   PAD
-    0x003032f0   0x003032f0   0x00000130   Code   RO          777    .text.main          mcan_ex2_receive.o
-    0x00303420   0x00303420   0x00000020   Code   RO         1112    i.__0printf$8       mc_w.l(printf8.o)
-    0x00303440   0x00303440   0x0000000e   Code   RO         1291    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x0030344e   0x0030344e   0x00000002   Code   RO         1292    i.__scatterload_null  mc_w.l(handlers.o)
-    0x00303450   0x00303450   0x0000000e   Code   RO         1293    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x0030345e   0x0030345e   0x00000002   PAD
-    0x00303460   0x00303460   0x00000410   Code   RO         1119    i._printf_core      mc_w.l(printf8.o)
-    0x00303870   0x00303870   0x00000024   Code   RO         1120    i._printf_post_padding  mc_w.l(printf8.o)
-    0x00303894   0x00303894   0x0000002e   Code   RO         1121    i._printf_pre_padding  mc_w.l(printf8.o)
-    0x003038c2   0x003038c2   0x00000002   PAD
-    0x003038c4   0x003038c4   0x00000014   Data   RO          822    .rodata..L__const.GetInputVol.dataBuf  decodecan.o
-    0x003038d8   0x003038d8   0x00000014   Data   RO          821    .rodata..L__const.GetRpm.dataBuf  decodecan.o
-    0x003038ec   0x003038ec   0x00000200   Data   RO          834    .rodata.crc16_tab   crc.o
-    0x00303aec   0x00303aec   0x00000008   Data   RO          302    .rodata.cst8        hte_cpu1_ipc.o
-    0x00303af4   0x00303af4   0x00000045   Data   RO          267    .rodata.str1.1      hte_common.o
-    0x00303b39   0x00303b39   0x00000049   Data   RO          300    .rodata.str1.1      hte_cpu1_ipc.o
-    0x00303b82   0x00303b82   0x00000015   Data   RO          353    .rodata.str1.1      hte_gpio.o
-    0x00303b97   0x00303b97   0x0000006b   Data   RO          500    .rodata.str1.1      hte_mcan.o
-    0x00303c02   0x00303c02   0x0000006b   Data   RO          748    .rodata.str1.1      hte_uart.o
-    0x00303c6d   0x00303c6d   0x00000003   PAD
-    0x00303c70   0x00303c70   0x00000020   Data   RO         1290    Region$$Table       anon$$obj.o
+    0x00302a50   0x00302a50   0x00000018   Code   RO          571    .text.SYSCTRL_setPLLClkEn  hte_sysctrl.o
+    0x00302a68   0x00302a68   0x0000001e   Code   RO          583    .text.SYSCTRL_setPLLClkRefDiv  hte_sysctrl.o
+    0x00302a86   0x00302a86   0x00000002   PAD
+    0x00302a88   0x00302a88   0x00000018   Code   RO          577    .text.SYSCTRL_setPLLEn  hte_sysctrl.o
+    0x00302aa0   0x00302aa0   0x00000012   Code   RO          587    .text.SYSCTRL_setPLLFcwSsc  hte_sysctrl.o
+    0x00302ab2   0x00302ab2   0x00000006   PAD
+    0x00302ab8   0x00302ab8   0x00000014   Code   RO          585    .text.SYSCTRL_setPLLFcwSscDecPoint  hte_sysctrl.o
+    0x00302acc   0x00302acc   0x00000004   PAD
+    0x00302ad0   0x00302ad0   0x0000001a   Code   RO          573    .text.SYSCTRL_setPLLHighFreqBand  hte_sysctrl.o
+    0x00302aea   0x00302aea   0x00000006   PAD
+    0x00302af0   0x00302af0   0x0000001a   Code   RO          579    .text.SYSCTRL_setPLLLDOEn  hte_sysctrl.o
+    0x00302b0a   0x00302b0a   0x00000006   PAD
+    0x00302b10   0x00302b10   0x0000000c   Code   RO          569    .text.SYSCTRL_setSysClkDivSel  hte_sysctrl.o
+    0x00302b1c   0x00302b1c   0x00000004   PAD
+    0x00302b20   0x00302b20   0x00000012   Code   RO          561    .text.SYSCTRL_turnOffOsc  hte_sysctrl.o
+    0x00302b32   0x00302b32   0x00000006   PAD
+    0x00302b38   0x00302b38   0x00000022   Code   RO          553    .text.SYSCTRL_turnOnOsc  hte_sysctrl.o
+    0x00302b5a   0x00302b5a   0x00000006   PAD
+    0x00302b60   0x00302b60   0x00000064   Code   RO          819    .text.SetDuty       decodecan.o
+    0x00302bc4   0x00302bc4   0x00000004   PAD
+    0x00302bc8   0x00302bc8   0x0000002e   Code   RO          817    .text.SetDutyClr    decodecan.o
+    0x00302bf6   0x00302bf6   0x00000002   PAD
+    0x00302bf8   0x00302bf8   0x00000064   Code   RO          821    .text.SetI          decodecan.o
+    0x00302c5c   0x00302c5c   0x00000004   PAD
+    0x00302c60   0x00302c60   0x0000001e   Code   RO           52    .text.SysTick_DriverHandler  clock_config.o
+    0x00302c7e   0x00302c7e   0x00000002   PAD
+    0x00302c80   0x00302c80   0x00000012   Code   RO          245    .text.SystemInit    system_hs32f7d377_cpu1.o
+    0x00302c92   0x00302c92   0x00000006   PAD
+    0x00302c98   0x00302c98   0x00000024   Code   RO          715    .text.UARTA_DriverHandler  hte_uart.o
+    0x00302cbc   0x00302cbc   0x00000004   PAD
+    0x00302cc0   0x00302cc0   0x0000002a   Code   RO          717    .text.UARTB_DriverHandler  hte_uart.o
+    0x00302cea   0x00302cea   0x00000006   PAD
+    0x00302cf0   0x00302cf0   0x0000002a   Code   RO          719    .text.UARTC_DriverHandler  hte_uart.o
+    0x00302d1a   0x00302d1a   0x00000006   PAD
+    0x00302d20   0x00302d20   0x0000002a   Code   RO          721    .text.UARTD_DriverHandler  hte_uart.o
+    0x00302d4a   0x00302d4a   0x00000006   PAD
+    0x00302d50   0x00302d50   0x00000026   Code   RO          651    .text.UART_disableFIFOAccess  hte_uart.o
+    0x00302d76   0x00302d76   0x00000002   PAD
+    0x00302d78   0x00302d78   0x00000026   Code   RO          653    .text.UART_disableLoopback  hte_uart.o
+    0x00302d9e   0x00302d9e   0x00000002   PAD
+    0x00302da0   0x00302da0   0x00000036   Code   RO          643    .text.UART_getDefaultConfig  hte_uart.o
+    0x00302dd6   0x00302dd6   0x00000002   PAD
+    0x00302dd8   0x00302dd8   0x0000004c   Code   RO          805    .text.UART_getLineStatus  decodecan.o
+    0x00302e24   0x00302e24   0x00000004   PAD
+    0x00302e28   0x00302e28   0x00000024   Code   RO          723    .text.UART_getTxFIFOLevel  hte_uart.o
+    0x00302e4c   0x00302e4c   0x00000004   PAD
+    0x00302e50   0x00302e50   0x0000002a   Code   RO          655    .text.UART_haltTransmit  hte_uart.o
+    0x00302e7a   0x00302e7a   0x00000006   PAD
+    0x00302e80   0x00302e80   0x000000b4   Code   RO          645    .text.UART_init     hte_uart.o
+    0x00302f34   0x00302f34   0x00000004   PAD
+    0x00302f38   0x00302f38   0x00000024   Code   RO          647    .text.UART_isBusy   hte_uart.o
+    0x00302f5c   0x00302f5c   0x00000004   PAD
+    0x00302f60   0x00302f60   0x00000026   Code   RO          675    .text.UART_isFIFOEnabled  hte_uart.o
+    0x00302f86   0x00302f86   0x00000002   PAD
+    0x00302f88   0x00302f88   0x0000003e   Code   RO          667    .text.UART_isSpaceAvailable  hte_uart.o
+    0x00302fc6   0x00302fc6   0x00000002   PAD
+    0x00302fc8   0x00302fc8   0x00000024   Code   RO          725    .text.UART_isTransmitHoldingEmpty  hte_uart.o
+    0x00302fec   0x00302fec   0x00000004   PAD
+    0x00302ff0   0x00302ff0   0x00000024   Code   RO          669    .text.UART_isTransmitRegisterEmpty  hte_uart.o
+    0x00303014   0x00303014   0x00000004   PAD
+    0x00303018   0x00303018   0x000000f0   Code   RO          649    .text.UART_setBaudRate  hte_uart.o
+    0x00303108   0x00303108   0x0000007c   Code   RO          665    .text.UART_writeDataBlocking  hte_uart.o
+    0x00303184   0x00303184   0x00000004   PAD
+    0x00303188   0x00303188   0x00000020   Code   RO          284    .text.__NVIC_EnableIRQ  hte_cpu1_ipc.o
+    0x003031a8   0x003031a8   0x00000022   Code   RO          282    .text.__NVIC_SetPriority  hte_cpu1_ipc.o
+    0x003031ca   0x003031ca   0x00000006   PAD
+    0x003031d0   0x003031d0   0x00000068   Code   RO          193    .text.__aeabi_assert  hte_assert.o
+    0x00303238   0x00303238   0x00000020   Code   RO          807    .text.backCanStandID  decodecan.o
+    0x00303258   0x00303258   0x00000078   Code   RO          129    .text.cpu1_ipc_com_irq_handler  hte_cpu1_ipc_com.o
+    0x003032d0   0x003032d0   0x00000032   Code   RO          839    .text.crc16         crc.o
+    0x00303302   0x00303302   0x00000006   PAD
+    0x00303308   0x00303308   0x00000058   Code   RO          809    .text.decodeInst    decodecan.o
+    0x00303360   0x00303360   0x0000002e   Code   RO          228    .text.fputc         hte_debug_console.o
+    0x0030338e   0x0030338e   0x00000002   PAD
+    0x00303390   0x00303390   0x000000b8   Code   RO          803    .text.mUART_readDataBlocking  decodecan.o
+    0x00303448   0x00303448   0x00000150   Code   RO          777    .text.main          mcan_ex2_receive.o
+    0x00303598   0x00303598   0x00000020   Code   RO         1001    i.__0printf$3       mc_w.l(printf3.o)
+    0x003035b8   0x003035b8   0x0000000e   Code   RO         1298    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x003035c6   0x003035c6   0x00000002   Code   RO         1299    i.__scatterload_null  mc_w.l(handlers.o)
+    0x003035c8   0x003035c8   0x0000000e   Code   RO         1300    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x003035d6   0x003035d6   0x00000002   PAD
+    0x003035d8   0x003035d8   0x000001b8   Code   RO         1008    i._printf_core      mc_w.l(printf3.o)
+    0x00303790   0x00303790   0x00000014   Data   RO          829    .rodata..L__const.GetInputVol.dataBuf  decodecan.o
+    0x003037a4   0x003037a4   0x00000014   Data   RO          828    .rodata..L__const.GetRpm.dataBuf  decodecan.o
+    0x003037b8   0x003037b8   0x00000200   Data   RO          841    .rodata.crc16_tab   crc.o
+    0x003039b8   0x003039b8   0x00000008   Data   RO          302    .rodata.cst8        hte_cpu1_ipc.o
+    0x003039c0   0x003039c0   0x00000045   Data   RO          267    .rodata.str1.1      hte_common.o
+    0x00303a05   0x00303a05   0x00000049   Data   RO          300    .rodata.str1.1      hte_cpu1_ipc.o
+    0x00303a4e   0x00303a4e   0x00000015   Data   RO          353    .rodata.str1.1      hte_gpio.o
+    0x00303a63   0x00303a63   0x0000006b   Data   RO          500    .rodata.str1.1      hte_mcan.o
+    0x00303ace   0x00303ace   0x0000006b   Data   RO          748    .rodata.str1.1      hte_uart.o
+    0x00303b39   0x00303b39   0x00000012   Data   RO          827    .rodata.str1.1      decodecan.o
+    0x00303b4b   0x00303b4b   0x00000001   PAD
+    0x00303b4c   0x00303b4c   0x00000020   Data   RO         1297    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_RAM (Exec base: 0x20000000, Load base: 0x00303c90, Size: 0x00000348, Max: 0x0001f200, ABSOLUTE)
+    Execution Region RW_RAM (Exec base: 0x20000000, Load base: 0x00303b6c, Size: 0x00000348, Max: 0x0001f200, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00303c90   0x00000004   Data   RW          890    .data               mc_w.l(stderr.o)
-    0x20000004   0x00303c94   0x00000004   Data   RW          249    .data.SystemCoreClock  system_hs32f7d377_cpu1.o
-    0x20000008   0x00303c98   0x00000001   Data   RW          119    .data.gSystickFreq  clock_config.o
-    0x20000009   0x00303c99   0x00000003   PAD
-    0x2000000c   0x00303c9c   0x00000038   Data   RW           43    .data.s_mpuRegions  board.o
-    0x20000044        -       0x00000018   Zero   RW          790    .bss.RxFS           mcan_ex2_receive.o
+    0x20000000   0x00303b6c   0x00000004   Data   RW          897    .data               mc_w.l(stderr.o)
+    0x20000004   0x00303b70   0x00000004   Data   RW          249    .data.SystemCoreClock  system_hs32f7d377_cpu1.o
+    0x20000008   0x00303b74   0x00000001   Data   RW          119    .data.gSystickFreq  clock_config.o
+    0x20000009   0x00303b75   0x00000003   PAD
+    0x2000000c   0x00303b78   0x00000038   Data   RW           43    .data.s_mpuRegions  board.o
+    0x20000044        -       0x00000018   Zero   RW          792    .bss.RxFS           mcan_ex2_receive.o
     0x2000005c        -       0x00000054   Zero   RW          232    .bss.__stdin        hte_debug_console.o
     0x200000b0        -       0x00000054   Zero   RW          233    .bss.__stdout       hte_debug_console.o
     0x20000104        -       0x00000004   Zero   RW          118    .bss.gSystick       clock_config.o
     0x20000108        -       0x00000020   Zero   RW          120    .bss.g_clockConfig  clock_config.o
-    0x20000128        -       0x00000004   Zero   RW          788    .bss.loopCnt        mcan_ex2_receive.o
-    0x2000012c        -       0x000000a8   Zero   RW          789    .bss.rxMsg          mcan_ex2_receive.o
-    0x200001d4        -       0x000000a8   Zero   RW          791    .bss.rxMsg1         mcan_ex2_receive.o
+    0x20000128        -       0x00000004   Zero   RW          790    .bss.loopCnt        mcan_ex2_receive.o
+    0x2000012c        -       0x000000a8   Zero   RW          791    .bss.rxMsg          mcan_ex2_receive.o
+    0x200001d4        -       0x000000a8   Zero   RW          793    .bss.rxMsg1         mcan_ex2_receive.o
     0x2000027c        -       0x00000004   Zero   RW          234    .bss.s_debugConsole.0  hte_debug_console.o
     0x20000280        -       0x00000010   Zero   RW          301    .bss.s_ipcISR       hte_cpu1_ipc.o
     0x20000290        -       0x00000018   Zero   RW          501    .bss.s_mcanISR      hte_mcan.o
@@ -3361,21 +3389,21 @@ Memory Map of the image
     0x20000338        -       0x00000010   Zero   RW          747    .bss.s_uartISR      hte_uart.o
 
 
-    Execution Region ARM_LIB_HEAP (Exec base: 0x20000348, Load base: 0x00303cd4, Size: 0x00000c00, Max: 0x00000c00, ABSOLUTE)
+    Execution Region ARM_LIB_HEAP (Exec base: 0x20000348, Load base: 0x00303bb0, Size: 0x00000c00, Max: 0x00000c00, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000348        -       0x00000c00   Zero   RW            1    ARM_LIB_HEAP.bss    anon$$obj.o
 
 
-    Execution Region ARM_LIB_STACK (Exec base: 0x2001fe00, Load base: 0x00303cd4, Size: 0x00000200, Max: 0x00000200, ABSOLUTE)
+    Execution Region ARM_LIB_STACK (Exec base: 0x2001fe00, Load base: 0x00303bb0, Size: 0x00000200, Max: 0x00000200, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x2001fe00        -       0x00000200   Zero   RW            2    ARM_LIB_STACK.bss   anon$$obj.o
 
 
-    Execution Region CLOCK_INFO (Exec base: 0x40001fe0, Load base: 0x00303cd4, Size: 0x00000020, Max: 0x00000020, ABSOLUTE)
+    Execution Region CLOCK_INFO (Exec base: 0x40001fe0, Load base: 0x00303bb0, Size: 0x00000020, Max: 0x00000020, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -3392,7 +3420,7 @@ Image component sizes
        420          0          0         56          0      60345   board.o
        258          0          0          1         36     169927   clock_config.o
         50          0        512          0          0        972   crc.o
-       592          0         40          0          0       3190   decodecan.o
+      1028         56         58          0          0       8939   decodecan.o
        104         64          0          0          0        763   hte_assert.o
        172         40         69          0          0       2996   hte_common.o
        310          8         81          0         16      15112   hte_cpu1_ipc.o
@@ -3401,16 +3429,16 @@ Image component sizes
        394         48         21          0          0      19156   hte_gpio.o
       3186        148        107          0         24      52975   hte_mcan.o
       2154          8          0          0          0      37820   hte_sysctrl.o
-      1270         36        107          0        160      30186   hte_uart.o
-       736          0          0          0        364      22742   mcan_ex2_receive.o
+      1122         36        107          0        160      30273   hte_uart.o
+       780          0          0          0        364      23927   mcan_ex2_receive.o
        140         64          0          0          0     117316   pin_config.o
       1324        656       1024          0          0       5635   startup_hs32f7d377_cpu1_ac6.o
         18          0          0          4          0       2262   system_hs32f7d377_cpu1.o
 
     ----------------------------------------------------------------------
-     12028       1096       1996         64       4388     564647   Object Totals
+     12356       1156       2012         64       4388     571668   Object Totals
          0          0         32          0       3616          0   (incl. Generated)
-       480         24          3          3          0          0   (incl. Padding)
+       476         28          1          3          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -3430,22 +3458,23 @@ Image component sizes
         32          0          0          0          0         68   llushr.o
         40          0          0          0          0         76   memcpy.o
         36          0          0          0          0        108   memseta.o
-      1154         54          0          0          0        352   printf8.o
+       472         14          0          0          0        184   printf3.o
          0          0          0          4          0          0   stderr.o
+        44          0          0          0          0         80   uidiv.o
         98          0          0          0          0         92   uldiv.o
 
     ----------------------------------------------------------------------
-      1480         70          0          4          0        832   Library Totals
-         4          0          0          0          0          0   (incl. Padding)
+       844         34          0          4          0        744   Library Totals
+         6          4          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
-      1476         70          0          4          0        832   mc_w.l
+       838         30          0          4          0        744   mc_w.l
 
     ----------------------------------------------------------------------
-      1480         70          0          4          0        832   Library Totals
+       844         34          0          4          0        744   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -3454,15 +3483,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     13508       1166       1996         68       4388     565019   Grand Totals
-     13508       1166       1996         68       4388     565019   ELF Image Totals
-     13508       1166       1996         68          0          0   ROM Totals
+     13200       1190       2012         68       4388     572004   Grand Totals
+     13200       1190       2012         68       4388     572004   ELF Image Totals
+     13200       1190       2012         68          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                15504 (  15.14kB)
+    Total RO  Size (Code + RO Data)                15212 (  14.86kB)
     Total RW  Size (RW Data + ZI Data)              4456 (   4.35kB)
-    Total ROM Size (Code + RO Data + RW Data)      15572 (  15.21kB)
+    Total ROM Size (Code + RO Data + RW Data)      15280 (  14.92kB)
 
 ==============================================================================
 

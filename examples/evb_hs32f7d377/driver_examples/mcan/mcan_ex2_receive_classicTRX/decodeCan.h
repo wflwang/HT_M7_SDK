@@ -19,6 +19,6 @@ extern void SetDutyClr(void);
 extern void SetI(uint16_t* dr);
 extern void SetRPM(uint16_t* dr);
 extern void decodeInst(uint16_t *data);
-extern void GetMotorValue();
+extern void GetMotorValue(uint16_t *data);
 
 #endif

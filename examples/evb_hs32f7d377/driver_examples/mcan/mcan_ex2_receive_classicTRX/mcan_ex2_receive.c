@@ -44,6 +44,7 @@
  * Includes
  ******************************************************************************/
 #include "board.h"
+#include "hte_uart.h"
 #include "hte_sysctrl.h"
 #include "hte_mcan.h"
 #include "hte_pinmux.h"
@@ -85,6 +86,7 @@
 #define MCAN_BASE      MCANB_BASE
 //#define MCAN_BASE      MCANC_BASE
 #endif
+#define EXAMPLE_UART_BAUDRATE (115200U)
 
 
 #if (MCAN_BASE == MCANA_BASE)
@@ -151,6 +153,10 @@ void main()
 #ifdef HTE_DEVICE_HS32F7D377_CPU1
     IPC_comInit();
 #endif
+    UART_Config_t config;
+    UART_getDefaultConfig(&config);
+    config.baudRate = EXAMPLE_UART_BAUDRATE;
+    (void)UART_init(BOARD_DEBUG_CONSOLE_BASE, &config, BOARD_DEBUG_CONSOLE_CLOCK);
 
     MCAN_pinMux();
     MCAN_setPclkEnable();

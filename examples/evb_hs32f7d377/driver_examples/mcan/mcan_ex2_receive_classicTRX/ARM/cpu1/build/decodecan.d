@@ -52,4 +52,4 @@
   E:\tool\mdk\ARM\ARMCLANG\Bin\..\include\stdio.h \
   ..\..\..\..\..\..\..\boards\evb_hs32f7d377\pin_config.h \
   ..\..\decodeCan.h ..\..\..\..\..\..\..\drivers\uart\hte_uart.h \
-  ..\..\crc.h
+  ..\..\crc.h ..\..\datatypes.h

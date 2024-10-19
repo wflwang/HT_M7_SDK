@@ -445,7 +445,6 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>d</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -482,9 +481,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>88</LineNumber>
+          <LineNumber>194</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>3149862</Address>
+          <Address>3149922</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -493,23 +492,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>&lt;1&gt;..\..\decodeCan.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\mcan_ex2_receive_cpu1\../../decodeCan.c\88</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>220</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>3158970</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;..\..\mcan_ex2_receive.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\mcan_ex2_receive_cpu1\../../mcan_ex2_receive.c\220</Expression>
+          <Expression>\\mcan_ex2_receive_cpu1\../../decodeCan.c\194</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -517,6 +500,11 @@
           <count>0</count>
           <WinNumber>1</WinNumber>
           <ItemText>rxMsg[0]</ItemText>
+        </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>retryTimes</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

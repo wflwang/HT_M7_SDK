@@ -51,6 +51,7 @@
   ..\..\..\..\..\..\..\components\debug_console\hte_debug_console.h \
   E:\tool\mdk\ARM\ARMCLANG\Bin\..\include\stdio.h \
   ..\..\..\..\..\..\..\boards\evb_hs32f7d377\pin_config.h \
+  ..\..\..\..\..\..\..\drivers\uart\hte_uart.h \
   ..\..\..\..\..\..\..\devices\HS32F7D377\drivers\hte_sysctrl.h \
   ..\..\..\..\..\..\..\drivers\mcan\hte_mcan.h \
   ..\..\..\..\..\..\..\devices\HS32F7D377\drivers\hte_pinmux.h \
