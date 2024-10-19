@@ -157,8 +157,9 @@ void GetRpm(uint16_t *data){
     (void)UART_writeDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 10);
 	//(void)UART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14);
 	if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14)!=kSTATUS_SUCCESS){
-        if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14)!=kSTATUS_SUCCESS)
-        return;
+        if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14)!=kSTATUS_SUCCESS){
+            return;
+        }
     }
     unsigned short crc = crc16(&dataBuf[2], dataBuf[1]);
     if(((crc>>8)==dataBuf[dataBuf[1]+2])&&((crc&0xff)==dataBuf[dataBuf[1]+3])){
