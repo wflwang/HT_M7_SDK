@@ -101,7 +101,7 @@ uint32_t backCanStandID(uint32_t srcID){
  * 
  * 
 */
-void decodeInst(uint16_t *data){
+void decodeInst(uint16_t *data,decodeCanData* dcd){
     uint16_t dat = *data;
     switch(*data){
         case 0: //获取参数
@@ -111,7 +111,16 @@ void decodeInst(uint16_t *data){
         break;
         case 2: //参须运行状态
         switch (data[1]){
-            case 5: //获取速度
+            case 1: //Ui Wi sample
+            GetUWI(data);   //获取UW相电流
+            break;
+            case 2: //di Dv
+            Getidvd(data);
+            break;
+            case 3: //Get iq,vq
+            Getiqvq(data);
+            break;
+            case 4: //获取速度
             GetRpm(data);
             break;
             case 6: //读出输入电压
@@ -124,11 +133,15 @@ void decodeInst(uint16_t *data){
         if(data[1]==0){
             switch((data[2]<<8)|data[3]){
                 case 0: //standby
+                    //dcd->vNowDuty = 0;
                     SetDutyClr();
                 break;
                 case 1: //servo
                 break;
                 case 2: //speed - 3,0,0,2,x,x,x,x
+                //static uint16_t vLastDuty=0;
+                //if(vLastDuty>)
+                    //dcd->vNowDuty = ((uint8_t)data[5]<<24)|((uint8_t)data[6]<<16)|((uint8_t)data[7])<<8|((uint8_t)data[8]);
                     SetDuty(&data[4]);
                 break;
                 case 3: //I control
@@ -148,6 +161,77 @@ void decodeInst(uint16_t *data){
 //        binaryStr[31 - i] = (num & (1 << i)) ? '1' : '0';  
 //    }  
 //}  
+/***
+ * get U W /i
+ * motor avg current
+*/
+void GetUWI(uint16_t *data){
+    const uint8_t dataBuf[20]  = {0x02,0x05,0x32,0,0,0x00,0x04,0x08,0xe9,0x03};  //获取电压
+    (void)UART_writeDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 10);
+	//(void)UART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14);
+	if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14)!=kSTATUS_SUCCESS){
+        if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14)!=kSTATUS_SUCCESS){
+            return;
+        }
+    }
+    unsigned short crc = crc16(&dataBuf[2], dataBuf[1]);
+    if(((crc>>8)==dataBuf[dataBuf[1]+2])&&((crc&0xff)==dataBuf[dataBuf[1]+3])){
+        data[2] = dataBuf[7];   //reback value
+        data[3] = dataBuf[8];
+        data[4] = dataBuf[9];
+        data[5] = dataBuf[10];
+    }
+}
+/***
+ * get U W /i
+ * motor avg current
+*/
+void Getidvd(uint16_t *data){
+    const uint8_t dataBuf[20]  = {0x02,0x05,0x32,0,0x08,0x00,0x10,0xf3,0xfd,0x03};  //获取电压
+    (void)UART_writeDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 10);
+	//(void)UART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14);
+	if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 18)!=kSTATUS_SUCCESS){
+        if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 18)!=kSTATUS_SUCCESS){
+            return;
+        }
+    }
+    unsigned short crc = crc16(&dataBuf[2], dataBuf[1]);
+    if(((crc>>8)==dataBuf[dataBuf[1]+2])&&((crc&0xff)==dataBuf[dataBuf[1]+3])){
+        data[2] = dataBuf[7];   //reback value id
+        data[3] = dataBuf[8];
+        data[4] = dataBuf[9];
+        data[5] = dataBuf[10];
+        data[6] = dataBuf[11];   //reback value vd
+        data[7] = dataBuf[12];
+        //data[8] = dataBuf[13];
+        //data[9] = dataBuf[14];
+    }
+}
+/***
+ * get U W /i
+ * motor avg current
+*/
+void Getiqvq(uint16_t *data){
+    const uint8_t dataBuf[20]  = {0x02,0x05,0x32,0,0x10,0x00,0x20,0x2f,0x6c,0x03};  //获取电压
+    (void)UART_writeDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 10);
+	//(void)UART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 14);
+	if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 18)!=kSTATUS_SUCCESS){
+        if(mUART_readDataBlocking(BOARD_DEBUG_CONSOLE_BASE, dataBuf, 18)!=kSTATUS_SUCCESS){
+            return;
+        }
+    }
+    unsigned short crc = crc16(&dataBuf[2], dataBuf[1]);
+    if(((crc>>8)==dataBuf[dataBuf[1]+2])&&((crc&0xff)==dataBuf[dataBuf[1]+3])){
+        data[2] = dataBuf[7];   //reback value id
+        data[3] = dataBuf[8];
+        data[4] = dataBuf[9];
+        data[5] = dataBuf[10];
+        data[6] = dataBuf[11];   //reback value vd
+        data[7] = dataBuf[12];
+        //data[8] = dataBuf[13];
+        //data[9] = dataBuf[14];
+    }
+}
 /**
  * 获取当前转速
  * 

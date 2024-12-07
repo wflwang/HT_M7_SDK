@@ -156,14 +156,16 @@ void BOARD_clockConfig(void)
     SYSCTRL_selectClockOutSource(kSYSC_XCLKOUT_PLLRAWSCLK);
     BOARD_xclkoutPinConfig();
 #endif
-
+    //old config
     SYSCTL_SysClk_Config_t clkCfg = { kSYSC_OSCSRC_XTAL, OSC_XTALIN, PLL_ENABLE, SRC_CLKDIV, PLL_CLKOUT, SYS_CLKDIV };
+    //new config
+    //SYSCTL_SysClk_Config_t clkCfg = { kSYSC_OSCSRC_INTOSC2, OSC_OSC2IN, PLL_ENABLE, SRC_CLKDIV, PLL_CLKOUT, SYS_CLKDIV };
 
-    SYSCTL_AuxClk_Config_t auxCfg = {
-        kSYSC_AUXSRC_XTAL, OSC_AUXCLKIN, PLL_ENABLE, SRC_CLKDIV, AUXPLL_CLKOUT, AUX_CLKDIV
-    };
+    SYSCTL_AuxClk_Config_t auxCfg = {    kSYSC_AUXSRC_XTAL, OSC_AUXCLKIN, PLL_ENABLE, SRC_CLKDIV, AUXPLL_CLKOUT, AUX_CLKDIV};
+    //SYSCTL_AuxClk_Config_t auxCfg = {    kSYSC_AUXSRC_INTOSC2, OSC_AUXCLKIN, PLL_ENABLE, SRC_CLKDIV, AUXPLL_CLKOUT, AUX_CLKDIV};
 
     g_clockConfig.xtalClkIn = OSC_XTALIN;
+    //g_clockConfig.xtalClkIn = OSC_OSC2IN;    //OSC_XTALIN;
     g_clockConfig.auxClkIn  = OSC_AUXCLKIN;
     /* Disable the PLL before configure it */
     SYSCTRL_setPLLClkEn(kSYSC_DISABLE);

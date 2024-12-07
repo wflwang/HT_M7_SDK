@@ -398,7 +398,7 @@
         <LExpSel>0</LExpSel>
       </OPTXL>
       <OPTFL>
-        <tvExp>0</tvExp>
+        <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
         <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
@@ -449,6 +449,11 @@
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
+          <Key>CMSIS_AGDI</Key>
+          <Name>-X"CW-DAPLINK(CMSIS-DAP)" -U57092135373542470670FF33 -O206 -S10 -C0 -P00000000 -N00("ARM CoreSight SW-DP") -D00(6BA02477) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC8000 -FN2 -FF0HS32F7D377_CPU1_EFLASH0.FLM -FS0300000 -FL0100000 -FP0($$Device:HS32F7D377$devices\HS32F7D377\ARM\HS32F7D377_CPU1_EFLASH0.FLM) -FF1HS32F7D377_CPU1_EFLASH1.FLM -FS110300000 -FL11000000 -FP1($$Device:HS32F7D377$devices\HS32F7D377\ARM\HS32F7D377_CPU1_EFLASH1.FLM)</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
           <Key>ARMRTXEVENTFLAGS</Key>
           <Name>-L70 -Z18 -C0 -M0 -T1</Name>
         </SetRegEntry>
@@ -465,7 +470,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>JL2CM3</Key>
-          <Name>-U-O206 -O206 -S2 -ZTIFSpeedSel5000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(6BA02477) -L00(0) -TO65554 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO7 -FD20000000 -FC8000 -FN2 -FF0HS32F7D377_CPU1_EFLASH0.FLM -FS0300000 -FL0100000 -FP0($$Device:HS32F7D377$devices\HS32F7D377\ARM\HS32F7D377_CPU1_EFLASH0.FLM) -FF1HS32F7D377_CPU1_EFLASH1.FLM -FS110300000 -FL11000000 -FP1($$Device:HS32F7D377$devices\HS32F7D377\ARM\HS32F7D377_CPU1_EFLASH1.FLM)</Name>
+          <Name>-U778417204 -O206 -S5 -ZTIFSpeedSel1000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(6BA02477) -L00(0) -TO65554 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO7 -FD20000000 -FC8000 -FN2 -FF0HS32F7D377_CPU1_EFLASH0.FLM -FS0300000 -FL0100000 -FP0($$Device:HS32F7D377$devices\HS32F7D377\ARM\HS32F7D377_CPU1_EFLASH0.FLM) -FF1HS32F7D377_CPU1_EFLASH1.FLM -FS110300000 -FL11000000 -FP1($$Device:HS32F7D377$devices\HS32F7D377\ARM\HS32F7D377_CPU1_EFLASH1.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -478,40 +483,7 @@
           <Name>-U -O206 -S8 -C0 -P00 -N00("") -D00(00000000) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC8000 -FN2 -FF0HS32F7D377_CPU1_EFLASH0.FLM -FS0300000 -FL0100000 -FP0($$Device:HS32F7D377$devices\HS32F7D377\ARM\HS32F7D377_CPU1_EFLASH0.FLM) -FF1HS32F7D377_CPU1_EFLASH1.FLM -FS110300000 -FL11000000 -FP1($$Device:HS32F7D377$devices\HS32F7D377\ARM\HS32F7D377_CPU1_EFLASH1.FLM)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint>
-        <Bp>
-          <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>203</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>3150022</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;..\..\decodeCan.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\mcan_ex2_receive_cpu1\../../decodeCan.c\203</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>203</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>3150030</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;..\..\decodeCan.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\mcan_ex2_receive_cpu1\../../decodeCan.c\203</Expression>
-        </Bp>
-      </Breakpoint>
+      <Breakpoint/>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -571,7 +543,7 @@
         <EnableFlashSeq>1</EnableFlashSeq>
         <EnableLog>0</EnableLog>
         <Protocol>2</Protocol>
-        <DbgClock>10000000</DbgClock>
+        <DbgClock>2000000</DbgClock>
       </DebugDescription>
     </TargetOption>
   </Target>
@@ -672,6 +644,16 @@
         <pMon>Segger\JL2CM3.dll</pMon>
       </DebugOpt>
       <TargetDriverDllRegistry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>JL2CM3</Key>
+          <Name>-U69404783 -O206 -S0 -ZTIFSpeedSel20000 -A0 -C0 -JU1 -JI127.0.0.1 -JP0 -RST0 -N00("ARM CoreSight SW-DP") -D00(6BA02477) -L00(0) -TO65554 -TC10000000 -TP21 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -TB1 -TFE0 -FO7 -FD20000000 -FC8000 -FN2 -FF0HS32F7D377_CPU1_EFLASH0.FLM -FS0300000 -FL0100000 -FP0($$Device:HS32F7D377$devices\HS32F7D377\ARM\HS32F7D377_CPU1_EFLASH0.FLM) -FF1HS32F7D377_CPU1_EFLASH1.FLM -FS110300000 -FL11000000 -FP1($$Device:HS32F7D377$devices\HS32F7D377\ARM\HS32F7D377_CPU1_EFLASH1.FLM)</Name>
+        </SetRegEntry>
+        <SetRegEntry>
+          <Number>0</Number>
+          <Key>CMSIS_AGDI</Key>
+          <Name>-X"CW-DAPLINK(CMSIS-DAP)" -U57092135373542470670FF33 -O206 -S8 -C0 -P00000000 -N00("ARM CoreSight SW-DP") -D00(6BA02477) -L00(0) -TO65554 -TC10000000 -TT10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC8000 -FN2 -FF0HS32F7D377_CPU1_EFLASH0.FLM -FS0300000 -FL0100000 -FP0($$Device:HS32F7D377$devices\HS32F7D377\ARM\HS32F7D377_CPU1_EFLASH0.FLM) -FF1HS32F7D377_CPU1_EFLASH1.FLM -FS110300000 -FL11000000 -FP1($$Device:HS32F7D377$devices\HS32F7D377\ARM\HS32F7D377_CPU1_EFLASH1.FLM)</Name>
+        </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
           <Key>ULP2CM3</Key>
@@ -1218,7 +1200,7 @@
 
   <Group>
     <GroupName>startup</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

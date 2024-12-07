@@ -62,7 +62,7 @@
 
 
 #ifdef HTE_DEVICE_HS32F7D377_CPU1
-#define MCAN_BASE      MCANA_BASE
+#define MCAN_BASE      MCANB_BASE
 //#define MCAN_BASE      MCANB_BASE
 //#define MCAN_BASE      MCANC_BASE
 #else
@@ -80,12 +80,16 @@
 #define MCAN_TXCFG GPIO_128_MCANA_TX    /* "pinConfig" for MCAN TX */
 
 #elif(MCAN_BASE == MCANB_BASE)
+#define MCAN_RXPIN 7
+#define MCAN_RXCFG GPIO_7_MCANB_RX     /* "pinConfig" for MCAN RX */
+#define MCAN_TXPIN 6
+#define MCAN_TXCFG GPIO_6_MCANB_TX     /* "pinConfig" for MCAN TX */
 
-#define MCAN_RXPIN 73
-#define MCAN_RXCFG GPIO_73_MCANB_RX     /* "pinConfig" for MCAN RX */
+//#define MCAN_RXPIN 73
+//#define MCAN_RXCFG GPIO_73_MCANB_RX     /* "pinConfig" for MCAN RX */
 
-#define MCAN_TXPIN 72
-#define MCAN_TXCFG GPIO_72_MCANB_TX     /* "pinConfig" for MCAN TX */
+//#define MCAN_TXPIN 72
+//#define MCAN_TXCFG GPIO_72_MCANB_TX     /* "pinConfig" for MCAN TX */
 
 
 #elif(MCAN_BASE == MCANC_BASE)

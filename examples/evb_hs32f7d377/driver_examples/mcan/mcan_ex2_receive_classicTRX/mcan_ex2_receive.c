@@ -99,14 +99,18 @@
 
 #elif(MCAN_BASE == MCANB_BASE)
 
-#define MCAN_RXPIN 73
-#define MCAN_RXCFG GPIO_73_MCANB_RX     /* "pinConfig" for MCAN RX */
+//#define MCAN_RXPIN 73
+//#define MCAN_RXCFG GPIO_73_MCANB_RX     /* "pinConfig" for MCAN RX */
+#define MCAN_RXPIN 7
+#define MCAN_RXCFG GPIO_7_MCANB_RX     /* "pinConfig" for MCAN RX */
 
 //#define MCAN_TXPIN 72
 //#define MCAN_TXCFG GPIO_72_MCANB_TX     /* "pinConfig" for MCAN TX */
 
-#define MCAN_TXPIN 38
-#define MCAN_TXCFG GPIO_38_MCANB_TX     /* "pinConfig" for MCAN TX */
+//#define MCAN_TXPIN 38
+//#define MCAN_TXCFG GPIO_38_MCANB_TX     /* "pinConfig" for MCAN TX */
+#define MCAN_TXPIN 6
+#define MCAN_TXCFG GPIO_6_MCANB_TX     /* "pinConfig" for MCAN TX */
 
 #elif(MCAN_BASE == MCANC_BASE)
 
@@ -133,6 +137,9 @@ int32_t     error = 0;
 MCAN_RxBufElement_t rxMsg[1], rxMsg1;
 MCAN_RxFIFOStatus_t RxFS;
 int32_t loopCnt = 0U;
+decodeCanData dcd={
+    .vLastDuty = 0, .vNowDuty=0
+};
 
 
 /*******************************************************************************
@@ -156,7 +163,7 @@ void main()
     UART_Config_t config;
     UART_getDefaultConfig(&config);
     config.baudRate = EXAMPLE_UART_BAUDRATE;
-    (void)UART_init(BOARD_DEBUG_CONSOLE_BASE, &config, BOARD_DEBUG_CONSOLE_CLOCK);
+    //(void)UART_init(BOARD_DEBUG_CONSOLE_BASE, &config, BOARD_DEBUG_CONSOLE_CLOCK);
 
     MCAN_pinMux();
     MCAN_setPclkEnable();
@@ -193,6 +200,22 @@ void main()
     /*Configure the MCAN Module. */
     MCANConfig();
     RxFS.num = 1;
+    //* Initialize message to transmit. */
+    //txMsg.id       = ((uint32_t)(0x4)<<18U) ;
+    //txMsg.rtr      = 0U;
+    //txMsg.xtd      = 0U;
+    //txMsg.esi      = 0U;
+    //txMsg.dlc      = 4U;
+    //txMsg.brs      = 1U;
+    //txMsg.fdf      = 0U;
+    //txMsg.efc      = 1U;
+    //txMsg.mm       = 0xAAU;
+    //txMsg.data[0]  = 0x12;
+    //txMsg.data[1]  = 0x34;
+    //txMsg.data[2]  = 0x56;
+    //txMsg.data[3]  = 0x78;
+    //MCAN_writeMsgRam((MCAN_Type *)MCAN_BASE, kMCAN_MEM_TYPE_BUF, 1U, &txMsg);
+    //MCAN_txBufAddReq((MCAN_Type *)MCAN_BASE, 1U);
 
     while(1){
         /*Get the New Data Status. */
@@ -201,6 +224,9 @@ void main()
         //while(!newData.statusLow)
         {
             //MCAN_getNewDataStatus((MCAN_Type *)MCAN_BASE, &newData);
+            //if(vLastDuty!=vNowDuty){
+            //    vLastDuty
+            //}
             MCAN_getRxFIFOStatus((MCAN_Type *)MCAN_BASE, &RxFS);
         }
 
@@ -224,7 +250,7 @@ void main()
         //txMsg.id = rxMsg[loopCnt].id;	//((rxMsg[loopCnt].id<<4)&0xf0)|((rxMsg[loopCnt].id>>4)&0xf);
         memcpy(txMsg.data,rxMsg[loopCnt].data,sizeof(txMsg.data));
         (void)UART_init(BOARD_DEBUG_CONSOLE_BASE, &config, BOARD_DEBUG_CONSOLE_CLOCK);
-        decodeInst(txMsg.data);
+        decodeInst(txMsg.data,&dcd);
         MCAN_writeMsgRam((MCAN_Type *)MCAN_BASE, kMCAN_MEM_TYPE_BUF, 1U, &txMsg);
         /* Add request for transmission. */
         MCAN_txBufAddReq((MCAN_Type *)MCAN_BASE, 1U);
@@ -346,11 +372,11 @@ static void MCANConfig(void)
     //stdFiltelem1[1].sfec               = 7; //0x7U; /* Store into Rx Buffer */
     //stdFiltelem1[1].sft                = 0x0U; /* Range filter from SFID1 to SFID2 */
     /* Initialize bit timings */
-    bitTimes.nomRatePrescalar   = 14U; /* Nominal Baud Rate Pre-scaler. */
+    bitTimes.nomRatePrescalar   = 14U;  //    14U; /* Nominal Baud Rate Pre-scaler. */
     bitTimes.nomTimeSeg1        = 8U;  /* Nominal Time segment before SP */
     bitTimes.nomTimeSeg2        = 9U;  /* Nominal Time segment after SP */
     bitTimes.nomSynchJumpWidth  = 3U;  /* Nominal SJW */
-    bitTimes.dataRatePrescalar  = 14U; /* Data Baud Rate Pre-scaler. */
+    bitTimes.dataRatePrescalar  = 14U;   //14U; /* Data Baud Rate Pre-scaler. */
     bitTimes.dataTimeSeg1       = 8;   //3U;  /* Data Time segment before SP */
     bitTimes.dataTimeSeg2       = 9;    //4U;  /* Data Time segment after SP */
     bitTimes.dataSynchJumpWidth = 3;    //2U;  /* Data SJW */
@@ -380,6 +406,7 @@ static void MCANConfig(void)
     MCAN_addStdMsgIDFilter((MCAN_Type *)MCAN_BASE, 0U, &stdFiltelem);
     //MCAN_addStdMsgIDFilter((MCAN_Type *)MCAN_BASE, 0U, &stdFiltelem1[0]);
     //MCAN_addStdMsgIDFilter((MCAN_Type *)MCAN_BASE, 0U, &stdFiltelem1[1]);
+    //MCAN_lpbkModeEnable((MCAN_Type *)MCAN_BASE, kMCAN_LPBK_MODE_EXTERNAL, true);
 
     /* Take MCAN out of the SW initialization mode */
     MCAN_setOpMode((MCAN_Type *)MCAN_BASE, kMCAN_OPERATION_MODE_NORMAL);

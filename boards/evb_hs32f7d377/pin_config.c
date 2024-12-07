@@ -110,13 +110,17 @@ void BOARD_uartPinConfig(UART_Type *base)
     if (base == UARTA)
     {
         //GPIO_setPinConfig(GPIO_84_UARTA_TXD);
-        GPIO_setPinConfig(GPIO_42_UARTA_TXD);
+        //GPIO_setPinConfig(GPIO_42_UARTA_TXD);
         //GPIO_setPadConfig(84U, kGPIO_PADCONFIG_PULLUP);
-        GPIO_setPadConfig(42U, kGPIO_PADCONFIG_PULLUP);
+        //GPIO_setPadConfig(42U, kGPIO_PADCONFIG_PULLUP);
         //GPIO_setPinConfig(GPIO_85_UARTA_RXD);
-        GPIO_setPinConfig(GPIO_43_UARTA_RXD);
+        //GPIO_setPinConfig(GPIO_43_UARTA_RXD);
         //GPIO_setPadConfig(85U, kGPIO_PADCONFIG_PULLUP);
-        GPIO_setPadConfig(43U, kGPIO_PADCONFIG_PULLUP);
+        //GPIO_setPadConfig(43U, kGPIO_PADCONFIG_PULLUP);
+        GPIO_setPinConfig(GPIO_8_UARTA_TXD);
+        GPIO_setPadConfig(8U, kGPIO_PADCONFIG_PULLUP);
+        GPIO_setPinConfig(GPIO_9_UARTA_RXD);
+        GPIO_setPadConfig(9U, kGPIO_PADCONFIG_PULLUP);
     }
     else if (base == UARTB)
     {
@@ -227,10 +231,14 @@ void BOARD_mcanPinConfig(MCAN_Type *base)
     }
     else if (base == MCANB)
     {
-        GPIO_setPinConfig(GPIO_72_MCANB_TX);
-        GPIO_setPadConfig(72U, kGPIO_PADCONFIG_PULLUP);
-        GPIO_setPinConfig(GPIO_73_MCANB_RX);
-        GPIO_setPadConfig(73U, kGPIO_PADCONFIG_PULLUP);
+        //GPIO_setPinConfig(GPIO_72_MCANB_TX);
+        //GPIO_setPadConfig(72U, kGPIO_PADCONFIG_PULLUP);
+        //GPIO_setPinConfig(GPIO_73_MCANB_RX);
+        //GPIO_setPadConfig(73U, kGPIO_PADCONFIG_PULLUP);
+        GPIO_setPinConfig(GPIO_6_MCANB_TX);
+        GPIO_setPadConfig(6U, kGPIO_PADCONFIG_PULLUP);
+        GPIO_setPinConfig(GPIO_7_MCANB_RX);
+        GPIO_setPadConfig(7U, kGPIO_PADCONFIG_PULLUP);
     }
     else if (base == MCANC)
     {

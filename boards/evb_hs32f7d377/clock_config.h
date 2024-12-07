@@ -49,10 +49,10 @@
 #define SYSOUT_CLKDIV_64  (32U) /*!< sys clk out div 64 */
 #define SYSOUT_CLKDIV_128 (64U) /*!< sys clk out div 128 */
 
-#define OSC_XTALIN   (20000000U)  /*!< xtal in freq */
+#define OSC_XTALIN   (8000000U) //(20000000U)  /*!< xtal in freq */
 #define OSC_OSC2IN   (10000000U)  /*!< osc2 in freq */
 #define OSC_AUXCLKIN (20000000U)  /*!< aux clk in freq */
-#define SRC_CLKDIV   SRC_CLKDIV_2 /*!< source clk div */
+#define SRC_CLKDIV   SRC_CLKDIV_1   //SRC_CLKDIV_2 /*!< source clk div */
 
 #define PLL_CLKOUT    (300000000U) /*!< pll clk out freq */
 #define AUXPLL_CLKOUT (192000000U) /*!< aux pll clk out freq */

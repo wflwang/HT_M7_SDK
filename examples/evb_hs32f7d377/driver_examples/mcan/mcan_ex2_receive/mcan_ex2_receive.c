@@ -94,14 +94,18 @@
 
 #elif(MCAN_BASE == MCANB_BASE)
 
-#define MCAN_RXPIN 73
-#define MCAN_RXCFG GPIO_73_MCANB_RX     /* "pinConfig" for MCAN RX */
+//#define MCAN_RXPIN 73
+//#define MCAN_RXCFG GPIO_73_MCANB_RX     /* "pinConfig" for MCAN RX */
+#define MCAN_RXPIN 7
+#define MCAN_RXCFG GPIO_7_MCANB_RX     /* "pinConfig" for MCAN RX */
 
 //#define MCAN_TXPIN 72
 //#define MCAN_TXCFG GPIO_72_MCANB_TX     /* "pinConfig" for MCAN TX */
 
-#define MCAN_TXPIN 38
-#define MCAN_TXCFG GPIO_38_MCANB_TX     /* "pinConfig" for MCAN TX */
+//#define MCAN_TXPIN 38
+//#define MCAN_TXCFG GPIO_38_MCANB_TX     /* "pinConfig" for MCAN TX */
+#define MCAN_TXPIN 6
+#define MCAN_TXCFG GPIO_6_MCANB_TX     /* "pinConfig" for MCAN TX */
 
 #elif(MCAN_BASE == MCANC_BASE)
 
@@ -176,7 +180,7 @@ void main()
         MCAN_getNewDataStatus((MCAN_Type *)MCAN_BASE, &newData);
     }
 
-    MCAN_readMsgRam((MCAN_Type *)MCAN_BASE, kMCAN_MEM_TYPE_BUF, 0U,0, &rxMsg1);
+                   MCAN_readMsgRam((MCAN_Type *)MCAN_BASE, kMCAN_MEM_TYPE_BUF, 0U,0, &rxMsg1);
 
     rxMsg[loopCnt] = rxMsg1;
 
